@@ -1,9 +1,6 @@
 import React from 'react';
 import './AboutClearerPath.css';
 
-// Image cha path tumchya assets folder nusar set kara
-import clearerPathImg from '../../assets/images/Raw Images/gold-coins-notebook.jpg';
-
 function AboutClearerPath() {
   return (
     <section className="clearer-path-section">
@@ -29,10 +26,10 @@ function AboutClearerPath() {
           </a>
         </div>
 
-        {/* Right Side Image */}
+        {/* Right Side Image (High Quality Working Online Image) */}
         <div className="clearer-path-image-box">
           <img 
-            src={clearerPathImg} 
+            src="https://images.unsplash.com/photo-1618042164219-62c820f10723?q=80&w=1200&auto=format&fit=crop" 
             alt="Gold coins stacked next to a notebook and pen" 
             className="clearer-path-img" 
           />
