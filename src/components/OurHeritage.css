@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap');
+
+.heritage-section {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  /* Angled split 2-tone gradient */
+  background: linear-gradient(
+    108deg,
+    #18191b 0%,
+    #18191b 48%,
+    #212326 48.2%,
+    #212326 100%
+  );
+  padding: 160px 50px;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.heritage-container {
+  max-width: 1450px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ================= Left Side Content (Width Reduced) ================= */
+.heritage-left {
+  flex: 1.1;
+  max-width: 580px;
+  text-align: left;
+}
+
+.heritage-tag-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* OUR HERITAGE Text: #b38048 */
+.heritage-tag {
+  color: #b38048;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 3.2px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+/* Tag Line: #b38048 Gradient */
+.heritage-tag-line {
+  display: inline-block;
+  width: 55px;
+  height: 1.5px;
+  background: linear-gradient(90deg, #b38048 0%, rgba(179, 128, 72, 0.15) 100%);
+}
+
+.heritage-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 44px;
+  line-height: 1.25;
+  color: #f7f6f2;
+  font-weight: 400;
+  margin: 0 0 30px 0;
+  letter-spacing: -0.3px;
+  text-align: left;
+}
+
+/* "Financial" शब्द: Italic आणि #b38048 रंग */
+.heritage-highlight-word {
+  font-style: italic;
+  color: #b38048;
+}
+
+.heritage-desc-group {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 34px;
+  max-width: 540px;
+  text-align: left;
+}
+
+.heritage-desc {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #9ea2a8;
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: 0.15px;
+  text-align: left;
+}
+
+/* Signature Section: #b38048 */
+.heritage-signature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 21px;
+  color: #b38048;
+  letter-spacing: 0.3px;
+  text-align: left;
+}
+
+.sig-dash {
+  font-size: 21px;
+  color: #b38048;
+}
+
+.sig-text {
+  color: #b38048;
+}
+
+/* ================= Right Side Images (Scroll Offset) ================= */
+.heritage-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 36px;
+  position: relative;
+  padding-right: 15px;
+}
+
+.img-frame-wrapper {
+  position: relative;
+  transition: transform 0.4s ease;
+}
+
+/* Gold Frame Backdrop Border: #b38048 */
+.gold-border-backdrop {
+  position: absolute;
+  border: 1px solid #b38048;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* First Image (Bottom offset) */
+.tall-wrapper {
+  width: 290px;
+  height: 450px;
+  transform: translateY(110px);
+}
+
+.tall-wrapper .gold-border-backdrop {
+  top: -12px;
+  left: -12px;
+  right: 12px;
+  bottom: 12px;
+  opacity: 0.75;
+}
+
+/* Second Image (Top offset) */
+.small-wrapper {
+  width: 250px;
+  height: 360px;
+  transform: translateY(-110px);
+}
+
+.small-wrapper .gold-border-backdrop {
+  top: -12px;
+  left: 12px;
+  right: -12px;
+  bottom: 12px;
+  opacity: 0.75;
+}
+
+.img-inner-box {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  background-color: #0d0e0f;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
+}
+
+.heritage-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.1) brightness(0.9);
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.img-frame-wrapper:hover .heritage-img {
+  transform: scale(1.05);
+  filter: contrast(1.15) brightness(0.95);
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 1300px) {
+  .heritage-container {
+    gap: 40px;
+  }
+
+  .heritage-left {
+    max-width: 500px;
+  }
+
+  .tall-wrapper {
+    width: 260px;
+    height: 400px;
+    transform: translateY(70px);
+  }
+
+  .small-wrapper {
+    width: 220px;
+    height: 330px;
+    transform: translateY(-70px);
+  }
+}
+
+@media (max-width: 992px) {
+  .heritage-section {
+    padding: 100px 30px;
+    background: linear-gradient(180deg, #18191b 0%, #212326 100%);
+  }
+
+  .heritage-container {
+    flex-direction: column;
+    gap: 80px;
+  }
+
+  .heritage-left {
+    max-width: 100%;
+  }
+
+  .heritage-title {
+    font-size: 36px;
+    font-weight: 400;
+  }
+
+  .heritage-right {
+    width: 100%;
+    justify-content: center;
+    padding-right: 0;
+  }
+
+  .tall-wrapper {
+    transform: translateY(40px);
+  }
+
+  .small-wrapper {
+    transform: translateY(-40px);
+  }
+}
+
+@media (max-width: 600px) {
+  .heritage-section {
+    padding: 80px 20px;
+  }
+
+  .heritage-title {
+    font-size: 30px;
+    font-weight: 400;
+  }
+
+  .heritage-right {
+    flex-direction: column;
+    gap: 35px;
+  }
+
+  .tall-wrapper,
+  .small-wrapper {
+    transform: translateY(0);
+    width: 100%;
+    max-width: 320px;
+    height: 360px;
+  }
+}

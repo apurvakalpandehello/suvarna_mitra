@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+
+.contact-section {
+  width: 100%;
+  margin-top: -60px;
+  padding: 50px 70px 120px;
+  background-color: #faf7f2;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  position: relative;
+  z-index: 3;
+}
+
+.contact-container {
+  max-width: 1260px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 70px;
+}
+
+/* ================= Left Side ================= */
+.contact-info-col {
+  flex: 1;
+  max-width: 530px;
+  text-align: left;
+}
+
+.contact-tag-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.contact-badge {
+  font-size: 11px;
+  letter-spacing: 2.2px;
+  color: #b38048;
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.contact-tag-line {
+  display: inline-block;
+  width: 36px;
+  height: 1px;
+  background-color: #b38048;
+}
+
+/* Main Heading (Desktop: 46px, 400) */
+.contact-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 46px;
+  line-height: 1.15;
+  color: #1f2d3d;
+  font-weight: 400;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.3px;
+}
+
+/* "Touch" Word: Italic & #b38048 Color */
+.contact-highlight-word {
+  font-style: italic;
+  color: #b38048;
+}
+
+.contact-lead-text {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: #55504a;
+  margin: 0 0 36px 0;
+  font-weight: 400;
+}
+
+/* Details List with Dash */
+.contact-details-group {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.detail-header-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.detail-dash {
+  color: #b38048;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.detail-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #b38048;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.detail-value {
+  font-size: 13.5px;
+  color: #44403c;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.detail-value-indent {
+  padding-left: 20px;
+}
+
+/* ================= Right Side Form Card ================= */
+.contact-form-card {
+  flex: 1.1;
+  max-width: 560px;
+  background-color: #fcfbf9;
+  border: 1px solid rgba(179, 128, 72, 0.45);
+  padding: 42px 42px 46px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.form-card-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #1f2d3d;
+  margin: 0 0 26px 0;
+  letter-spacing: -0.2px;
+}
+
+.enquiry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group label {
+  font-size: 12.5px;
+  color: #2b2723;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #dcd3c7;
+  border-radius: 1px;
+  background-color: #ffffff;
+  font-size: 13px;
+  color: #222222;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #b38048;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-group textarea::placeholder {
+  color: #9c958c;
+  font-size: 12px;
+}
+
+/* Submit Button */
+.btn-submit-enquiry {
+  background-color: #21252d;
+  color: #ffffff;
+  border: none;
+  padding: 15px;
+  font-size: 11px;
+  letter-spacing: 2.2px;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-top: 6px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.btn-submit-enquiry:hover {
+  background-color: #b38048;
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 1024px) {
+  .contact-section {
+    margin-top: -30px;
+    padding: 40px 30px 80px;
+  }
+
+  .contact-container {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .contact-info-col,
+  .contact-form-card {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/* Tablet (Screen <= 992px): Font Size: 36px, Font Weight: 400 */
+@media (max-width: 992px) {
+  .contact-title {
+    font-size: 36px;
+    font-weight: 400;
+  }
+}
+
+/* Mobile (Screen <= 600px): Font Size: 30px, Font Weight: 400 */
+@media (max-width: 600px) {
+  .contact-section {
+    margin-top: 0;
+    padding: 40px 20px 70px;
+  }
+
+  .contact-form-card {
+    padding: 28px 20px 32px;
+  }
+
+  .contact-title {
+    font-size: 30px;
+    font-weight: 400;
+  }
+
+  .form-card-title {
+    font-size: 26px;
+  }
+}

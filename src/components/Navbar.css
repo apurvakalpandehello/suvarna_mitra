@@ -1,0 +1,71 @@
+.navbar-container {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* मध्यभागी आणण्यासाठी */
+  align-items: center;
+  gap: 50px; /* मेनू आणि बटणांमधील अंतर */
+  padding: 30px 20px;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 35px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-menu li a {
+  text-decoration: none;
+  color: #7d5939;
+  font-size: 17px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-menu li a:hover {
+  color: #b8860b;
+}
+
+/* Actions Wrapper */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Login आणि Register दोन्हीसाठी एकसारखी स्टाईल */
+.nav-btn {
+  font-size: 15px;
+  padding: 8px 22px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  background: transparent;
+  color: #7d5939;
+  border: 1.5px solid #7d5939;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #7d5939;
+  color: #ffffff;
+}
+
+/* मोबाईल व्ह्यूसाठी */
+@media (max-width: 850px) {
+  .navbar-container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 10px;
+  }
+
+  .nav-menu {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

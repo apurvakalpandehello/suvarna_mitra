@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+.hero-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Background Slide Elements */
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 1;
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+
+/* Overlay Layer */
+.hero-overlay-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-text-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding-bottom: 80px;
+  padding-left: 80px;
+  box-sizing: border-box;
+}
+
+.hero-quote-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 650px; /* फॉन्ट मोठा केल्यामुळे विड्थ थोडी वाढवली आहे */
+  animation: fadeInText 0.8s ease-in-out;
+}
+
+/* Category Tag */
+.hero-category-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #8D6B4F;
+  margin-bottom: 14px;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(4px);
+  padding: 5px 14px;
+  border-left: 3px solid #8D6B4F;
+  border-radius: 2px;
+}
+
+/* Main Title: Font size 65px */
+.hero-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 65px; 
+  line-height: 1.15;
+  color: #8D6B4F;
+  font-weight: 600;
+  text-align: left;
+  margin: 0;
+  letter-spacing: -0.3px;
+  text-shadow: none;
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Navigation Dots */
+.hero-dots {
+  position: absolute;
+  bottom: 30px;
+  left: 80px;
+  display: flex;
+  gap: 10px;
+  z-index: 3;
+}
+
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1.5px solid #8D6B4F;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.dot.active {
+  background: #8D6B4F;
+  width: 26px;
+  border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero-text-container {
+    padding-left: 30px;
+    padding-right: 20px;
+  }
+
+  .hero-title {
+    font-size: 38px;
+    line-height: 1.2;
+  }
+
+  .hero-dots {
+    left: 30px;
+    bottom: 25px;
+  }
+}

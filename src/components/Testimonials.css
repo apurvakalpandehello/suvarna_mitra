@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+
+.testimonials-section {
+  width: 100%;
+  /* Section la aanki jaast top kade scroll/shift karnyasathi */
+  margin-top: -95px; 
+  padding: 40px 50px 110px;
+  background-color: #faf7f2;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  position: relative;
+  z-index: 5;
+}
+
+.testimonials-container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* Header */
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 46px;
+}
+
+.tag-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.tag-line {
+  display: inline-block;
+  width: 50px;
+  height: 1px;
+  background-color: #bfa175;
+}
+
+.testimonials-tag {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #bfa175;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.testimonials-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 46px;
+  color: #1f2d3d;
+  font-weight: 400;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.2px;
+}
+
+.testimonials-subtitle {
+  font-size: 14.5px;
+  color: #857e76;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* 3 Cards Grid */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* Card Styling */
+.testimonial-card {
+  background: #fdfbf9;
+  border: 1px solid #ebdccb;
+  border-radius: 2px;
+  padding: 38px 34px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  box-sizing: border-box;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(40, 30, 20, 0.06);
+}
+
+/* Top Stars & Quote */
+.card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.star-rating {
+  color: #b89258;
+  font-size: 15px;
+  letter-spacing: 5px;
+}
+
+.quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  color: #b89258;
+  line-height: 0.8;
+  font-weight: 600;
+}
+
+/* Italic Quote Text */
+.review-quote {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #55504a;
+  margin: 0 0 30px 0;
+  min-height: 78px;
+}
+
+/* Divider Line */
+.author-divider {
+  width: 100%;
+  height: 1px;
+  background-color: #ebdccb;
+  margin-bottom: 24px;
+}
+
+/* Author Section */
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.author-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.author-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #2b2723;
+  margin: 0 0 3px 0;
+}
+
+.author-city {
+  font-size: 10.5px;
+  letter-spacing: 1.8px;
+  color: #948d84;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .testimonials-section {
+    margin-top: -50px;
+    padding: 40px 30px 90px;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .testimonials-section {
+    margin-top: 0;
+    padding: 50px 20px;
+  }
+
+  .testimonials-title {
+    font-size: 32px;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .review-quote {
+    min-height: auto;
+  }
+}

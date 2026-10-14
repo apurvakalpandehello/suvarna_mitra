@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --theme-accent-gold: #b38048;
+}
+
+.consultancy-section {
+  width: 100%;
+  padding: 80px 60px;
+  background-color: #faf7f2;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.consultancy-wrapper {
+  max-width: 1240px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+
+/* Left Image Container (Border Removed) */
+.consultancy-image-box {
+  flex: 1;
+  position: relative;
+  max-width: 530px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+.consultancy-image {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.consultancy-image-box:hover .consultancy-image {
+  transform: scale(1.02);
+}
+
+/* Right Content Container */
+.consultancy-content {
+  flex: 1.1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* CORE FINANCIAL SERVICE (#b38048) */
+.consultancy-tag {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #b38048;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: block;
+}
+
+/* Title Font */
+.consultancy-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 46px;
+  line-height: 1.15;
+  color: #201e1c;
+  font-weight: 400;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.3px;
+}
+
+/* Assistance highlight (#b38048 aani Italic) */
+.assistance-highlight {
+  color: #b38048;
+  font-style: italic;
+  font-weight: 400;
+  padding-right: 3px;
+}
+
+/* Paragraph styling */
+.consultancy-desc {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: #655e56;
+  margin: 0 0 28px 0;
+  max-width: 520px;
+  font-weight: 400;
+}
+
+/* Specifications / Details Table */
+.consultancy-specs {
+  width: 100%;
+  max-width: 520px;
+  border-top: 1px solid #e8dfd4;
+  border-bottom: 1px solid #e8dfd4;
+  padding: 16px 0;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.spec-label {
+  color: #a49787;
+  font-weight: 400;
+}
+
+.spec-value {
+  color: #2b2825;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* Flat Sharp CTA Button */
+.btn-enquire {
+  align-self: flex-start;
+  background-color: #1c1c1c;
+  color: #ffffff;
+  border: none;
+  border-radius: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  padding: 15px 32px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.btn-enquire:hover {
+  background-color: #b38048;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .consultancy-section {
+    padding: 60px 30px;
+  }
+
+  .consultancy-wrapper {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .consultancy-image-box {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .consultancy-image {
+    height: 380px;
+  }
+
+  .consultancy-title {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .consultancy-section {
+    padding: 40px 20px;
+  }
+
+  .consultancy-title {
+    font-size: 30px;
+  }
+
+  .spec-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .spec-value {
+    text-align: left;
+  }
+
+  .btn-enquire {
+    width: 100%;
+    text-align: center;
+  }
+}

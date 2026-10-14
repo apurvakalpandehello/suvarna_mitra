@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+.excellence-section {
+  width: 100%;
+  padding: 100px 80px 40px; /* बॉटम पॅडिंग 170px वरून 105px केली (फ्लोटिंग कार्ड नीट दिसण्यासाठी) */
+  background-color: #faf7f2;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow: visible;
+}
+
+.excellence-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 70px;
+}
+
+/* ================= Left Side ================= */
+.excellence-left {
+  flex: 1;
+  max-width: 530px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.excellence-tag-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.excellence-tag {
+  color: #b38048;
+  font-size: 11px;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.tag-line {
+  display: inline-block;
+  width: 34px;
+  height: 1.5px;
+  background-color: #b38048;
+}
+
+.excellence-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 45px;
+  line-height: 1.18;
+  color: #222222;
+  font-weight: 400;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.3px;
+  text-align: left;
+}
+
+/* Commitment: Italic आणि #b38048 रंग */
+.excellence-highlight-word {
+  font-style: italic;
+  color: #b38048;
+}
+
+.excellence-desc {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: #5e5a56;
+  margin: 0 0 32px 0;
+  text-align: left;
+  font-weight: 400;
+}
+
+.excellence-points {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 36px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.point-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 13.5px;
+  color: #4b4744;
+  text-align: left;
+}
+
+.point-dash {
+  color: #b38048;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.point-text {
+  font-weight: 400;
+}
+
+.btn-commission {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  padding: 16px 32px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  align-self: flex-start;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.btn-arrow {
+  color: #b38048;
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.btn-commission:hover {
+  background-color: #2a2a2a;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.btn-commission:hover .btn-arrow {
+  transform: translateX(5px);
+}
+
+/* ================= Right Side Visual ================= */
+.excellence-right {
+  flex: 1.15;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.excellence-image-wrap {
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.05);
+}
+
+.excellence-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ================= Balanced Floating Stats Box ================= */
+.stats-floating-card {
+  position: absolute;
+  bottom: -65px; /* कार्ड थोडे वर आणले */
+  left: 50%;
+  transform: translateX(-50%);
+  right: auto;
+  
+  width: 88%;
+  background: #ffffff;
+  padding: 24px 20px; /* पॅडिंग किंचित कॉम्पॅक्ट केले */
+  box-sizing: border-box;
+
+  border: 1px solid rgba(179, 128, 72, 0.25);
+  box-shadow: 
+    0 24px 50px -10px rgba(45, 35, 20, 0.12),
+    0 10px 20px -5px rgba(0, 0, 0, 0.04);
+  border-radius: 2px;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 5;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stats-floating-card:hover {
+  transform: translate(-50%, -4px);
+  box-shadow: 
+    0 28px 60px -10px rgba(45, 35, 20, 0.16),
+    0 12px 24px -5px rgba(0, 0, 0, 0.05);
+}
+
+.stat-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
+
+.stat-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 38px;
+  color: #b38048;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.stat-lbl {
+  font-size: 9.5px;
+  letter-spacing: 1.6px;
+  color: #7b7773;
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 1.45;
+  max-width: 120px;
+}
+
+/* Divider Line */
+.stat-divider {
+  width: 1px;
+  height: 44px;
+  background: linear-gradient(
+    to bottom,
+    rgba(232, 227, 220, 0.1),
+    rgba(179, 128, 72, 0.35),
+    rgba(232, 227, 220, 0.1)
+  );
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 1024px) {
+  .excellence-section {
+    padding: 70px 30px 60px; /* टॅबलेटवर बॉटम पॅडिंग 100px वरून 60px केले */
+  }
+
+  .excellence-container {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .excellence-left,
+  .excellence-right {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .excellence-title {
+    font-size: 36px;
+  }
+
+  .excellence-image-wrap {
+    height: 350px;
+  }
+
+  .stats-floating-card {
+    position: static;
+    margin-top: 30px;
+    width: 100%;
+    transform: none;
+    left: auto;
+  }
+
+  .stats-floating-card:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .excellence-section {
+    padding: 50px 20px 45px; /* मोबाईलवर बॉटम स्पेस कॉम्पॅक्ट केली */
+  }
+
+  .stats-floating-card {
+    flex-direction: column;
+    gap: 22px;
+    padding: 24px;
+  }
+
+  .stat-divider {
+    width: 60px;
+    height: 1px;
+    background: #e8e3dc;
+  }
+
+  .excellence-title {
+    font-size: 28px;
+  }
+}

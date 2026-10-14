@@ -1,0 +1,90 @@
+/* ================= Floating WhatsApp Button ================= */
+.whatsapp-float-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+  z-index: 99999;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* WhatsApp Vector Icon */
+.whatsapp-svg-icon {
+  width: 34px;
+  height: 34px;
+  fill: #ffffff;
+  display: block;
+  position: relative;
+  z-index: 3;
+}
+
+/* ================= सतत फ्लॅश होणाऱ्या बॅकग्राउंड रिंग्स ================= */
+.wa-pulse-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #25d366;
+  opacity: 0.8;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* रिंग १ चा वेव्ह फ्लॅश */
+.ring-1 {
+  animation: wa-flash-wave 2s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* रिंग २ चा वेव्ह फ्लॅश (थोड्या अंतराने) */
+.ring-2 {
+  animation: wa-flash-wave 2s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation-delay: 0.75s;
+}
+
+/* Flash Wave Keyframes */
+@keyframes wa-flash-wave {
+  0% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(1.85);
+    opacity: 0;
+  }
+}
+
+/* ================= Hover Effect ================= */
+.whatsapp-float-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.65);
+}
+
+/* ================= Mobile Screen Responsive ================= */
+@media (max-width: 600px) {
+  .whatsapp-float-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .whatsapp-svg-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
