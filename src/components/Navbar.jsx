@@ -13,7 +13,8 @@ function Navbar() {
           <Link to="/about-us">About Us</Link>
         </li>
         <li>
-          <a href="/#services">Services</a>
+          {/* Link to use kela Services sathi */}
+          <Link to="/services">Services</Link>
         </li>
         <li>
           <a href="/#contact">Contact</a>

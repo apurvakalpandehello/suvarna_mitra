@@ -10,7 +10,7 @@ import ServicesTimeline from "./components/ServicesTimeline.jsx";
 import ConsultancyService from "./components/ConsultancyService.jsx";
 import OurHeritage from "./components/OurHeritage.jsx";
 import CustomerExcellence from "./components/CustomerExcellence.jsx";
-import FAQ from "./components/FAQ.jsx"; // <-- 1. FAQ Component Import Kela
+import FAQ from "./components/FAQ.jsx";
 import ContactUs from "./components/ContactUs.jsx";
 import Footer from "./components/Footer.jsx";
 
@@ -19,6 +19,7 @@ import WhatsAppButton from "./components/WhatsAppButton.jsx";
 
 // Pages Imports
 import AboutUs from "./pages/AboutUs.jsx";
+import Services from "./pages/services.jsx"; // <-- 1. Services page import kela
 import PrivacyPolicy from "./pages/policies/privacyPolicy.jsx";
 import TermsConditions from "./pages/policies/termsConditions.jsx";
 import Disclaimer from "./pages/policies/disclaimer.jsx";
@@ -34,10 +35,7 @@ function HomePage() {
       <ConsultancyService />
       <OurHeritage />
       <CustomerExcellence />
-      
-      {/* 2. FAQ Section ithe Home Page var add kela */}
       <FAQ />
-
       <ContactUs />
     </>
   );
@@ -48,22 +46,25 @@ function App() {
     <Router>
       <div className="app-container">
         <Routes>
-          {/* 1. Main Home Route */}
+          {/* Main Home Route */}
           <Route path="/" element={<HomePage />} />
 
-          {/* 2. Navin About Us Route */}
+          {/* About Us Route */}
           <Route path="/about-us" element={<AboutUs />} />
 
-          {/* 3. Policy Routes */}
+          {/* Services Route (Navin route add kela) */}
+          <Route path="/services" element={<Services />} />
+
+          {/* Policy Routes */}
           <Route path="/pages/policies/privacyPolicy" element={<PrivacyPolicy />} />
           <Route path="/pages/policies/termsConditions" element={<TermsConditions />} />
           <Route path="/pages/policies/disclaimer" element={<Disclaimer />} />
         </Routes>
 
-        {/* Footer Saglikade Disel */}
+        {/* Footer */}
         <Footer />
 
-        {/* Floating WhatsApp Button (Home aani About Us donhivarti fixed rahil) */}
+        {/* Floating WhatsApp Button */}
         <WhatsAppButton />
       </div>
     </Router>
