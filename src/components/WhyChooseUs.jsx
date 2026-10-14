@@ -7,10 +7,6 @@ import goldJewelleryImg from '../assets/images/gold-loan.png';
 function WhyChooseUs() {
   return (
     <section className="wcu-section">
-      {/* Decorative Star Accents */}
-      <div className="wcu-star top-right">&#10022;</div>
-      <div className="wcu-star bottom-left">&#10022;</div>
-
       <div className="wcu-container">
         {/* Header */}
         <div className="wcu-header">

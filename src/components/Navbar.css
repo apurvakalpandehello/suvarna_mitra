@@ -1,12 +1,42 @@
 .navbar-container {
   width: 100%;
   display: flex;
-  justify-content: center; /* मध्यभागी आणण्यासाठी */
   align-items: center;
-  gap: 50px; /* मेनू आणि बटणांमधील अंतर */
-  padding: 30px 20px;
+  justify-content: space-between;
+  padding: 16px 50px;
   box-sizing: border-box;
   background: transparent;
+  position: relative;
+  z-index: 100;
+}
+
+/* Logo Styling */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  padding-left: 28px;
+}
+
+.logo-img {
+  height: 82px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Desktop var mobile logo hide thevla ahe */
+.nav-mobile-logo {
+  display: none;
+}
+
+/* Nav Menu & Actions Wrapper - Desktop var barobar center madhe */
+.nav-collapse {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
 
 .nav-menu {
@@ -24,6 +54,7 @@
   font-size: 17px;
   font-weight: 500;
   transition: color 0.3s ease;
+  white-space: nowrap;
 }
 
 .nav-menu li a:hover {
@@ -37,7 +68,7 @@
   gap: 15px;
 }
 
-/* Login आणि Register दोन्हीसाठी एकसारखी स्टाईल */
+/* Login aani Register buttons */
 .nav-btn {
   font-size: 15px;
   padding: 8px 22px;
@@ -48,6 +79,7 @@
   color: #7d5939;
   border: 1.5px solid #7d5939;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .nav-btn:hover {
@@ -55,17 +87,140 @@
   color: #ffffff;
 }
 
-/* मोबाईल व्ह्यूसाठी */
-@media (max-width: 850px) {
-  .navbar-container {
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px 10px;
+/* Mobile Hamburger Menu Icon */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  z-index: 1001;
+}
+
+.nav-toggle span {
+  width: 25px;
+  height: 2.5px;
+  background-color: #7d5939;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Hamburger Animation */
+.nav-toggle.active span:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* ================= Tablet / Small Desktop Responsive ================= */
+@media (max-width: 1150px) {
+  .nav-collapse {
+    position: static;
+    transform: none;
+    gap: 25px;
   }
 
   .nav-menu {
     gap: 20px;
-    flex-wrap: wrap;
+  }
+
+  .logo-img {
+    height: 70px;
+  }
+}
+
+/* ================= Mobile Responsive ================= */
+@media (max-width: 900px) {
+  .navbar-container {
+    padding: 14px 20px;
+  }
+
+  .nav-logo {
+    padding-left: 0;
+  }
+
+  .logo-img {
+    height: 58px;
+  }
+
+  .nav-toggle {
+    display: flex;
+    position: relative;
+  }
+
+  /* Mobile menu - top pasun open hoil ani height fakt content + 8px padding evdhich rahil */
+  .nav-collapse {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    min-height: unset;
+    background-color: #ffffff;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 20px 8px 20px; /* Khali barobar 8px padding dili ahe */
+    gap: 20px;
+    box-sizing: border-box;
+    z-index: 1000;
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .nav-collapse.show {
+    display: flex;
+  }
+
+  /* Mobile menu chya aat aadhi logo */
+  .nav-mobile-logo {
+    display: flex;
     justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .mobile-logo-img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Tyakhali links ek-ek */
+  .nav-menu {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-menu li a {
+    font-size: 17px;
+    display: inline-block;
+  }
+
+  /* Tyakhali buttons ek-ek */
+  .nav-actions {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+    margin-top: 5px;
+    padding-bottom: 0;
+  }
+
+  .nav-actions .nav-btn {
+    width: 80%;
+    max-width: 240px;
+    padding: 10px 0;
+    text-align: center;
   }
 }

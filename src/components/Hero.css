@@ -4,11 +4,12 @@
   position: relative;
   width: 100%;
   height: 100vh;
+  height: 100dvh; /* Mobile browser toolbar handle karnyasaathi fit to screen */
   overflow: hidden;
   box-sizing: border-box;
 }
 
-/* Background Slide Elements */
+/* Background Slide Elements - Fit to Screen */
 .hero-slide {
   position: absolute;
   top: 0;
@@ -16,7 +17,7 @@
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 1s ease-in-out;
@@ -43,6 +44,7 @@
   align-items: center;
   padding-bottom: 80px;
   padding-left: 80px;
+  padding-right: 40px;
   box-sizing: border-box;
 }
 
@@ -50,7 +52,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 650px; /* फॉन्ट मोठा केल्यामुळे विड्थ थोडी वाढवली आहे */
+  max-width: 650px;
   animation: fadeInText 0.8s ease-in-out;
 }
 
@@ -81,6 +83,7 @@
   margin: 0;
   letter-spacing: -0.3px;
   text-shadow: none;
+  word-break: break-word;
 }
 
 @keyframes fadeInText {
@@ -121,11 +124,16 @@
   border-radius: 10px;
 }
 
-/* Responsive */
+/* Tablet Responsive */
 @media (max-width: 900px) {
   .hero-text-container {
     padding-left: 30px;
-    padding-right: 20px;
+    padding-right: 30px;
+    padding-bottom: 70px;
+  }
+
+  .hero-quote-block {
+    max-width: 100%;
   }
 
   .hero-title {
@@ -136,5 +144,41 @@
   .hero-dots {
     left: 30px;
     bottom: 25px;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .hero-text-container {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 60px;
+  }
+
+  .hero-category-label {
+    font-size: 9.5px;
+    letter-spacing: 1.8px;
+    margin-bottom: 10px;
+    padding: 4px 10px;
+  }
+
+  .hero-title {
+    font-size: 28px;
+    line-height: 1.25;
+  }
+
+  .hero-dots {
+    left: 20px;
+    bottom: 20px;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 9px;
+    height: 9px;
+  }
+
+  .dot.active {
+    width: 20px;
   }
 }
