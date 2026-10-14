@@ -8,7 +8,7 @@ function AboutCTA() {
         
         {/* Main Heading */}
         <h2 className="about-cta-title">
-          Let’s Explore Your Options.
+          Let’s Explore <span className="cta-highlight">Your Options.</span>
         </h2>
 
         {/* Subtitle */}

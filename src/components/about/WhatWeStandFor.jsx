@@ -44,7 +44,9 @@ function WhatWeStandFor() {
         {/* Top Header */}
         <div className="stand-for-header">
           <span className="stand-gold-line"></span>
-          <h2 className="stand-for-title">What We Stand For</h2>
+          <h2 className="stand-for-title">
+            What We <span className="stand-for-highlight">Stand For</span>
+          </h2>
         </div>
 
         {/* 3 Columns Grid with Dividers */}

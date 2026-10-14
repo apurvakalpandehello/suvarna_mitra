@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 /* ================= Main Section ================= */
 .clearer-path-section {
@@ -19,7 +19,7 @@
   gap: 70px;
 }
 
-/* ================= Left Side Typography ================= */
+/* ================= Left Side Content ================= */
 .clearer-path-content {
   flex: 1.05;
   display: flex;
@@ -28,7 +28,7 @@
   text-align: left;
 }
 
-/* Top Ochre/Gold Accent Line */
+/* वरची Gold Accent Line */
 .path-top-line {
   width: 44px;
   height: 1.5px;
@@ -36,7 +36,7 @@
   margin-bottom: 24px;
 }
 
-/* Heading: Cormorant Garamond (Desktop 46px, Weight 400) */
+/* Main Heading: Desktop (46px, Weight 400, Cormorant Garamond) */
 .path-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 46px;
@@ -47,7 +47,14 @@
   letter-spacing: -0.3px;
 }
 
-/* Description Text */
+/* Clearer Path: Italic आणि #b38048 */
+.path-highlight {
+  font-style: italic;
+  color: #b38048;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* वर्णनाचा मजकूर */
 .path-desc {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 15px;
@@ -58,16 +65,16 @@
   max-width: 500px;
 }
 
-/* Outlined Button: Talk to Us */
+/* ================= Talk to Us Button (#b38048) ================= */
 .path-talk-btn {
   display: inline-block;
   padding: 13px 36px;
   border: 1px solid #b38048;
   background-color: transparent;
-  color: #8f6233;
+  color: #b38048; /* Exact #b38048 कलर */
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   border-radius: 2px;
   transition: all 0.3s ease;
@@ -75,10 +82,11 @@
 }
 
 .path-talk-btn:hover {
-  background-color: #b38048;
+  background-color: #b38048; /* Hover झाल्यावर #b38048 बॅकग्राउंड */
+  border-color: #b38048;
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(179, 128, 72, 0.2);
+  box-shadow: 0 6px 16px rgba(179, 128, 72, 0.25);
 }
 
 /* ================= Right Side Visual ================= */
@@ -100,7 +108,7 @@
 }
 
 /* ================= Responsive Layout ================= */
-/* Tablet Screen (<= 992px) */
+/* Tablet Screen (<= 992px): Font Size 36px, Weight 400 */
 @media (max-width: 992px) {
   .clearer-path-section {
     padding: 70px 30px;
@@ -126,7 +134,7 @@
   }
 }
 
-/* Mobile Screen (<= 600px) */
+/* Mobile Screen (<= 600px): Font Size 30px, Weight 400 */
 @media (max-width: 600px) {
   .clearer-path-section {
     padding: 50px 20px;

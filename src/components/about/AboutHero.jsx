@@ -15,13 +15,15 @@ function AboutHero() {
 
           <h1 className="about-hero-title">
             A Trusted Partner for<br />
-            Your Financial Journey.
+            <span className="hero-highlight-journey">Your Financial Journey.</span>
           </h1>
 
           <p className="about-hero-description">
             Helping you unlock the true value of your gold and make informed financial decisions with confidence. 
             We provide transparent guidance, fast loan processing, and flexible solutions designed to support your 
-            aspirations every step of the way with complete trust and security.
+            personal and business aspirations every step of the way. Built on the cornerstone of absolute security, 
+            fair evaluations, and customer-first advisory, we stand beside you as a reliable companion dedicated 
+            to turning your gold assets into opportunities for a more prosperous tomorrow.
           </p>
 
           <div className="about-hero-buttons">

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 /* ================= Main Hero Section ================= */
 .about-hero-section {
@@ -19,7 +19,7 @@
   gap: 50px;
 }
 
-/* ================= Left Side Typography (Top Scrolled) ================= */
+/* ================= Left Side Typography ================= */
 .about-hero-left {
   flex: 1.05;
   text-align: left;
@@ -33,9 +33,9 @@
 .about-hero-badge {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 2.2px;
-  color: #b38048; /* #b38048 कलर सेट केला */
+  color: #b38048;
   margin-bottom: 16px;
   display: inline-block;
   text-transform: uppercase;
@@ -50,6 +50,13 @@
   color: #141414;
   margin: 0 0 20px 0;
   letter-spacing: -0.3px;
+}
+
+/* Highlighted "Your Financial Journey." Text */
+.hero-highlight-journey {
+  font-style: italic;
+  color: #b38048;
+  font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
 /* Sub-text paragraph */
@@ -71,11 +78,11 @@
 
 /* Solid Ochre / Gold Button (#b38048) */
 .btn-about-primary {
-  background-color: #b38048; /* #b38048 कलर सेट केला */
+  background-color: #b38048;
   color: #ffffff;
   padding: 14px 28px;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   border-radius: 2px;
   display: inline-block;
@@ -84,18 +91,19 @@
 }
 
 .btn-about-primary:hover {
-  background-color: #9c6e3d; /* Hover साठी थोडी गडद शेड */
+  background-color: #9c6e3d;
   transform: translateY(-2px);
+  color: #ffffff;
 }
 
 /* Outlined Cream / Gold Button */
 .btn-about-secondary {
   background-color: #fbf9f5;
-  color: #55504a;
-  border: 1px solid #b38048; /* #b38048 बॉर्डर */
+  color: #b38048;
+  border: 1px solid #b38048;
   padding: 13px 26px;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   border-radius: 2px;
   display: inline-block;
@@ -106,7 +114,7 @@
 .btn-about-secondary:hover {
   border-color: #b38048;
   background-color: rgba(179, 128, 72, 0.08);
-  color: #1a1a1a;
+  color: #b38048;
   transform: translateY(-2px);
 }
 
@@ -148,9 +156,9 @@
 .trust-divider-line {
   flex: 1;
   height: 1px;
-  background-color: #b38048; /* #b38048 कलर सेट केला */
+  background-color: #b38048;
   max-width: 130px;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .trust-label-text {

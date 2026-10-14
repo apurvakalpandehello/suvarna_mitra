@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 /* ================= CTA Banner Section ================= */
 .about-cta-section {
   width: 100%;
-  /* Image sarkha dark olive-moss texture background */
   background: 
     radial-gradient(ellipse at top left, rgba(68, 76, 56, 0.4), transparent 60%),
     linear-gradient(180deg, #373d2d 0%, #2f3426 100%);
@@ -26,7 +25,7 @@
   z-index: 2;
 }
 
-/* Heading: 'Cormorant Garamond', Georgia, serif */
+/* Heading: Cormorant Garamond, 46px, Weight 400 */
 .about-cta-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 46px;
@@ -35,6 +34,13 @@
   color: #f7f4ee;
   margin: 0 0 16px 0;
   letter-spacing: -0.2px;
+}
+
+/* Your Options.: Italic & #b38048 */
+.cta-highlight {
+  font-style: italic;
+  color: #b38048;
+  font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
 /* Description text */
@@ -50,7 +56,7 @@
 
 /* Button: GET IN TOUCH */
 .about-cta-btn {
-  background-color: #b38048; /* Exact brand gold-ochre tone */
+  background-color: #b38048;
   color: #ffffff;
   padding: 14px 34px;
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -73,16 +79,19 @@
 }
 
 /* ================= Responsive Layout ================= */
+/* Tablet Screen (<= 992px): Font Size 36px, Weight 400 */
 @media (max-width: 992px) {
   .about-cta-section {
     padding: 70px 25px;
   }
 
   .about-cta-title {
-    font-size: 38px;
+    font-size: 36px;
+    font-weight: 400;
   }
 }
 
+/* Mobile Screen (<= 600px): Font Size 30px, Weight 400 */
 @media (max-width: 600px) {
   .about-cta-section {
     padding: 55px 20px;
@@ -90,6 +99,7 @@
 
   .about-cta-title {
     font-size: 30px;
+    font-weight: 400;
   }
 
   .about-cta-desc {

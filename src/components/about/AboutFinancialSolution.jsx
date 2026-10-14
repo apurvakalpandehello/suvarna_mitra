@@ -84,7 +84,7 @@ function AboutFinancialSolution() {
         <div className="about-solutions-header">
           <span className="solutions-accent-line"></span>
           <h2 className="about-solutions-title">
-            Financial Solutions, Thoughtfully Delivered
+            Financial Solutions, <span className="solutions-highlight">Thoughtfully Delivered</span>
           </h2>
         </div>
 
