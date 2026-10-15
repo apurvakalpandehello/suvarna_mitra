@@ -1,13 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
+/* ================= ॲनिमेशन्स (Keyframes) ================= */
+@keyframes pathFadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-35px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pathFadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(35px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pathLineGrow {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 44px;
+    opacity: 1;
+  }
+}
+
+@keyframes pathShimmer {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
 /* ================= Main Section ================= */
 .clearer-path-section {
   width: 100%;
   background-color: #faf7f2;
-  padding: 90px 60px;
+  padding: 95px 60px;
   box-sizing: border-box;
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow: hidden;
+  position: relative;
 }
 
 .clearer-path-container {
@@ -26,14 +70,21 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
+  animation: pathFadeInLeft 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* वरची Gold Accent Line */
 .path-top-line {
-  width: 44px;
-  height: 1.5px;
+  height: 2px;
   background-color: #b38048;
   margin-bottom: 24px;
+  border-radius: 2px;
+  animation: pathLineGrow 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: width 0.35s ease;
+}
+
+.clearer-path-content:hover .path-top-line {
+  width: 60px;
 }
 
 /* Main Heading: Desktop (46px, Weight 400, Cormorant Garamond) */
@@ -45,6 +96,7 @@
   color: #141414;
   margin: 0 0 24px 0;
   letter-spacing: -0.3px;
+  transition: color 0.3s ease;
 }
 
 /* Clearer Path: Italic आणि #b38048 */
@@ -52,6 +104,12 @@
   font-style: italic;
   color: #b38048;
   font-family: 'Cormorant Garamond', Georgia, serif;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.clearer-path-content:hover .path-highlight {
+  transform: translateX(4px);
 }
 
 /* वर्णनाचा मजकूर */
@@ -67,37 +125,76 @@
 
 /* ================= Talk to Us Button (#b38048) ================= */
 .path-talk-btn {
-  display: inline-block;
-  padding: 13px 36px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 34px;
   border: 1px solid #b38048;
   background-color: transparent;
-  color: #b38048; /* Exact #b38048 कलर */
+  color: #b38048;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
-  border-radius: 2px;
-  transition: all 0.3s ease;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
   letter-spacing: 0.2px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-arrow-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
 }
 
 .path-talk-btn:hover {
-  background-color: #b38048; /* Hover झाल्यावर #b38048 बॅकग्राउंड */
+  background-color: #b38048;
   border-color: #b38048;
   color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(179, 128, 72, 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(179, 128, 72, 0.3);
+}
+
+.path-talk-btn:hover .btn-arrow-icon {
+  transform: translateX(4px);
 }
 
 /* ================= Right Side Visual ================= */
 .clearer-path-image-box {
   flex: 1.15;
   width: 100%;
-  height: 420px;
+  height: 400px;
   overflow: hidden;
-  border-radius: 2px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  border-radius: 12px; /* Smooth मॉडर्न कॉर्नर्स */
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
   background-color: #ede7de;
+  position: relative;
+  animation: pathFadeInRight 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.clearer-path-image-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.12);
+}
+
+/* Shimmer Light Reflection */
+.clearer-path-image-box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transform: translateX(-150%) skewX(-20deg);
+  pointer-events: none;
+}
+
+.clearer-path-image-box:hover::after {
+  animation: pathShimmer 0.9s ease;
 }
 
 .clearer-path-img {
@@ -105,18 +202,26 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 12px;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ================= Responsive Layout ================= */
-/* Tablet Screen (<= 992px): Font Size 36px, Weight 400 */
+.clearer-path-image-box:hover .clearer-path-img {
+  transform: scale(1.05);
+}
+
+/* ================= Fully Responsive Layout ================= */
+
+/* Tablet Screen (<= 992px): Title 36px, Weight 400 */
 @media (max-width: 992px) {
   .clearer-path-section {
-    padding: 70px 30px;
+    padding: 70px 35px;
   }
 
   .clearer-path-container {
     flex-direction: column;
     gap: 40px;
+    align-items: stretch;
   }
 
   .clearer-path-content,
@@ -130,11 +235,16 @@
   }
 
   .clearer-path-image-box {
-    height: 340px;
+    height: 330px;
+    border-radius: 10px;
+  }
+
+  .clearer-path-img {
+    border-radius: 10px;
   }
 }
 
-/* Mobile Screen (<= 600px): Font Size 30px, Weight 400 */
+/* Mobile Screen (<= 600px): Title 30px, Weight 400 */
 @media (max-width: 600px) {
   .clearer-path-section {
     padding: 50px 20px;
@@ -143,20 +253,28 @@
   .path-title {
     font-size: 30px;
     font-weight: 400;
+    line-height: 1.22;
   }
 
   .path-desc {
     font-size: 14px;
     line-height: 1.65;
+    margin-bottom: 28px;
   }
 
   .path-talk-btn {
     width: 100%;
-    text-align: center;
+    justify-content: center;
     box-sizing: border-box;
+    padding: 13px 20px;
   }
 
   .clearer-path-image-box {
-    height: 260px;
+    height: 240px;
+    border-radius: 8px;
+  }
+
+  .clearer-path-img {
+    border-radius: 8px;
   }
 }

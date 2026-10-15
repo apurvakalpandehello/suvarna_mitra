@@ -1,22 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
+/* ================= ॲनिमेशन्स (Keyframes) ================= */
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes goldShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
 /* ================= Main Hero Section ================= */
 .about-hero-section {
   width: 100%;
   background-color: #faf7f2;
-  padding: 80px 50px 70px;
+  padding: 85px 50px 75px;
   box-sizing: border-box;
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow: hidden;
+  position: relative;
 }
 
 .about-hero-container {
   max-width: 1320px;
   margin: 0 auto;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: 50px;
+  gap: 60px;
 }
 
 /* ================= Left Side Typography ================= */
@@ -26,7 +57,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: -15px;
+  animation: heroFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Badge: -ABOUT US (#b38048) */
@@ -34,11 +65,16 @@
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 2.2px;
+  letter-spacing: 2.4px;
   color: #b38048;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   display: inline-block;
   text-transform: uppercase;
+  transition: letter-spacing 0.3s ease;
+}
+
+.about-hero-badge:hover {
+  letter-spacing: 3px;
 }
 
 /* Main Heading: Desktop (46px, Weight: 400, Cormorant Garamond) */
@@ -50,6 +86,7 @@
   color: #141414;
   margin: 0 0 20px 0;
   letter-spacing: -0.3px;
+  animation: heroFadeUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Highlighted "Your Financial Journey." Text */
@@ -57,16 +94,23 @@
   font-style: italic;
   color: #b38048;
   font-family: 'Cormorant Garamond', Georgia, serif;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.hero-highlight-journey:hover {
+  transform: translateX(4px);
 }
 
 /* Sub-text paragraph */
 .about-hero-description {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 15px;
-  line-height: 1.65;
+  line-height: 1.7;
   color: #797672;
   font-weight: 400;
-  margin: 0 0 32px 0;
+  margin: 0 0 34px 0;
+  animation: heroFadeUp 1.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Buttons Group */
@@ -74,25 +118,45 @@
   display: flex;
   align-items: center;
   gap: 18px;
+  animation: heroFadeUp 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Solid Ochre / Gold Button (#b38048) */
+/* Solid Gold Button (#b38048) */
 .btn-about-primary {
   background-color: #b38048;
   color: #ffffff;
-  padding: 14px 28px;
+  padding: 14px 30px;
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
-  border-radius: 2px;
+  border-radius: 4px;
   display: inline-block;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  letter-spacing: 0.1px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: 0.2px;
+  box-shadow: 0 4px 14px rgba(179, 128, 72, 0.25);
+}
+
+.btn-about-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: translateX(-150%);
+}
+
+.btn-about-primary:hover::after {
+  animation: goldShimmer 0.75s ease;
 }
 
 .btn-about-primary:hover {
   background-color: #9c6e3d;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(179, 128, 72, 0.35);
   color: #ffffff;
 }
 
@@ -101,45 +165,62 @@
   background-color: #fbf9f5;
   color: #b38048;
   border: 1px solid #b38048;
-  padding: 13px 26px;
+  padding: 13px 28px;
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
-  border-radius: 2px;
+  border-radius: 4px;
   display: inline-block;
-  transition: all 0.3s ease;
-  letter-spacing: 0.1px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: 0.2px;
 }
 
 .btn-about-secondary:hover {
   border-color: #b38048;
   background-color: rgba(179, 128, 72, 0.08);
-  color: #b38048;
-  transform: translateY(-2px);
+  color: #9c6e3d;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(179, 128, 72, 0.15);
 }
 
-/* ================= Right Side Image & Footer Note ================= */
+/* ================= Right Side Image & Trust Bar ================= */
 .about-hero-right {
   flex: 1.15;
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: heroFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* Image Container with Border Radius & Premium Shadow */
 .about-hero-img-box {
   width: 100%;
-  height: 420px;
+  height: 430px;
   overflow: hidden;
   background-color: #ede7de;
-  border-radius: 1px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 12px; /* Smooth मॉडर्न कॉर्नर्स */
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  position: relative;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
+.about-hero-img-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.12);
+}
+
+/* Image with Smooth Zoom on Hover */
 .about-hero-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 12px;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-hero-img-box:hover .about-hero-img {
+  transform: scale(1.04);
 }
 
 /* TRUST TRANSPARENCY GUIDANCE Bar */
@@ -150,6 +231,7 @@
   align-items: center;
   justify-content: center;
   gap: 16px;
+  animation: heroFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Divider Line (#b38048) */
@@ -158,25 +240,40 @@
   height: 1px;
   background-color: #b38048;
   max-width: 130px;
-  opacity: 0.8;
+  opacity: 0.6;
+  transition: max-width 0.3s ease, opacity 0.3s ease;
+}
+
+.about-hero-trust-bar:hover .trust-divider-line {
+  opacity: 1;
+  max-width: 145px;
 }
 
 .trust-label-text {
   font-size: 10.5px;
   font-weight: 600;
-  letter-spacing: 2px;
+  letter-spacing: 2.2px;
   color: #635f5a;
   text-transform: uppercase;
   white-space: nowrap;
+  transition: color 0.3s ease;
 }
 
-/* ================= Responsive Layout ================= */
+.about-hero-trust-bar:hover .trust-label-text {
+  color: #b38048;
+}
 
-/* Tablet Screen (<= 992px): Font Size 36px, Weight 400 */
+/* ================= Fully Responsive Layout ================= */
+
+/* Tablet Screen (<= 992px): Title 36px, Weight 400 */
 @media (max-width: 992px) {
+  .about-hero-section {
+    padding: 70px 35px 55px;
+  }
+
   .about-hero-container {
     flex-direction: column;
-    gap: 40px;
+    gap: 45px;
     align-items: stretch;
   }
 
@@ -195,27 +292,31 @@
   }
 
   .about-hero-img-box {
-    height: 360px;
+    height: 380px;
+    border-radius: 10px;
+  }
+
+  .about-hero-img {
+    border-radius: 10px;
   }
 }
 
-/* Mobile Screen (<= 600px): Font Size 30px, Weight 400 */
+/* Mobile Screen (<= 600px): Title 30px, Weight 400 */
 @media (max-width: 600px) {
   .about-hero-section {
-    padding: 60px 20px 40px;
-  }
-
-  .about-hero-left {
-    margin-top: 0;
+    padding: 50px 20px 40px;
   }
 
   .about-hero-title {
     font-size: 30px;
     font-weight: 400;
+    line-height: 1.22;
   }
 
-  .about-hero-description br {
-    display: none;
+  .about-hero-description {
+    font-size: 14px;
+    line-height: 1.65;
+    margin-bottom: 26px;
   }
 
   .about-hero-buttons {
@@ -229,14 +330,24 @@
     width: 100%;
     text-align: center;
     box-sizing: border-box;
+    padding: 13px 20px;
   }
 
   .about-hero-img-box {
-    height: 270px;
+    height: 280px;
+    border-radius: 8px;
+  }
+
+  .about-hero-img {
+    border-radius: 8px;
   }
 
   .trust-label-text {
     font-size: 9px;
     letter-spacing: 1.2px;
+  }
+
+  .trust-divider-line {
+    max-width: 50px;
   }
 }

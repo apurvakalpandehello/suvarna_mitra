@@ -1,18 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
+/* ================= ॲनिमेशन्स (Keyframes) ================= */
+@keyframes solFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes solLineWidth {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 44px;
+    opacity: 1;
+  }
+}
+
+@keyframes iconPulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.65;
+  }
+}
+
 /* ================= Financial Solutions Section ================= */
 .about-solutions-section {
   width: 100%;
   background-color: #faf7f2;
-  padding: 85px 50px 95px;
+  padding: 95px 50px 105px;
   box-sizing: border-box;
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow: hidden;
+  position: relative;
 }
 
 .about-solutions-container {
   max-width: 1320px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 /* ================= Header ================= */
@@ -21,15 +58,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 60px;
+  margin-bottom: 65px;
+  animation: solFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .solutions-accent-line {
   display: inline-block;
-  width: 38px;
-  height: 1.5px;
+  height: 2px;
   background-color: #b38048;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  animation: solLineWidth 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: width 0.3s ease;
+}
+
+.about-solutions-header:hover .solutions-accent-line {
+  width: 60px;
 }
 
 /* Heading: Cormorant Garamond, 46px, Weight 400 */
@@ -42,6 +86,7 @@
   letter-spacing: -0.3px;
   margin: 0;
   text-align: center;
+  transition: color 0.3s ease;
 }
 
 /* Thoughtfully Delivered: Italic & #b38048 */
@@ -49,6 +94,12 @@
   font-style: italic;
   color: #b38048;
   font-family: 'Cormorant Garamond', Georgia, serif;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.about-solutions-header:hover .solutions-highlight {
+  transform: translateX(3px);
 }
 
 /* ================= 4 Columns Grid ================= */
@@ -65,34 +116,64 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 10px 25px;
+  padding: 30px 24px;
   box-sizing: border-box;
-  transition: transform 0.3s ease;
+  border-radius: 8px;
+  position: relative;
+  background: transparent;
+  opacity: 0;
+  animation: solFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--card-index, 0) * 0.15s + 0.2s);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              background-color 0.4s ease, 
+              box-shadow 0.4s ease;
 }
 
 .solution-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-8px);
+  background-color: #ffffff;
+  box-shadow: 0 16px 36px rgba(179, 128, 72, 0.08), 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
-/* Professional Icon Container */
+/* Icon Box & Glow */
 .solution-icon-box {
-  width: 64px;
-  height: 64px;
+  width: 72px;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 22px;
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.solution-icon-glow {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(179, 128, 72, 0.25) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.solution-card:hover .solution-icon-glow {
+  opacity: 1;
+  animation: iconPulseGlow 2s infinite ease-in-out;
 }
 
 .solution-svg-icon {
   width: 50px;
   height: 50px;
   color: #b38048;
-  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
 }
 
 .solution-card:hover .solution-svg-icon {
-  transform: scale(1.08);
+  transform: scale(1.12);
+  color: #9c6e3d;
 }
 
 /* Card Heading */
@@ -103,17 +184,44 @@
   color: #1a1a1a;
   margin: 0 0 14px 0;
   line-height: 1.25;
+  transition: color 0.3s ease;
+}
+
+.solution-card:hover .solution-card-title {
+  color: #b38048;
 }
 
 /* Card Description */
 .solution-card-desc {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 13.5px;
-  line-height: 1.65;
+  line-height: 1.7;
   color: #6a6661;
   font-weight: 400;
   margin: 0;
   max-width: 230px;
+  transition: color 0.3s ease;
+}
+
+.solution-card:hover .solution-card-desc {
+  color: #4a4642;
+}
+
+/* Bottom Border Indicator on Hover */
+.card-hover-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: #b38048;
+  border-radius: 2px;
+  transition: width 0.35s ease;
+}
+
+.solution-card:hover .card-hover-indicator {
+  width: 40px;
 }
 
 /* Vertical Dividing Lines between Cards */
@@ -121,13 +229,16 @@
   width: 1px;
   background-color: #e5ded3;
   align-self: stretch;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
 }
 
-/* ================= Responsive Layout ================= */
-/* Tablet Screen (<= 992px): Font Size 36px, Weight 400 */
+/* ================= Fully Responsive Layout ================= */
+
+/* Tablet Screen (<= 992px): Title 36px, Weight 400 */
 @media (max-width: 992px) {
   .about-solutions-section {
-    padding: 70px 30px;
+    padding: 75px 35px;
   }
 
   .about-solutions-title {
@@ -138,7 +249,13 @@
   .about-solutions-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    gap: 30px;
+  }
+
+  .solution-card {
+    padding: 24px 18px;
+    background-color: #ffffff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
   }
 
   .solution-card-divider {
@@ -146,24 +263,29 @@
   }
 }
 
-/* Mobile Screen (<= 600px): Font Size 30px, Weight 400 */
+/* Mobile Screen (<= 600px): Title 30px, Weight 400 */
 @media (max-width: 600px) {
   .about-solutions-section {
     padding: 55px 20px;
   }
 
+  .about-solutions-header {
+    margin-bottom: 40px;
+  }
+
   .about-solutions-title {
     font-size: 30px;
     font-weight: 400;
+    line-height: 1.25;
   }
 
   .about-solutions-grid {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 20px;
   }
 
   .solution-card {
-    padding: 10px 15px;
+    padding: 22px 16px;
   }
 
   .solution-card-title {
@@ -171,7 +293,7 @@
   }
 
   .solution-card-desc {
-    font-size: 13px;
+    font-size: 13.5px;
   }
 
   .solution-svg-icon {

@@ -1,18 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
+/* ================= ॲनिमेशन्स (Keyframes) ================= */
+@keyframes standFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes standLineGrow {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 38px;
+    opacity: 1;
+  }
+}
+
+@keyframes iconGoldPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+}
+
 /* ================= Dark Olive/Moss Background Section ================= */
 .stand-for-section {
   width: 100%;
+  background: 
+    radial-gradient(ellipse at 50% 0%, rgba(68, 76, 56, 0.45), transparent 70%),
+    linear-gradient(180deg, #3d4332 0%, #34392a 100%);
   background-color: #3d4332;
-  padding: 85px 60px 95px;
+  padding: 95px 60px 105px;
   box-sizing: border-box;
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow: hidden;
+  position: relative;
 }
 
 .stand-for-container {
   max-width: 1240px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 /* ================= Top Header ================= */
@@ -21,16 +61,23 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 60px;
+  margin-bottom: 65px;
+  animation: standFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Brand Gold Line */
 .stand-gold-line {
   display: inline-block;
-  width: 36px;
   height: 2px;
   background-color: #b38048;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  animation: standLineGrow 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: width 0.35s ease;
+}
+
+.stand-for-header:hover .stand-gold-line {
+  width: 55px;
 }
 
 /* Heading: Cormorant Garamond, 46px, Weight 400 */
@@ -43,6 +90,7 @@
   margin: 0;
   line-height: 1.2;
   text-align: center;
+  transition: transform 0.3s ease;
 }
 
 /* Stand For Text: Italic & #b38048 */
@@ -50,6 +98,12 @@
   font-style: italic;
   color: #b38048;
   font-family: 'Cormorant Garamond', Georgia, serif;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.stand-for-header:hover .stand-for-highlight {
+  transform: translateX(4px);
 }
 
 /* ================= 3 Columns Grid ================= */
@@ -66,28 +120,64 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 10px 35px;
+  padding: 30px 32px;
   box-sizing: border-box;
+  border-radius: 8px;
+  position: relative;
+  background: transparent;
+  opacity: 0;
+  animation: standFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--stand-index, 0) * 0.16s + 0.25s);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.4s ease,
+              box-shadow 0.4s ease;
 }
 
-/* Icon Wrap */
+.stand-for-card:hover {
+  transform: translateY(-8px);
+  background-color: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+}
+
+/* Icon Wrap with Aura */
 .stand-icon-wrapper {
   margin-bottom: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease;
+  position: relative;
+  width: 68px;
+  height: 68px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.stand-for-card:hover .stand-icon-wrapper {
-  transform: translateY(-3px);
+.stand-icon-aura {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(179, 128, 72, 0.35) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.stand-for-card:hover .stand-icon-aura {
+  opacity: 1;
+  animation: iconGoldPulse 2s infinite ease-in-out;
 }
 
 .stand-svg-icon {
   width: 44px;
   height: 44px;
   color: #b38048; /* Exact gold outline color */
-  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+}
+
+.stand-for-card:hover .stand-svg-icon {
+  transform: scale(1.12);
+  color: #d19a5b;
 }
 
 /* Card Heading */
@@ -98,17 +188,44 @@
   color: #f4efe6;
   margin: 0 0 16px 0;
   line-height: 1.25;
+  transition: color 0.3s ease;
+}
+
+.stand-for-card:hover .stand-card-title {
+  color: #ffffff;
 }
 
 /* Card Description */
 .stand-card-desc {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 14.5px;
-  line-height: 1.65;
+  line-height: 1.7;
   color: #d1ccc2;
   font-weight: 400;
   margin: 0;
   max-width: 290px;
+  transition: color 0.3s ease;
+}
+
+.stand-for-card:hover .stand-card-desc {
+  color: #eae5dc;
+}
+
+/* Gold Bottom Indicator */
+.stand-card-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: #b38048;
+  border-radius: 2px;
+  transition: width 0.35s ease;
+}
+
+.stand-for-card:hover .stand-card-indicator {
+  width: 44px;
 }
 
 /* Vertical Divider Lines */
@@ -116,13 +233,15 @@
   width: 1px;
   background-color: #555b49;
   align-self: stretch;
+  opacity: 0.75;
 }
 
-/* ================= Responsive Layout ================= */
-/* Tablet Screen (<= 992px): Font Size 36px, Weight 400 */
+/* ================= Fully Responsive Layout ================= */
+
+/* Tablet Screen (<= 992px): Title 36px, Weight 400 */
 @media (max-width: 992px) {
   .stand-for-section {
-    padding: 70px 30px;
+    padding: 75px 35px;
   }
 
   .stand-for-title {
@@ -132,29 +251,36 @@
 
   .stand-for-grid {
     flex-direction: column;
-    gap: 40px;
+    gap: 28px;
   }
 
   .stand-vertical-divider {
     width: 60%;
     height: 1px;
     margin: 0 auto;
+    opacity: 0.4;
   }
 
   .stand-for-card {
-    padding: 10px 15px;
+    padding: 24px 20px;
+    background-color: rgba(255, 255, 255, 0.02);
   }
 }
 
-/* Mobile Screen (<= 600px): Font Size 30px, Weight 400 */
+/* Mobile Screen (<= 600px): Title 30px, Weight 400 */
 @media (max-width: 600px) {
   .stand-for-section {
     padding: 55px 20px;
   }
 
+  .stand-for-header {
+    margin-bottom: 40px;
+  }
+
   .stand-for-title {
     font-size: 30px;
     font-weight: 400;
+    line-height: 1.25;
   }
 
   .stand-card-title {

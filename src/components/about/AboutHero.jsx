@@ -2,7 +2,7 @@ import React from 'react';
 import './AboutHero.css';
 
 // इमेजचा अचूक पाथ (assets फोल्डरमधील इमेज इंपोर्ट करा)
-import aboutJewelleryImg from '../../assets/images/Raw Images/1.jpg'; 
+import aboutJewelleryImg from '../../assets/images/finanacial-journey.png'; 
 
 function AboutHero() {
   return (

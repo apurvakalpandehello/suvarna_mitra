@@ -1,13 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
+/* ================= ॲनिमेशन्स (Keyframes) ================= */
+@keyframes storyFadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes storyFadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes storyBadgeExpand {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 35px;
+    opacity: 1;
+  }
+}
+
+@keyframes imgShimmerEffect {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
 /* ================= Main Story Section ================= */
 .about-story-section {
   width: 100%;
   background-color: #faf7f2;
-  padding: 90px 60px;
+  padding: 85px 60px;
   box-sizing: border-box;
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow: hidden;
+  position: relative;
 }
 
 .about-story-container {
@@ -19,15 +63,40 @@
   gap: 70px;
 }
 
-/* ================= Left Image Box ================= */
+/* ================= Left Image Box (Height Reduced + Rounded + Animated) ================= */
 .about-story-image-wrap {
   flex: 1.05;
   width: 100%;
-  height: 420px;
+  height: 380px; /* आधी 420px होती, डिझाइननुसार उंची कमी केली */
   overflow: hidden;
-  border-radius: 2px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  border-radius: 12px; /* प्रिमियम स्मूथ बॉर्डर रेडियस */
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
   background-color: #ede7de;
+  position: relative;
+  animation: storyFadeInLeft 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-story-image-wrap:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+}
+
+/* Image Shimmer Reflection Overlay */
+.about-story-image-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transform: translateX(-150%) skewX(-20deg);
+  pointer-events: none;
+}
+
+.about-story-image-wrap:hover::after {
+  animation: imgShimmerEffect 0.9s ease;
 }
 
 .about-story-img {
@@ -35,6 +104,12 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 12px;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-story-image-wrap:hover .about-story-img {
+  transform: scale(1.05);
 }
 
 /* ================= Right Content ================= */
@@ -44,6 +119,7 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
+  animation: storyFadeInRight 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Badge Wrapper (Lines on Both Sides) */
@@ -59,18 +135,30 @@
   width: 35px;
   height: 1.5px;
   background-color: #b38048;
+  animation: storyBadgeExpand 0.8s ease forwards;
+  transition: width 0.3s ease;
+}
+
+.about-story-content:hover .story-badge-line {
+  width: 45px;
 }
 
 .story-badge {
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 2.5px;
   color: #b38048;
   text-transform: uppercase;
   line-height: 1;
+  transition: letter-spacing 0.3s ease;
 }
 
-/* Main Heading */
+.about-story-content:hover .story-badge {
+  letter-spacing: 3px;
+}
+
+/* Main Heading (Cormorant Garamond 46px, Weight 400) */
 .story-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 46px;
@@ -79,6 +167,7 @@
   color: #121212;
   margin: 0 0 24px 0;
   letter-spacing: -0.3px;
+  transition: color 0.3s ease;
 }
 
 /* Trust word: Italic & #b38048 */
@@ -86,10 +175,17 @@
   font-style: italic;
   color: #b38048;
   font-family: 'Cormorant Garamond', Georgia, serif;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.story-title:hover .story-highlight-trust {
+  transform: translateX(4px);
 }
 
 /* Story Paragraph */
 .story-description {
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 15px;
   line-height: 1.75;
   color: #6a6661;
@@ -98,20 +194,32 @@
   max-width: 580px;
 }
 
-/* ================= Responsive Layout ================= */
-/* Tablet Screen (<= 992px): Font Size 36px, Weight 400 */
+/* ================= Fully Responsive Layout ================= */
+
+/* Tablet Screen (<= 992px): Title 36px, Weight 400 */
 @media (max-width: 992px) {
   .about-story-section {
-    padding: 70px 30px;
+    padding: 65px 35px;
   }
 
   .about-story-container {
     flex-direction: column;
     gap: 40px;
+    align-items: stretch;
   }
 
   .about-story-image-wrap {
-    height: 340px;
+    width: 100%;
+    height: 310px; /* टॅबलेटवर अधिक कॉम्पॅक्ट उंची */
+    border-radius: 10px;
+  }
+
+  .about-story-img {
+    border-radius: 10px;
+  }
+
+  .about-story-content {
+    width: 100%;
   }
 
   .story-title {
@@ -120,23 +228,37 @@
   }
 }
 
-/* Mobile Screen (<= 600px): Font Size 30px, Weight 400 */
+/* Mobile Screen (<= 600px): Title 30px, Weight 400 */
 @media (max-width: 600px) {
   .about-story-section {
     padding: 50px 20px;
   }
 
+  .about-story-container {
+    gap: 32px;
+  }
+
   .about-story-image-wrap {
-    height: 260px;
+    height: 230px; /* मोबाईलवर व्यवस्थित दिसण्यासाठी अनुकूल उंची */
+    border-radius: 8px;
+  }
+
+  .about-story-img {
+    border-radius: 8px;
   }
 
   .story-title {
     font-size: 30px;
     font-weight: 400;
+    line-height: 1.22;
   }
 
   .story-description {
     font-size: 14px;
     line-height: 1.65;
+  }
+
+  .story-badge-line {
+    width: 25px;
   }
 }

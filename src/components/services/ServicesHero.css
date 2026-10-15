@@ -1,184 +1,334 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
-.services-hero-wrapper {
-  width: 100%;
-  background-color: #faf7f2;
-  overflow: hidden;
-  box-sizing: border-box;
+/* ================= Keyframe Animations ================= */
+@keyframes heroContentSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Kangrunaan a Layout */
-.services-hero-main {
+@keyframes heroImgReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.97) translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+
+@keyframes goldLineExtend {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 32px;
+    opacity: 1;
+  }
+}
+
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+@keyframes ambientPulseEffect {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.08);
+  }
+}
+
+/* ================= Services Hero Section ================= */
+.services-hero-section {
+  width: 100%;
+  background-color: #faf7f2;
+  padding: 85px 0 85px 60px;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Ambient Subtle Warm Light */
+.services-hero-ambient {
+  position: absolute;
+  top: -100px;
+  left: -50px;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(179, 128, 72, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  animation: ambientPulseEffect 7s infinite ease-in-out;
+}
+
+.services-hero-container {
+  max-width: 1380px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 480px;
-  width: 100%;
-}
-
-/* Paset ti Teksto */
-.services-hero-content {
-  flex: 1;
-  padding: 60px 40px 60px 8%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-sizing: border-box;
+  gap: 50px;
+  position: relative;
   z-index: 2;
 }
 
-/* Tagline a Pangrugian */
-.services-tagline {
+/* ================= Left Side Typography ================= */
+.services-hero-left {
+  flex: 1.05;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding-right: 20px;
+  animation: heroContentSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Badge with Accent Line */
+.services-badge-wrap {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 22px;
 }
 
-.tagline-dash {
-  display: inline-block;
-  width: 32px;
+.services-badge-line {
   height: 1.5px;
   background-color: #b38048;
+  display: inline-block;
+  border-radius: 1px;
+  animation: goldLineExtend 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: width 0.3s ease;
 }
 
-.tagline-text {
+.services-hero-left:hover .services-badge-line {
+  width: 44px;
+}
+
+.services-hero-badge {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 2.5px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 2.4px;
   color: #b38048;
   text-transform: uppercase;
+  transition: letter-spacing 0.3s ease;
 }
 
-/* Panguluen / Titulo (Desktop: 46px, Weight 400) */
-.services-main-title {
+.services-hero-left:hover .services-hero-badge {
+  letter-spacing: 3px;
+}
+
+/* Main Heading: Desktop (46px, Weight 400, Cormorant Garamond) */
+.services-hero-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 46px;
   font-weight: 400;
   line-height: 1.18;
-  color: #1a1a1a;
-  margin: 0 0 24px 0;
-  letter-spacing: -0.5px;
+  color: #141414;
+  margin: 0 0 22px 0;
+  letter-spacing: -0.3px;
+  animation: heroContentSlideUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Deskripsion */
-.services-description {
+/* Highlighted Text */
+.services-highlight-title {
+  font-style: italic;
+  color: #b38048;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  display: inline-block;
+  transition: transform 0.35s ease;
+}
+
+.services-hero-left:hover .services-highlight-title {
+  transform: translateX(4px);
+}
+
+/* Description Text */
+.services-hero-desc {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 15px;
-  line-height: 1.7;
-  color: #737373;
-  max-width: 460px;
-  margin: 0;
+  line-height: 1.75;
+  color: #6a6661;
+  font-weight: 400;
+  margin: 0 0 30px 0;
+  max-width: 490px;
+  animation: heroContentSlideUp 1.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Paset ti Ladawan ken Kurbada nga Epekto */
-.services-hero-image-box {
-  flex: 1.1;
+/* Micro Trust Indicators / Perks */
+.services-hero-perks {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  animation: heroContentSlideUp 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.service-perk-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #5c5852;
+  letter-spacing: 0.2px;
+  transition: color 0.3s ease;
+}
+
+.service-perk-item:hover {
+  color: #b38048;
+}
+
+.perk-bullet {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #b38048;
+  display: inline-block;
+}
+
+/* ================= Right Side Image ================= */
+.services-hero-right {
+  flex: 1.25;
   position: relative;
-  height: 520px;
-  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
+  animation: heroImgReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.services-banner-img {
+.services-hero-img-box {
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 14px 0 0 14px;
+  box-shadow: -10px 18px 45px rgba(0, 0, 0, 0.07);
+  background-color: #ede7de;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  /* Organic soft edge transition on the left border */
+  mask-image: radial-gradient(circle at 100% 50%, black 72%, transparent 100%), 
+              linear-gradient(to right, transparent 0%, black 18%);
+  -webkit-mask-image: radial-gradient(circle at 100% 50%, black 72%, transparent 100%), 
+                      linear-gradient(to right, transparent 0%, black 18%);
+}
+
+.services-hero-img-box:hover {
+  transform: translateY(-4px);
+  box-shadow: -12px 24px 50px rgba(0, 0, 0, 0.1);
+}
+
+.services-hero-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
-  /* Kurbada a boundary a kasla adda iti ladawan */
-  mask-image: radial-gradient(ellipse 70% 100% at 90% 50%, black 60%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 100% at 90% 50%, black 60%, transparent 100%);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Akibaba a Linia */
-.services-bottom-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  padding: 40px 20px 20px 20px;
+.services-hero-img-box:hover .services-hero-img {
+  transform: scale(1.04);
 }
 
-.divider-line {
-  display: inline-block;
-  width: 60px;
-  height: 1.5px;
-  background-color: #b38048;
+/* Shimmer Light Reflection */
+.services-hero-shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  transform: translateX(-150%) skewX(-20deg);
+  pointer-events: none;
 }
 
-.divider-text {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: #b38048;
-  text-transform: uppercase;
+.services-hero-img-box:hover .services-hero-shimmer {
+  animation: shimmerSweep 0.9s ease;
 }
 
-/* ========================================================= */
-/* Responsive: Tablet (Screen <= 992px)                      */
-/* Font Size: 36px, Font Weight: 400                         */
-/* ========================================================= */
+/* ================= Fully Responsive Layout ================= */
+
+/* Tablet Screen (<= 992px): Font Size 36px, Weight 400 */
 @media (max-width: 992px) {
-  .services-hero-main {
+  .services-hero-section {
+    padding: 70px 30px;
+  }
+
+  .services-hero-container {
     flex-direction: column;
-    min-height: auto;
+    gap: 40px;
   }
 
-  .services-hero-content {
+  .services-hero-left {
+    padding-right: 0;
     width: 100%;
-    padding: 50px 30px 40px 30px;
-    text-align: left;
   }
 
-  .services-main-title {
+  .services-hero-title {
     font-size: 36px;
     font-weight: 400;
-    line-height: 1.25;
   }
 
-  .services-description {
-    font-size: 14.5px;
-    max-width: 100%;
-  }
-
-  .services-hero-image-box {
+  .services-hero-right {
     width: 100%;
-    height: 380px;
   }
 
-  .services-banner-img {
-    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  .services-hero-img-box {
+    height: 360px;
+    mask-image: none;
+    -webkit-mask-image: none;
+    border-radius: 12px;
+  }
+
+  .services-hero-perks {
+    gap: 16px;
   }
 }
 
-/* ========================================================= */
-/* Responsive: Mobile (Screen <= 600px)                      */
-/* Font Size: 30px, Font Weight: 400                         */
-/* ========================================================= */
+/* Mobile Screen (<= 600px): Font Size 30px, Weight 400 */
 @media (max-width: 600px) {
-  .services-hero-content {
-    padding: 35px 20px 25px 20px;
+  .services-hero-section {
+    padding: 50px 20px 40px;
   }
 
-  .services-main-title {
+  .services-hero-title {
     font-size: 30px;
     font-weight: 400;
-    line-height: 1.28;
-    margin-bottom: 18px;
+    line-height: 1.22;
   }
 
-  .services-description {
-    font-size: 13.5px;
-    line-height: 1.6;
+  .services-hero-desc {
+    font-size: 14px;
+    line-height: 1.65;
+    margin-bottom: 24px;
   }
 
-  .services-hero-image-box {
-    height: 280px;
+  .services-hero-perks {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
 
-  .divider-line {
-    width: 35px;
+  .services-hero-img-box {
+    height: 250px;
+    border-radius: 10px;
   }
 }

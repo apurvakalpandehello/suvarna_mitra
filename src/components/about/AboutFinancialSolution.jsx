@@ -92,12 +92,17 @@ function AboutFinancialSolution() {
         <div className="about-solutions-grid">
           {solutionsData.map((item, index) => (
             <React.Fragment key={index}>
-              <div className="solution-card">
+              <div 
+                className="solution-card" 
+                style={{ '--card-index': index }}
+              >
                 <div className="solution-icon-box">
+                  <span className="solution-icon-glow"></span>
                   {item.icon}
                 </div>
                 <h3 className="solution-card-title">{item.title}</h3>
                 <p className="solution-card-desc">{item.description}</p>
+                <span className="card-hover-indicator"></span>
               </div>
 
               {/* Vertical divider line */}

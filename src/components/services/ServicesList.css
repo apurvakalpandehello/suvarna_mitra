@@ -1,0 +1,414 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+/* ================= ॲनिमेशन्स (Keyframes) ================= */
+@keyframes srvListFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes srvBadgeLineWidth {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 32px;
+    opacity: 1;
+  }
+}
+
+@keyframes srvShimmerSweep {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+@keyframes srvIconAuraPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.6;
+  }
+}
+
+/* ================= Section Base ================= */
+.services-list-section {
+  width: 100%;
+  background-color: #faf7f2;
+  padding: 95px 60px 105px;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+.services-list-container {
+  max-width: 1260px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* ================= Top Header ================= */
+.services-list-header {
+  text-align: center;
+  margin-bottom: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: srvListFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.srv-header-badge-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.srv-header-line {
+  height: 1.5px;
+  background-color: #b38048;
+  display: inline-block;
+  border-radius: 1px;
+  animation: srvBadgeLineWidth 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: width 0.3s ease;
+}
+
+.services-list-header:hover .srv-header-line {
+  width: 44px;
+}
+
+.srv-header-badge {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  color: #b38048;
+  text-transform: uppercase;
+  transition: letter-spacing 0.3s ease;
+}
+
+.services-list-header:hover .srv-header-badge {
+  letter-spacing: 2.8px;
+}
+
+/* Heading: Desktop (46px, Weight 400, Cormorant Garamond) */
+.services-list-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 46px;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin: 0 0 16px 0;
+  line-height: 1.22;
+  letter-spacing: -0.3px;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+/* Financial Needs: Italic आणि #b38048 */
+.srv-highlight-needs {
+  font-style: italic;
+  color: #b38048;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.services-list-header:hover .srv-highlight-needs {
+  transform: translateX(4px);
+}
+
+.services-list-subtitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #736f69;
+  font-weight: 400;
+  margin: 0;
+  max-width: 720px;
+  text-align: center;
+}
+
+/* ================= 2x2 Services Grid Layout ================= */
+.services-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 65px;
+  row-gap: 55px;
+}
+
+.service-item-row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 16px;
+  border-radius: 12px;
+  background-color: transparent;
+  opacity: 0;
+  animation: srvListFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--grid-idx, 0) * 0.14s + 0.2s);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              background-color 0.4s ease, 
+              box-shadow 0.4s ease;
+}
+
+.service-item-row:hover {
+  transform: translateY(-6px);
+  background-color: #ffffff;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(179, 128, 72, 0.06);
+}
+
+/* Left Image Box with Rounded Corners */
+.service-item-img-box {
+  flex: 0 0 190px;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 10px; /* Modern Smooth Rounded Corners */
+  background-color: #ede7de;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.service-item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-item-row:hover .service-item-img {
+  transform: scale(1.08);
+}
+
+/* Image Shimmer Light */
+.service-img-shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: translateX(-150%) skewX(-20deg);
+  pointer-events: none;
+}
+
+.service-item-row:hover .service-img-shimmer {
+  animation: srvShimmerSweep 0.85s ease;
+}
+
+/* Right Content Box */
+.service-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Icon Box & Glow Aura */
+.service-icon-box {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.service-icon-aura {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(179, 128, 72, 0.25) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.service-item-row:hover .service-icon-aura {
+  opacity: 1;
+  animation: srvIconAuraPulse 2s infinite ease-in-out;
+}
+
+.srv-card-icon {
+  width: 42px;
+  height: 42px;
+  color: #b38048;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+}
+
+.service-item-row:hover .srv-card-icon {
+  transform: translateY(-3px) scale(1.06);
+  color: #9c6e3d;
+}
+
+/* Card Heading */
+.service-item-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: #1a1a1a;
+  margin: 0 0 12px 0;
+  transition: color 0.3s ease;
+}
+
+.service-item-row:hover .service-item-title {
+  color: #b38048;
+}
+
+/* Card Description */
+.service-item-desc {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #6e6963;
+  margin: 0 0 16px 0;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.service-item-row:hover .service-item-desc {
+  color: #4a4642;
+}
+
+/* Know More Link with Animated Underline & Arrow */
+.service-know-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #b38048;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+  transition: gap 0.25s ease, color 0.25s ease;
+}
+
+.know-more-text {
+  position: relative;
+}
+
+.know-more-text::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: #b38048;
+  transition: width 0.3s ease;
+}
+
+.service-know-more:hover .know-more-text::after {
+  width: 100%;
+}
+
+.know-more-arrow {
+  transition: transform 0.25s ease;
+}
+
+.service-know-more:hover {
+  color: #966733;
+  gap: 10px;
+}
+
+.service-know-more:hover .know-more-arrow {
+  transform: translateX(4px);
+}
+
+/* ================= Fully Responsive Layout ================= */
+
+/* Tablet Screen (<= 992px): Title 36px, Weight 400 */
+@media (max-width: 992px) {
+  .services-list-section {
+    padding: 75px 30px;
+  }
+
+  .services-list-title {
+    font-size: 36px;
+    font-weight: 400;
+  }
+
+  .services-cards-grid {
+    grid-template-columns: 1fr;
+    row-gap: 35px;
+  }
+
+  .service-item-row {
+    background-color: #ffffff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  }
+
+  .service-item-img-box {
+    flex: 0 0 180px;
+    height: 200px;
+  }
+}
+
+/* Mobile Screen (<= 600px): Title 30px, Weight 400 */
+@media (max-width: 600px) {
+  .services-list-section {
+    padding: 55px 20px;
+  }
+
+  .services-list-header {
+    margin-bottom: 45px;
+  }
+
+  .srv-sub-break {
+    display: none;
+  }
+
+  .services-list-title {
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.25;
+  }
+
+  .services-list-subtitle {
+    font-size: 13.5px;
+  }
+
+  .service-item-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 14px;
+  }
+
+  .service-item-img-box {
+    width: 100%;
+    flex: auto;
+    height: 210px;
+  }
+
+  .service-item-title {
+    font-size: 23px;
+  }
+
+  .srv-card-icon {
+    width: 38px;
+    height: 38px;
+  }
+}

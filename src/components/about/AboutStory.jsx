@@ -2,7 +2,7 @@ import React from 'react';
 import './AboutStory.css';
 
 // Tumchya project madhil image path
-import storyImg from '../../assets/images/Raw Images/workaholics-businesspeople-brainstorming-financial-company-ideas.jpg';
+import storyImg from '../../assets/images/trusted-by-your-need.png';
 
 function AboutStory() {
   return (

@@ -22,7 +22,11 @@ function AboutClearerPath() {
           </p>
 
           <a href="#contact" className="path-talk-btn">
-            Talk to Us
+            <span>Talk to Us</span>
+            <svg viewBox="0 0 24 24" className="btn-arrow-icon" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
           </a>
         </div>
 

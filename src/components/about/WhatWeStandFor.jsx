@@ -53,12 +53,17 @@ function WhatWeStandFor() {
         <div className="stand-for-grid">
           {valuesData.map((item, index) => (
             <React.Fragment key={index}>
-              <div className="stand-for-card">
+              <div 
+                className="stand-for-card" 
+                style={{ '--stand-index': index }}
+              >
                 <div className="stand-icon-wrapper">
+                  <span className="stand-icon-aura"></span>
                   {item.icon}
                 </div>
                 <h3 className="stand-card-title">{item.title}</h3>
                 <p className="stand-card-desc">{item.desc}</p>
+                <span className="stand-card-indicator"></span>
               </div>
 
               {/* Middle vertical divider */}
