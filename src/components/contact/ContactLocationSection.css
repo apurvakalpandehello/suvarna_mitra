@@ -56,8 +56,9 @@
   max-width: 100%;
   padding-top: 80px;
   padding-bottom: 80px;
-  padding-left: 4.2%;
-  padding-right: 4.2%;
+  /* Left and Right padding exactly same: 4.8% */
+  padding-left: 4.8%;
+  padding-right: 4.8%;
   background-color: #faf7f2; /* Cream Theme */
   overflow: hidden;
   box-sizing: border-box;
@@ -338,7 +339,8 @@
   .contact-location-section {
     height: auto;
     min-height: auto;
-    padding: 75px 4.2%;
+    /* Exactly equal left and right padding: 4.8% */
+    padding: 75px 4.8%;
   }
 
   .contact-location-container {
@@ -373,7 +375,8 @@
   .contact-location-section {
     height: auto;
     min-height: auto;
-    padding: 55px 20px 60px;
+    /* Exactly equal left and right padding: 20px */
+    padding: 55px 20px 60px 20px;
   }
 
   .location-title {
