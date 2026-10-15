@@ -43,7 +43,7 @@ function WhatWeStandFor() {
         
         {/* Top Header */}
         <div className="stand-for-header">
-          <span className="stand-gold-line"></span>
+         
           <h2 className="stand-for-title">
             What We <span className="stand-for-highlight">Stand For</span>
           </h2>

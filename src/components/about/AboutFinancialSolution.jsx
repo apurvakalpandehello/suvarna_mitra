@@ -82,7 +82,7 @@ function AboutFinancialSolution() {
         
         {/* Top Header */}
         <div className="about-solutions-header">
-          <span className="solutions-accent-line"></span>
+          {/* <span className="solutions-accent-line"></span> */}
           <h2 className="about-solutions-title">
             Financial Solutions, <span className="solutions-highlight">Thoughtfully Delivered</span>
           </h2>

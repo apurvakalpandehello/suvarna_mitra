@@ -73,20 +73,6 @@
   animation: pathFadeInLeft 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* वरची Gold Accent Line */
-.path-top-line {
-  height: 2px;
-  background-color: #b38048;
-  margin-bottom: 24px;
-  border-radius: 2px;
-  animation: pathLineGrow 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: width 0.35s ease;
-}
-
-.clearer-path-content:hover .path-top-line {
-  width: 60px;
-}
-
 /* Main Heading: Desktop (46px, Weight 400, Cormorant Garamond) */
 .path-title {
   font-family: 'Cormorant Garamond', Georgia, serif;

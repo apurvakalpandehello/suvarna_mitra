@@ -11,7 +11,6 @@ function AboutClearerPath() {
         
         {/* डावीकडील मजकूर (Left Content) */}
         <div className="clearer-path-content">
-          <div className="path-top-line"></div>
 
           <h2 className="path-title">
             A <span className="path-highlight">Clearer Path</span> Starts<br />

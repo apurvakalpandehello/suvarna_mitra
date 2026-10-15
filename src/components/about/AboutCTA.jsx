@@ -9,9 +9,6 @@ function AboutCTA() {
       <div className="cta-ambient-glow cta-glow-right"></div>
 
       <div className="about-cta-container">
-        
-        {/* Accent Brand Line */}
-        <span className="cta-top-accent-line"></span>
 
         {/* Main Heading */}
         <h2 className="about-cta-title">

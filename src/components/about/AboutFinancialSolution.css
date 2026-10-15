@@ -62,16 +62,6 @@
   animation: solFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.solutions-accent-line {
-  display: inline-block;
-  height: 2px;
-  background-color: #b38048;
-  margin-bottom: 20px;
-  border-radius: 2px;
-  animation: solLineWidth 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: width 0.3s ease;
-}
-
 .about-solutions-header:hover .solutions-accent-line {
   width: 60px;
 }

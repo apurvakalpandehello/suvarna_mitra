@@ -65,21 +65,6 @@
   animation: standFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Brand Gold Line */
-.stand-gold-line {
-  display: inline-block;
-  height: 2px;
-  background-color: #b38048;
-  margin-bottom: 20px;
-  border-radius: 2px;
-  animation: standLineGrow 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: width 0.35s ease;
-}
-
-.stand-for-header:hover .stand-gold-line {
-  width: 55px;
-}
-
 /* Heading: Cormorant Garamond, 46px, Weight 400 */
 .stand-for-title {
   font-family: 'Cormorant Garamond', Georgia, serif;

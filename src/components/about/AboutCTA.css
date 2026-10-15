@@ -95,22 +95,6 @@
   position: relative;
   z-index: 2;
 }
-
-/* Top Accent Line */
-.cta-top-accent-line {
-  display: inline-block;
-  height: 2px;
-  background-color: #b38048;
-  margin-bottom: 22px;
-  border-radius: 2px;
-  animation: ctaLineGrow 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: width 0.35s ease;
-}
-
-.about-cta-section:hover .cta-top-accent-line {
-  width: 58px;
-}
-
 /* Heading: Cormorant Garamond, 46px, Weight 400 */
 .about-cta-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
