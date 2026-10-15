@@ -19,7 +19,9 @@ import WhatsAppButton from "./components/WhatsAppButton.jsx";
 
 // Pages Imports
 import AboutUs from "./pages/AboutUs.jsx";
-import Services from "./pages/services.jsx"; // <-- 1. Services page import kela
+import Services from "./pages/services.jsx"; 
+import Contact from "./pages/contact.jsx";
+
 import PrivacyPolicy from "./pages/policies/privacyPolicy.jsx";
 import TermsConditions from "./pages/policies/termsConditions.jsx";
 import Disclaimer from "./pages/policies/disclaimer.jsx";
@@ -54,6 +56,9 @@ function App() {
 
           {/* Services Route (Navin route add kela) */}
           <Route path="/services" element={<Services />} />
+
+          {/* Contact Us Route */}
+          <Route path="/contact" element={<Contact />} />
 
           {/* Policy Routes */}
           <Route path="/pages/policies/privacyPolicy" element={<PrivacyPolicy />} />

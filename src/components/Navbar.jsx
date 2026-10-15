@@ -50,7 +50,7 @@ function Navbar() {
             <Link to="/services" onClick={closeMenu}>Services</Link>
           </li>
           <li>
-            <a href="/#contact" onClick={closeMenu}>Contact</a>
+            <Link to="/contact" onClick={closeMenu}>Contact</Link>
           </li>
         </ul>
 
