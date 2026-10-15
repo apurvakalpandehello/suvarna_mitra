@@ -107,52 +107,45 @@ function PrivacyPolicy() {
 
   return (
     <main className="privacy-page">
-      <div className="privacy-glow-ambient"></div>
-
       <div className="privacy-container">
-        {/* Header Section */}
+        
+        {/* Simple Document Header */}
         <header className="privacy-header">
           <span className="privacy-badge">DATA PROTECTION & PRIVACY</span>
-          <h1 className="privacy-main-title">PRIVACY POLICY</h1>
-          <div className="gold-ornament-line">
-            <span></span>
+          <h1 className="privacy-main-title">Privacy Policy</h1>
+          <p className="privacy-last-updated">Last Updated: October 12, 2026</p>
+
+          <div className="privacy-intro-box">
+            <p className="privacy-intro">
+              <strong>Swarna Mitra</strong> respects your privacy and is committed
+              to protecting the personal information shared with us through our
+              website, enquiry forms, applications and other communication
+              channels.
+            </p>
+            <p className="privacy-sub-intro">
+              This Privacy Policy explains how we collect, use, store and protect
+              information provided by visitors and customers.
+            </p>
           </div>
-          <p className="privacy-intro">
-            <strong>Swarna Mitra</strong> respects your privacy and is committed
-            to protecting the personal information shared with us through our
-            website, enquiry forms, applications and other communication
-            channels.
-          </p>
-          <p className="privacy-sub-intro">
-            This Privacy Policy explains how we collect, use, store and protect
-            information provided by visitors and customers.
-          </p>
         </header>
 
-        {/* Policy Grid Section */}
-        <section className="privacy-grid">
-          {policySections.map((item, idx) => (
-            <article
-              key={item.id}
-              className={`privacy-card ${item.id === "01" || item.id === "02" || item.id === "09" ? "full-span-card" : ""}`}
-              style={{ animationDelay: `${0.08 * (idx + 1)}s` }}
-            >
-              <div className="card-top-row">
-                <span className="card-number">{item.id}</span>
-                <div className="card-gold-dash"></div>
-              </div>
-
-              <h2 className="card-title">{item.title}</h2>
+        {/* Clean Document Sections */}
+        <section className="privacy-content-list">
+          {policySections.map((item) => (
+            <article key={item.id} className="privacy-clause-item">
+              <h2 className="clause-title">
+                <span className="clause-number">{item.id}.</span> {item.title}
+              </h2>
 
               {item.description && (
-                <p className="card-desc-text">{item.description}</p>
+                <p className="clause-desc">{item.description}</p>
               )}
 
               {item.list && (
                 <ul className="privacy-bullet-list">
                   {item.list.map((liText, liIdx) => (
                     <li key={liIdx}>
-                      <span className="bullet-dot"></span>
+                      <span className="bullet-bullet">&bull;</span>
                       <span>{liText}</span>
                     </li>
                   ))}
@@ -160,15 +153,15 @@ function PrivacyPolicy() {
               )}
 
               {item.footnote && (
-                <p className="card-footnote-text">{item.footnote}</p>
+                <p className="clause-footnote">{item.footnote}</p>
               )}
 
-              {item.content && <p className="card-text">{item.content}</p>}
+              {item.content && <p className="clause-text">{item.content}</p>}
 
               {item.isContact && (
-                <div className="privacy-contact-grid">
+                <div className="privacy-contact-card">
                   {item.contactDetails.map((contact, cIdx) => (
-                    <div key={cIdx} className="contact-info-pill">
+                    <div key={cIdx} className="contact-info-row">
                       <span className="contact-label">{contact.label}:</span>
                       <span className="contact-val">{contact.value}</span>
                     </div>
@@ -179,12 +172,6 @@ function PrivacyPolicy() {
           ))}
         </section>
 
-        {/* Footer Meta */}
-        <footer className="privacy-meta">
-          <p>
-            Last Updated: <span className="highlight-date">12/10/2026</span>
-          </p>
-        </footer>
       </div>
     </main>
   );

@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+/* ================= Animations (Same cubic-bezier & Keyframes) ================= */
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ================= Main Section ================= */
+.contact-hero-section {
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  background-color: #faf7f2;
+  padding: 60px 0 60px 60px;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+.contact-hero-container {
+  width: 100%;
+  max-width: 1340px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+/* ================= Left Side Content ================= */
+.contact-hero-left {
+  flex: 1;
+  max-width: 610px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  z-index: 2;
+  animation: heroFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Badge + Dash Line */
+.contact-badge-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.contact-badge-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.4px;
+  color: #b38048;
+  text-transform: uppercase;
+  transition: letter-spacing 0.3s ease;
+}
+
+.contact-badge-box:hover .contact-badge-text {
+  letter-spacing: 3px;
+}
+
+.contact-badge-line {
+  width: 38px;
+  height: 1.5px;
+  background-color: #b38048;
+  opacity: 0.75;
+}
+
+/* Main Heading (Same 46px, Cormorant Garamond) */
+.contact-hero-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 46px;
+  font-weight: 400;
+  line-height: 1.16;
+  color: #141414;
+  letter-spacing: -0.3px;
+  margin: 0 0 18px 0;
+  animation: heroFadeUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Sub-text Paragraph */
+.contact-hero-description {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #797672;
+  font-weight: 400;
+  margin: 0 0 42px 0;
+  max-width: 520px;
+  animation: heroFadeUp 1.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ================= 3 Features Horizontal Row ================= */
+.contact-features-wrap {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+  animation: heroFadeUp 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.contact-feature-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.contact-feature-icon {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 12px;
+  color: #b38048;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: transform 0.3s ease;
+}
+
+.contact-feature-col:hover .contact-feature-icon {
+  transform: translateY(-3px);
+}
+
+.contact-feature-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: #b38048;
+}
+
+.feature-head {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #141414;
+  margin: 0 0 5px 0;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.feature-desc {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #797672;
+  margin: 0;
+}
+
+/* Divider Line */
+.contact-col-divider {
+  width: 1px;
+  height: 58px;
+  background-color: #e5ded4;
+  margin-top: 14px;
+  flex-shrink: 0;
+}
+
+/* ================= Right Side Image ================= */
+.contact-hero-right {
+  flex: 1.2;
+  width: 100%;
+  min-width: 480px; /* Laptop screen var image container shrink honar nahi */
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  animation: heroFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.contact-img-frame {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+.contact-main-img {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  object-fit: cover;
+  display: block;
+  object-position: center right;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-hero-right:hover .contact-main-img {
+  transform: scale(1.02);
+}
+
+/* Soft Edge Fade to Cream Background */
+.contact-soft-blend {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 26%;
+  height: 100%;
+  background: linear-gradient(to right, #faf7f2 0%, rgba(250, 247, 242, 0) 100%);
+  pointer-events: none;
+}
+
+/* ================= Responsive Layout (Same Media Breakpoints) ================= */
+
+/* Tablet Screen (<= 992px): Title 36px */
+@media (max-width: 992px) {
+  .contact-hero-section {
+    min-height: auto;
+    padding: 70px 35px 55px;
+  }
+
+  .contact-hero-container {
+    flex-direction: column;
+    gap: 45px;
+    align-items: stretch;
+  }
+
+  .contact-hero-left {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .contact-hero-title {
+    font-size: 36px;
+    font-weight: 400;
+  }
+
+  .contact-hero-right {
+    width: 100%;
+    min-width: unset;
+    justify-content: center;
+  }
+
+  .contact-img-frame {
+    height: 380px;
+    border-radius: 12px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  .contact-main-img {
+    min-height: unset;
+  }
+
+  .contact-soft-blend {
+    display: none;
+  }
+}
+
+/* Mobile Screen (<= 600px): Title 30px */
+@media (max-width: 600px) {
+  .contact-hero-section {
+    padding: 50px 20px 40px;
+  }
+
+  .contact-hero-title {
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.22;
+  }
+
+  .contact-hero-description {
+    font-size: 14px;
+    line-height: 1.65;
+    margin-bottom: 28px;
+  }
+
+  /* 3 Features Stack on Mobile */
+  .contact-features-wrap {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-col-divider {
+    display: none;
+  }
+
+  .feature-head {
+    white-space: normal;
+  }
+
+  .contact-img-frame {
+    height: 250px;
+    border-radius: 8px;
+  }
+}

@@ -160,78 +160,65 @@ function TermsConditions() {
 
   return (
     <main className="terms-page">
-      <div className="terms-glow-ambient"></div>
-
       <div className="terms-container">
-        {/* Header Section */}
+        
+        {/* Simple Document Header */}
         <header className="terms-header">
           <span className="terms-badge">LEGAL AGREEMENT & TERMS</span>
-          <h1 className="terms-main-title">TERMS &amp; CONDITIONS</h1>
-          <div className="gold-ornament-line">
-            <span></span>
+          <h1 className="terms-main-title">Terms & Conditions</h1>
+          <p className="terms-last-updated">Last Updated: October 12, 2026</p>
+
+          <div className="terms-intro-box">
+            <p className="terms-intro">
+              Welcome to the website of <strong>Swarna Mitra Financial Services</strong> ("Swarna Mitra", "Company", "we", "us" or "our").
+            </p>
+            <p className="terms-sub-intro">
+              By accessing or using this website, you agree to comply with and be bound by these Terms & Conditions. If you do not agree with any part of these terms, please discontinue use of the website.
+            </p>
           </div>
-          <p className="terms-intro">
-            Welcome to the website of <strong>Swarna Mitra Financial Services</strong> ("Swarna Mitra", "Company", "we", "us" or "our").
-          </p>
-          <p className="terms-sub-intro">
-            By accessing or using this website, you agree to comply with and be bound by these Terms &amp; Conditions. If you do not agree with any part of these terms, please discontinue use of the website.
-          </p>
         </header>
 
-        {/* 2-Column Responsive Grid */}
-        <section className="terms-grid">
-          {termsList.map((item, idx) => (
-            <article
-              key={item.id}
-              className={`terms-card ${item.id === "15" || item.id === "22" ? "full-span-card" : ""}`}
-              style={{ animationDelay: `${0.06 * (idx + 1)}s` }}
-            >
-              <div className="card-top-row">
-                <span className="card-number">{item.id}</span>
-                <div className="card-gold-dash"></div>
-              </div>
+        {/* Clean Article / Clause List */}
+        <section className="terms-content-list">
+          {termsList.map((item) => (
+            <article key={item.id} className="terms-clause-item">
+              <h2 className="clause-title">
+                <span className="clause-number">{item.id}.</span> {item.title}
+              </h2>
 
-              <h2 className="card-title">{item.title}</h2>
-
-              {item.content && <p className="card-text">{item.content}</p>}
+              {item.content && <p className="clause-text">{item.content}</p>}
 
               {item.isList && (
-                <>
-                  <p className="card-desc-text">{item.description}</p>
+                <div className="clause-list-wrapper">
+                  <p className="clause-desc">{item.description}</p>
                   <ul className="terms-bullet-list">
                     {item.items.map((line, lIdx) => (
                       <li key={lIdx}>
-                        <span className="bullet-dot"></span>
+                        <span className="bullet-bullet">&bull;</span>
                         <span>{line}</span>
                       </li>
                     ))}
                   </ul>
-                </>
+                </div>
               )}
 
               {item.isContact && (
-                <>
-                  <p className="card-desc-text">{item.description}</p>
-                  <div className="terms-contact-grid">
+                <div className="clause-contact-wrapper">
+                  <p className="clause-desc">{item.description}</p>
+                  <div className="terms-contact-card">
                     {item.contactList.map((c, cIdx) => (
-                      <div key={cIdx} className="contact-info-pill">
+                      <div key={cIdx} className="contact-info-row">
                         <span className="contact-label">{c.label}:</span>
                         <span className="contact-val">{c.value}</span>
                       </div>
                     ))}
                   </div>
-                </>
+                </div>
               )}
             </article>
           ))}
         </section>
 
-        {/* Footer Meta */}
-        <footer className="terms-meta">
-          <p>
-            Last Updated: <span className="highlight-date">12/10/2026</span>
-          </p>
-        </footer>
       </div>
     </main>
   );

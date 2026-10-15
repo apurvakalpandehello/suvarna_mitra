@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+/* ================= Animation ================= */
+@keyframes ctaFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= Main CTA Wrapper ================= */
+.contact-cta-section {
+  width: 100%;
+  /* Image madhil deep olive/forest green background */
+  background: radial-gradient(circle at center, #353c2b 0%, #252b1e 100%);
+  padding: 85px 40px;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Decorative corner leaves / botanical silhouette */
+.cta-leaf-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100%;
+  background: radial-gradient(circle at top left, rgba(62, 72, 49, 0.45), transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.contact-cta-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: ctaFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Title (Cormorant Garamond Font) */
+.contact-cta-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1.22;
+  color: #f5f2eb; /* Soft Off-White */
+  letter-spacing: -0.3px;
+  margin: 0 0 16px 0;
+}
+
+/* Subtitle */
+.contact-cta-subtitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #b7b3a8; /* Muted Light Warm Grey */
+  font-weight: 400;
+  margin: 0 0 34px 0;
+  max-width: 620px;
+}
+
+/* Button with Signature Gold Outline */
+.contact-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 32px;
+  border: 1px solid #b38048; /* Same Signature Gold */
+  background-color: transparent;
+  color: #b38048;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.cta-btn-arrow {
+  font-size: 15px;
+  transition: transform 0.3s ease;
+}
+
+.contact-cta-btn:hover {
+  background-color: #b38048;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(179, 128, 72, 0.35);
+}
+
+.contact-cta-btn:hover .cta-btn-arrow {
+  transform: translateX(4px);
+}
+
+/* ================= Responsive Layout ================= */
+
+/* Tablet (<= 992px) */
+@media (max-width: 992px) {
+  .contact-cta-section {
+    padding: 70px 30px;
+  }
+
+  .contact-cta-title {
+    font-size: 36px;
+  }
+
+  .contact-cta-subtitle {
+    font-size: 14.5px;
+    margin-bottom: 28px;
+  }
+}
+
+/* Mobile (<= 600px) */
+@media (max-width: 600px) {
+  .contact-cta-section {
+    padding: 55px 20px;
+  }
+
+  .contact-cta-title {
+    font-size: 28px;
+    line-height: 1.25;
+  }
+
+  .contact-cta-subtitle {
+    font-size: 13.5px;
+    line-height: 1.55;
+    margin-bottom: 26px;
+  }
+
+  .contact-cta-btn {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 20px;
+  }
+}

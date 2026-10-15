@@ -1,0 +1,406 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+/* ================= Keyframe Animations ================= */
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= Main Section Wrapper ================= */
+.contact-main-section {
+  width: 100%;
+  background-color: #faf7f2; /* Same Warm Cream */
+  padding: 90px 60px;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+.contact-main-container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 70px;
+}
+
+/* ================= Left Side (Contact Details) ================= */
+.contact-info-col {
+  flex: 1;
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  animation: heroFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Badge + Line */
+.contact-badge-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.contact-badge-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.4px;
+  color: #b38048; /* Same Gold Accent */
+  text-transform: uppercase;
+}
+
+.contact-badge-line {
+  width: 38px;
+  height: 1.5px;
+  background-color: #b38048;
+  opacity: 0.75;
+}
+
+/* Title */
+.contact-info-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 46px;
+  font-weight: 400;
+  line-height: 1.16;
+  color: #141414;
+  letter-spacing: -0.3px;
+  margin: 0 0 18px 0;
+}
+
+/* Sub-description */
+.contact-info-description {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #797672;
+  font-weight: 400;
+  margin: 0 0 40px 0;
+}
+
+/* Details list */
+.contact-details-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-detail-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 0;
+}
+
+.detail-icon-circle {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 50%;
+  border: 1px solid #b38048;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b38048;
+  transition: all 0.3s ease;
+}
+
+.contact-detail-row:hover .detail-icon-circle {
+  background-color: #b38048;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.detail-icon-circle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.detail-info-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.detail-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #141414;
+  margin-bottom: 3px;
+}
+
+.detail-value {
+  font-size: 14.5px;
+  color: #797672;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.detail-value:not(.text-only):hover {
+  color: #b38048;
+}
+
+/* Separator Line between rows */
+.contact-info-divider {
+  width: 100%;
+  height: 1px;
+  background-color: #ede5da;
+}
+
+/* ================= Right Side (Card Form) ================= */
+.contact-form-col {
+  flex: 1.15;
+  width: 100%;
+  animation: heroFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.contact-form-card {
+  background-color: #ffffff;
+  border: 1.5px solid #d4b58c; /* Elegant Soft Gold Outline */
+  border-radius: 4px;
+  padding: 45px 45px;
+  box-sizing: border-box;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.form-card-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 32px;
+  font-weight: 500;
+  color: #141414;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.2px;
+}
+
+.form-card-subtitle {
+  font-size: 13.5px;
+  color: #797672;
+  margin: 0 0 28px 0;
+  font-weight: 400;
+}
+
+/* Form Layout */
+.contact-main-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.form-field-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #2b2b2b;
+  margin-bottom: 7px;
+}
+
+.field-required {
+  color: #e65100;
+}
+
+/* Inputs, Select, Textarea */
+.form-custom-input,
+.form-custom-select,
+.form-custom-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border: 1px solid #dfd8cf;
+  border-radius: 4px;
+  padding: 11px 14px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13.5px;
+  color: #141414;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.form-custom-input::placeholder,
+.form-custom-textarea::placeholder {
+  color: #b0aba4;
+}
+
+.form-custom-input:focus,
+.form-custom-select:focus,
+.form-custom-textarea:focus {
+  border-color: #b38048;
+  box-shadow: 0 0 0 3px rgba(179, 128, 72, 0.12);
+}
+
+.select-input-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.form-custom-select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23797672' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 15px;
+}
+
+.form-custom-textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* Checkbox */
+.form-checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 4px;
+  text-align: left;
+}
+
+.form-custom-checkbox {
+  margin-top: 3px;
+  cursor: pointer;
+  accent-color: #4a543f;
+  width: 15px;
+  height: 15px;
+}
+
+.checkbox-text-label {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #797672;
+}
+
+.privacy-anchor {
+  color: #b38048;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.privacy-anchor:hover {
+  color: #9c6e3d;
+}
+
+/* Submit Button - Image madhil dark olive/forest green style */
+.form-submit-btn {
+  width: 100%;
+  background-color: #434c38;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 14px 24px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 8px;
+}
+
+.submit-arrow {
+  font-size: 15px;
+  transition: transform 0.3s ease;
+}
+
+.form-submit-btn:hover {
+  background-color: #343b2b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(67, 76, 56, 0.25);
+}
+
+.form-submit-btn:hover .submit-arrow {
+  transform: translateX(4px);
+}
+
+/* ================= Fully Responsive Layout ================= */
+
+/* Tablet Screen (<= 992px): Title 36px */
+@media (max-width: 992px) {
+  .contact-main-section {
+    padding: 70px 35px;
+  }
+
+  .contact-main-container {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .contact-info-col,
+  .contact-form-col {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .contact-info-title {
+    font-size: 36px;
+    font-weight: 400;
+  }
+
+  .contact-form-card {
+    padding: 35px 30px;
+  }
+}
+
+/* Mobile Screen (<= 600px): Title 30px */
+@media (max-width: 600px) {
+  .contact-main-section {
+    padding: 50px 20px;
+  }
+
+  .contact-info-title {
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.22;
+  }
+
+  .contact-info-description {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  .contact-detail-row {
+    gap: 14px;
+    padding: 13px 0;
+  }
+
+  .detail-icon-circle {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+  }
+
+  .detail-icon-circle svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .contact-form-card {
+    padding: 28px 18px;
+  }
+
+  .form-card-title {
+    font-size: 27px;
+  }
+}
