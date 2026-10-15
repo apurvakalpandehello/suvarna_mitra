@@ -1,6 +1,9 @@
 import React from 'react';
 import './AboutClearerPath.css';
 
+// ॲसेट्स फोल्डरमधील इमेज इंपोर्ट करा (तुमच्या फाईलच्या नावानुसार नाव बदला)
+import clearerPathImg from '../../assets/images/clearer-path.png';
+
 function AboutClearerPath() {
   return (
     <section className="clearer-path-section">
@@ -30,11 +33,11 @@ function AboutClearerPath() {
           </a>
         </div>
 
-        {/* उजवीकडील इमेज (Right Image) */}
+        {/* उजवीकडील इमेज (Right Image - assets मधून) */}
         <div className="clearer-path-image-box">
           <img 
-            src="https://images.unsplash.com/photo-1618042164219-62c820f10723?q=80&w=1200&auto=format&fit=crop" 
-            alt="Gold coins and notebook representing clear financial planning" 
+            src={clearerPathImg} 
+            alt="A Clearer Path Starts with a Conversation" 
             className="clearer-path-img" 
           />
         </div>
