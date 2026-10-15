@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
-/* ================= Animations ================= */
+/* ================= Cinematic Keyframe Animations ================= */
 @keyframes heroFadeUp {
   0% {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(35px);
   }
   100% {
     opacity: 1;
@@ -12,45 +12,83 @@
   }
 }
 
-@keyframes heroFadeIn {
+@keyframes mapCardReveal {
   0% {
     opacity: 0;
+    transform: scale(0.96) translateY(20px);
   }
   100% {
     opacity: 1;
+    transform: scale(1) translateY(0);
   }
 }
 
-/* ================= Main Location Section ================= */
+/* Radar pulse animation for map pin */
+@keyframes radarExpand {
+  0% {
+    transform: translate(-50%, -50%) scale(0.4);
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.8);
+    opacity: 0;
+  }
+}
+
+/* Floating animation for badge */
+@keyframes pinFloat {
+  0%, 100% {
+    transform: translate(-50%, -50%);
+  }
+  50% {
+    transform: translate(-50%, -56%);
+  }
+}
+
+/* ================= Main Location Section (Desktop Specs) ================= */
 .contact-location-section {
   width: 100%;
-  background-color: #faf7f2; /* Same Warm Cream Theme */
-  padding: 85px 60px;
-  box-sizing: border-box;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  height: 650px;
+  min-height: 650px;
+  max-width: 100%;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  padding-left: 4.2%;
+  padding-right: 4.2%;
+  background-color: #faf7f2; /* Cream Theme */
   overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center; /* Vertical alignment: Center */
   position: relative;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+/* 2 Columns Container */
 .contact-location-container {
   width: 100%;
-  max-width: 1320px;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 60px;
+  align-items: center; /* Vertical alignment: Center */
+  justify-content: space-between; /* Content alignment: Space between */
+  gap: 48px; /* Column gap: 48px */
+  box-sizing: border-box;
 }
 
-/* ================= Left Side Content ================= */
+/* ================= Left Column: Content (46% Width) ================= */
 .location-content-col {
-  flex: 1;
-  max-width: 530px;
+  flex: 0 0 46%;
+  width: 46%;
+  max-width: 46%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  animation: heroFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  box-sizing: border-box;
 }
 
 /* Badge + Dash Line */
@@ -58,25 +96,28 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
+  opacity: 0;
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.1s;
 }
 
 .location-badge-text {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 2.4px;
-  color: #b38048; /* Same Signature Gold */
+  letter-spacing: 2.6px;
+  color: #b38048;
   text-transform: uppercase;
   transition: letter-spacing 0.3s ease;
 }
 
 .location-badge-wrap:hover .location-badge-text {
-  letter-spacing: 3px;
+  letter-spacing: 3.4px;
 }
 
 .location-badge-line {
-  width: 38px;
+  width: 42px;
   height: 1.5px;
   background-color: #b38048;
   opacity: 0.75;
@@ -85,209 +126,290 @@
 /* Main Heading */
 .location-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 46px;
+  font-size: 48px;
   font-weight: 400;
-  line-height: 1.16;
+  line-height: 1.14;
   color: #141414;
   letter-spacing: -0.3px;
-  margin: 0 0 18px 0;
-  animation: heroFadeUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  margin: 0 0 20px 0;
+  text-align: left;
+  opacity: 0;
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.25s;
+}
+
+/* Italic & #b38048 Color Accent */
+.location-title-accent {
+  color: #b38048;
+  font-style: italic;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
 }
 
 /* Sub-text Paragraph */
 .location-description {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 15px;
-  line-height: 1.7;
+  font-size: 15.5px;
+  line-height: 1.75;
   color: #797672;
   font-weight: 400;
-  margin: 0 0 32px 0;
-  animation: heroFadeUp 1.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  margin: 0 0 36px 0;
+  text-align: left;
+  max-width: 500px;
+  opacity: 0;
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.4s;
 }
 
-/* Get Directions Outlined Button */
+/* Get Directions Premium Button */
 .location-directions-btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 13px 30px;
-  border: 1px solid #b38048;
+  gap: 12px;
+  padding: 14px 32px;
+  border: 1.5px solid #b38048;
   background-color: transparent;
   color: #b38048;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1.6px;
+  letter-spacing: 1.8px;
   text-decoration: none;
-  border-radius: 4px;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 2px 6px rgba(179, 128, 72, 0.08);
+  border-radius: 6px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(179, 128, 72, 0.1);
+  opacity: 0;
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.55s;
 }
 
 .directions-arrow {
-  font-size: 15px;
-  transition: transform 0.3s ease;
+  font-size: 16px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .location-directions-btn:hover {
   background-color: #b38048;
   color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(179, 128, 72, 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(179, 128, 72, 0.3);
 }
 
 .location-directions-btn:hover .directions-arrow {
-  transform: translateX(4px);
+  transform: translateX(5px);
 }
 
-/* ================= Right Side Map Display ================= */
+/* ================= Right Column: Map Display (54% Width) ================= */
 .location-map-col {
-  flex: 1.25;
-  width: 100%;
-  animation: heroFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  flex: 0 0 54%;
+  width: 54%;
+  max-width: 54%;
+  box-sizing: border-box;
 }
 
 .location-map-card {
   width: 100%;
-  height: 380px;
+  height: 440px;
   position: relative;
-  border-radius: 10px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.06);
-  border: 1px solid #ede5da;
+  box-shadow: 0 20px 48px rgba(20, 20, 20, 0.08);
+  border: 1.5px solid #eae2d6;
+  opacity: 0;
+  animation: mapCardReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.3s;
+  background-color: #f2ece1;
 }
 
-/* Stylized Vector Map Background */
+/* Vector Map Canvas Pattern */
 .location-map-bg {
   width: 100%;
   height: 100%;
-  background-color: #e8e3d8;
+  background-color: #eee8dc;
   background-image: 
-    radial-gradient(#b8af9d 1px, transparent 1px),
-    linear-gradient(65deg, rgba(162, 196, 201, 0.35) 20%, transparent 20%),
-    linear-gradient(-35deg, rgba(230, 224, 214, 0.8) 40%, transparent 40%),
-    linear-gradient(to right, #ded8cc 2px, transparent 2px),
-    linear-gradient(to bottom, #ded8cc 2px, transparent 2px);
-  background-size: 24px 24px, 100% 100%, 100% 100%, 70px 70px, 70px 70px;
+    radial-gradient(#baa992 1.2px, transparent 1.2px),
+    linear-gradient(55deg, rgba(178, 198, 185, 0.35) 18%, transparent 18%),
+    linear-gradient(-35deg, rgba(235, 227, 215, 0.85) 38%, transparent 38%),
+    linear-gradient(to right, #e2d9ca 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, #e2d9ca 1.5px, transparent 1.5px);
+  background-size: 26px 26px, 100% 100%, 100% 100%, 80px 80px, 80px 80px;
   background-position: center;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Floating Location Pin Pill */
+.location-map-card:hover .location-map-bg {
+  transform: scale(1.035);
+}
+
+/* Pulsing Radar Ring Effects */
+.location-radar-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: rgba(179, 128, 72, 0.3);
+  border: 1.5px solid #b38048;
+  pointer-events: none;
+  animation: radarExpand 2.8s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+.location-radar-pulse.delay-1 {
+  animation-delay: 1.4s;
+}
+
+/* Floating Location Pin Pill Badge */
 .location-pin-badge {
   position: absolute;
-  top: 48%;
-  left: 45%;
-  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
   background-color: #ffffff;
-  border-radius: 50px;
-  padding: 6px 18px 6px 6px;
+  border-radius: 60px;
+  padding: 8px 22px 8px 8px;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  border: 1px solid rgba(179, 128, 72, 0.2);
-  z-index: 2;
-  transition: transform 0.3s ease;
+  gap: 12px;
+  box-shadow: 0 12px 32px rgba(20, 20, 20, 0.14);
+  border: 1.5px solid rgba(179, 128, 72, 0.25);
+  z-index: 3;
+  animation: pinFloat 4s ease-in-out infinite;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
 }
 
 .location-pin-badge:hover {
-  transform: translate(-50%, -54%);
+  box-shadow: 0 16px 40px rgba(179, 128, 72, 0.28);
 }
 
 .pin-icon-wrap {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background-color: #b38048;
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 4px 10px rgba(179, 128, 72, 0.3);
 }
 
 .pin-icon-wrap svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
+}
+
+.pin-text-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.pin-badge-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #b38048;
 }
 
 .pin-badge-text {
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 600;
-  color: #2b2b2b;
-  letter-spacing: 0.2px;
+  color: #141414;
 }
 
-/* Corner Plant Decoration */
-.map-corner-leaf {
+/* Corner Ambient Glow */
+.map-corner-glow {
   position: absolute;
   top: 0;
   right: 0;
-  width: 90px;
-  height: 90px;
-  background: radial-gradient(circle at top right, rgba(98, 115, 83, 0.3), transparent 70%);
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle at top right, rgba(179, 128, 72, 0.2), transparent 70%);
   pointer-events: none;
 }
 
 /* ================= Fully Responsive Layout ================= */
 
-/* Tablet Screen (<= 992px) */
+/* Tablet View (<= 992px) */
 @media (max-width: 992px) {
   .contact-location-section {
-    padding: 70px 35px;
+    height: auto;
+    min-height: auto;
+    padding: 75px 4.2%;
   }
 
   .contact-location-container {
     flex-direction: column;
-    gap: 40px;
+    gap: 46px;
     align-items: stretch;
   }
 
   .location-content-col,
   .location-map-col {
-    max-width: 100%;
+    flex: 1 1 100%;
     width: 100%;
+    max-width: 100%;
   }
 
   .location-title {
-    font-size: 36px;
-    font-weight: 400;
-  }
-
-  .location-map-card {
-    height: 330px;
-  }
-}
-
-/* Mobile Screen (<= 600px) */
-@media (max-width: 600px) {
-  .contact-location-section {
-    padding: 50px 20px;
-  }
-
-  .location-title {
-    font-size: 30px;
-    font-weight: 400;
-    line-height: 1.22;
+    font-size: 38px;
   }
 
   .location-description {
-    font-size: 14px;
-    line-height: 1.65;
-    margin-bottom: 26px;
+    max-width: 100%;
+  }
+
+  .location-map-card {
+    height: 360px;
+    border-radius: 16px;
+  }
+}
+
+/* Mobile View (<= 600px) */
+@media (max-width: 600px) {
+  .contact-location-section {
+    height: auto;
+    min-height: auto;
+    padding: 55px 20px 60px;
+  }
+
+  .location-title {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .location-description {
+    font-size: 14.5px;
+    line-height: 1.68;
+    margin-bottom: 28px;
   }
 
   .location-directions-btn {
     width: 100%;
     justify-content: center;
     box-sizing: border-box;
-    padding: 13px 20px;
+    padding: 14px 20px;
   }
 
   .location-map-card {
-    height: 260px;
+    height: 280px;
+    border-radius: 14px;
   }
 
   .location-pin-badge {
-    left: 50%;
+    padding: 6px 16px 6px 6px;
+    gap: 9px;
+  }
+
+  .pin-icon-wrap {
+    width: 32px;
+    height: 32px;
+  }
+
+  .pin-badge-text {
+    font-size: 12.5px;
   }
 }

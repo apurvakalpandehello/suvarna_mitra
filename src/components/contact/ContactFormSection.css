@@ -15,32 +15,42 @@
 /* ================= Main Section Wrapper ================= */
 .contact-main-section {
   width: 100%;
-  background-color: #faf7f2; /* Same Warm Cream */
-  padding: 90px 60px;
+  height: auto;
+  min-height: 850px;
+  max-width: 100%;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  padding-left: 4.8%;
+  padding-right: 4.8%;
+  background-color: #faf7f2; /* Cream background */
+  overflow: visible;
   box-sizing: border-box;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  overflow: hidden;
   position: relative;
 }
 
+/* 2 Columns Container */
 .contact-main-container {
   width: 100%;
-  max-width: 1320px;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 70px;
+  align-items: flex-start; /* Vertical alignment: Start */
+  justify-content: space-between; /* Content alignment: Space between */
+  gap: 48px; /* Column gap: 48px */
+  box-sizing: border-box;
 }
 
-/* ================= Left Side (Contact Details) ================= */
+/* ================= Left Column: Contact Info (45% Width) ================= */
 .contact-info-col {
-  flex: 1;
-  max-width: 540px;
+  flex: 0 0 45%;
+  width: 45%;
+  max-width: 45%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
+  box-sizing: border-box;
   animation: heroFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -57,8 +67,13 @@
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 2.4px;
-  color: #b38048; /* Same Gold Accent */
+  color: #b38048; /* Gold Accent */
   text-transform: uppercase;
+  transition: letter-spacing 0.3s ease;
+}
+
+.contact-badge-wrap:hover .contact-badge-text {
+  letter-spacing: 3px;
 }
 
 .contact-badge-line {
@@ -77,6 +92,16 @@
   color: #141414;
   letter-spacing: -0.3px;
   margin: 0 0 18px 0;
+  text-align: left;
+}
+
+/* "Here" Word Accent: Italic & #b38048 Color */
+.contact-title-accent {
+  color: #b38048;
+  font-style: italic;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
+  display: inline-block;
 }
 
 /* Sub-description */
@@ -87,9 +112,11 @@
   color: #797672;
   font-weight: 400;
   margin: 0 0 40px 0;
+  text-align: left;
+  max-width: 520px;
 }
 
-/* Details list */
+/* Contact Details List */
 .contact-details-list {
   width: 100%;
   display: flex;
@@ -152,27 +179,30 @@
   color: #b38048;
 }
 
-/* Separator Line between rows */
+/* Separator Line */
 .contact-info-divider {
   width: 100%;
   height: 1px;
   background-color: #ede5da;
 }
 
-/* ================= Right Side (Card Form) ================= */
+/* ================= Right Column: Form (55% Width) ================= */
 .contact-form-col {
-  flex: 1.15;
-  width: 100%;
+  flex: 0 0 55%;
+  width: 55%;
+  max-width: 55%;
+  box-sizing: border-box;
   animation: heroFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .contact-form-card {
   background-color: #ffffff;
-  border: 1.5px solid #d4b58c; /* Elegant Soft Gold Outline */
+  border: 1.5px solid #d4b58c; /* Soft Gold Outline */
   border-radius: 4px;
   padding: 45px 45px;
   box-sizing: border-box;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  width: 100%;
 }
 
 .form-card-title {
@@ -182,6 +212,7 @@
   color: #141414;
   margin: 0 0 8px 0;
   letter-spacing: -0.2px;
+  text-align: left;
 }
 
 .form-card-subtitle {
@@ -189,6 +220,7 @@
   color: #797672;
   margin: 0 0 28px 0;
   font-weight: 400;
+  text-align: left;
 }
 
 /* Form Layout */
@@ -210,6 +242,7 @@
   font-weight: 600;
   color: #2b2b2b;
   margin-bottom: 7px;
+  text-align: left;
 }
 
 .field-required {
@@ -286,6 +319,7 @@
   font-size: 12px;
   line-height: 1.5;
   color: #797672;
+  text-align: left;
 }
 
 .privacy-anchor {
@@ -298,7 +332,7 @@
   color: #9c6e3d;
 }
 
-/* Submit Button - Image madhil dark olive/forest green style */
+/* Submit Button */
 .form-submit-btn {
   width: 100%;
   background-color: #434c38;
@@ -334,28 +368,29 @@
   transform: translateX(4px);
 }
 
-/* ================= Fully Responsive Layout ================= */
+/* ================= Responsive Layout ================= */
 
-/* Tablet Screen (<= 992px): Title 36px */
+/* Tablet Screen (<= 992px) */
 @media (max-width: 992px) {
   .contact-main-section {
-    padding: 70px 35px;
+    min-height: auto;
+    padding: 70px 4.8%;
   }
 
   .contact-main-container {
     flex-direction: column;
-    gap: 50px;
+    gap: 48px;
   }
 
   .contact-info-col,
   .contact-form-col {
-    max-width: 100%;
+    flex: 1 1 100%;
     width: 100%;
+    max-width: 100%;
   }
 
   .contact-info-title {
     font-size: 36px;
-    font-weight: 400;
   }
 
   .contact-form-card {
@@ -363,7 +398,7 @@
   }
 }
 
-/* Mobile Screen (<= 600px): Title 30px */
+/* Mobile Screen (<= 600px) */
 @media (max-width: 600px) {
   .contact-main-section {
     padding: 50px 20px;
@@ -371,7 +406,6 @@
 
   .contact-info-title {
     font-size: 30px;
-    font-weight: 400;
     line-height: 1.22;
   }
 

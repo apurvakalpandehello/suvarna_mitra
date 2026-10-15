@@ -15,9 +15,9 @@ function ContactLocationSection() {
             <span className="location-badge-line"></span>
           </div>
 
-          {/* Heading */}
+          {/* Heading - "Person" highlighted with signature styling */}
           <h2 className="location-title">
-            Let’s Connect in Person.
+            Let’s Connect in <span className="location-title-accent">Person.</span>
           </h2>
 
           {/* Description */}
@@ -25,7 +25,7 @@ function ContactLocationSection() {
             We’d love to meet you at our office. Visit us to discuss your financial goals and explore how we can help you build a brighter future together.
           </p>
 
-          {/* Get Directions Button */}
+          {/* Direct Directions Interactive Button */}
           <a 
             href="https://maps.google.com/?q=Pune,Maharashtra" 
             target="_blank" 
@@ -42,21 +42,28 @@ function ContactLocationSection() {
         <div className="location-map-col">
           <div className="location-map-card">
             
-            {/* Map Background Pattern / Tile */}
+            {/* Interactive Vector Pattern Map Grid */}
             <div className="location-map-bg"></div>
 
-            {/* Custom Location Marker Card */}
+            {/* Pulsing Radar Wave Rings */}
+            <div className="location-radar-pulse"></div>
+            <div className="location-radar-pulse delay-1"></div>
+
+            {/* Custom Location Marker Badge */}
             <div className="location-pin-badge">
               <div className="pin-icon-wrap">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/>
                 </svg>
               </div>
-              <span className="pin-badge-text">Pune, Maharashtra</span>
+              <div className="pin-text-group">
+                <span className="pin-badge-title">Head Office</span>
+                <span className="pin-badge-text">Pune, Maharashtra</span>
+              </div>
             </div>
 
-            {/* Corner Decorative Leaf Element */}
-            <div className="map-corner-leaf"></div>
+            {/* Modern Subtle Corner Glow Element */}
+            <div className="map-corner-glow"></div>
 
           </div>
         </div>

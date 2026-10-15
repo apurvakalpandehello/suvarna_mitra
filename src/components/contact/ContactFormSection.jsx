@@ -37,7 +37,10 @@ function ContactFormSection() {
             <span className="contact-badge-line"></span>
           </div>
 
-          <h2 className="contact-info-title">We’re Here to Help.</h2>
+          {/* Title - "Here" la italic & #b38048 color dila ahe */}
+          <h2 className="contact-info-title">
+            We’re <span className="contact-title-accent">Here</span> to Help.
+          </h2>
 
           <p className="contact-info-description">
             Have a question, need guidance or want to schedule a consultation? 

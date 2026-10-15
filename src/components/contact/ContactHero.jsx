@@ -1,7 +1,7 @@
 import React from 'react';
 import './ContactHero.css';
 
-// Local assets madhun image correct format madhe import keli ahe
+// updated high-quality image file 
 import contactHeroImg from '../../assets/images/contactHeroImg.png';
 
 function ContactHero() {
@@ -12,24 +12,24 @@ function ContactHero() {
         {/* Davyakadil Content Area */}
         <div className="contact-hero-left">
           
-          {/* Badge + Line */}
+          {/* Badge + Line (Animate-In-1) */}
           <div className="contact-badge-box">
             <span className="contact-badge-text">GET IN TOUCH</span>
             <span className="contact-badge-line"></span>
           </div>
 
-          {/* Heading */}
+          {/* Heading - Animated & Highlighting (Animate-In-2) */}
           <h1 className="contact-hero-title">
             Let’s Talk About<br />
-            Your Financial Future.
+            <span className="contact-title-highlight">Your Financial Future.</span>
           </h1>
 
-          {/* Description */}
+          {/* Description (Animate-In-3) */}
           <p className="contact-hero-description">
             Get personalized guidance from our experts to help you make informed decisions, achieve your goals and build a more secure tomorrow.
           </p>
 
-          {/* 3 Value Proposition Features */}
+          {/* 3 Value Proposition Features (Animate-In-4) */}
           <div className="contact-features-wrap">
             
             {/* Feature 1 */}
@@ -83,7 +83,7 @@ function ContactHero() {
 
         </div>
 
-        {/* Ujvyakadil Image (Soft Blend Vignette Effect) */}
+        {/* Ujvyakadil Image Frame - Smooth Rounded Corner - No Blur (Animate-In-Fade) */}
         <div className="contact-hero-right">
           <div className="contact-img-frame">
             <img 
@@ -91,8 +91,6 @@ function ContactHero() {
               alt="Let's Talk About Your Financial Future" 
               className="contact-main-img" 
             />
-            {/* Background cream sobat blend honari gradient line */}
-            <div className="contact-soft-blend"></div>
           </div>
         </div>
 
