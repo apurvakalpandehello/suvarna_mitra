@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
-/* ================= ॲनिमेशन्स (Keyframes) ================= */
+/* ================= Keyframe Animations ================= */
 @keyframes ctaFadeUp {
   0% {
     opacity: 0;
@@ -46,12 +46,16 @@
 /* ================= Section Base ================= */
 .services-cta-section {
   width: 100%;
-  background-color: #faf7f2; /* Exact warm cream tone */
-  padding: 85px 0 85px 70px;
+  min-height: 615px; /* सेक्शनची उंची अंदाजे ६१५px */
+  background-color: #faf7f2;
+  /* डाव्या आणि उजव्या दोन्ही बाजूला एकसमान ६% (११३px) पॅडिंग */
+  padding: 125px 6% 125px 6%;
   box-sizing: border-box;
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow: hidden;
   position: relative;
+  display: flex;
+  align-items: center; /* Vertical alignment: Center */
 }
 
 /* Background Ambient Luxury Light */
@@ -81,18 +85,20 @@
   animation-delay: 2.5s;
 }
 
+/* 3 Columns Layout (Left, Center, Right) */
 .services-cta-container {
+  width: 100%;
   max-width: 1380px;
   margin: 0 auto;
   display: flex;
-  align-items: center;
+  align-items: center; /* Vertical alignment: Center */
   justify-content: space-between;
-  gap: 40px;
+  gap: 45px;
   position: relative;
   z-index: 2;
 }
 
-/* ================= Left Side ================= */
+/* ================= Column 1: Left Side ================= */
 .services-cta-left {
   flex: 1.15;
   display: flex;
@@ -107,7 +113,7 @@
   font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 2.4px;
-  color: #b38048; /* Exact #b38048 brand accent */
+  color: #b38048;
   text-transform: uppercase;
   margin-bottom: 18px;
   display: inline-block;
@@ -118,7 +124,7 @@
   letter-spacing: 3px;
 }
 
-/* Title: 46px, Weight 400, Cormorant Garamond */
+/* Main Heading: Desktop (46px, Weight 400, Cormorant Garamond) */
 .services-cta-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 46px;
@@ -130,7 +136,6 @@
   transition: color 0.3s ease;
 }
 
-/* Highlighted Text (Within Reach.) */
 .cta-highlight-reach {
   font-style: italic;
   color: #b38048;
@@ -143,14 +148,14 @@
   transform: translateX(4px);
 }
 
-/* ================= Center Content ================= */
+/* ================= Column 2: Center Content ================= */
 .services-cta-center {
   flex: 1.05;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  padding-left: 24px;
+  padding-left: 15px;
   animation: ctaFadeUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -163,9 +168,9 @@
   margin: 0 0 28px 0;
 }
 
-/* ENQUIRE NOW Button (#b38048) */
+/* ENQUIRE NOW Button */
 .services-cta-btn {
-  background-color: #b38048; /* Exact brand gold-ochre tone */
+  background-color: #b38048;
   color: #ffffff;
   padding: 14px 34px;
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -174,7 +179,7 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
-  border-radius: 4px; /* Slight rounded for premium touch */
+  border-radius: 4px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -184,7 +189,6 @@
   box-shadow: 0 6px 16px rgba(179, 128, 72, 0.2);
 }
 
-/* Button Shimmer Effect */
 .services-cta-btn::after {
   content: '';
   position: absolute;
@@ -217,31 +221,31 @@
   transform: translateX(4px);
 }
 
-/* ================= Right Side Image ================= */
+/* ================= Column 3: Right Side Image ================= */
 .services-cta-right {
-  flex: 1.2;
+  flex: 1.25;
   position: relative;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
   animation: ctaImageReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .services-cta-img-box {
   width: 100%;
-  height: 240px;
+  height: 350px;
   overflow: hidden;
   position: relative;
-  border-radius: 12px 0 0 12px; /* Smooth rounded curve */
+  /* दोन्ही बाजूंनी पॅडिंग समान असल्यामुळे चारही कोपऱ्यांना २०px चा स्मूथ बॉर्डर रेडियस */
+  border-radius: 20px;
   background-color: #ede7de;
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.08);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  /* Soft organic edge blend on the left */
-  mask-image: linear-gradient(to right, transparent 0%, black 35%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 35%);
 }
 
 .services-cta-img-box:hover {
   transform: translateY(-4px);
-  box-shadow: -10px 14px 35px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
 }
 
 .services-cta-img {
@@ -250,6 +254,7 @@
   object-fit: cover;
   object-position: center;
   display: block;
+  border-radius: 20px;
   transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -257,7 +262,6 @@
   transform: scale(1.05);
 }
 
-/* Image Hover Shimmer */
 .services-cta-shimmer {
   position: absolute;
   top: 0;
@@ -273,12 +277,13 @@
   animation: ctaShimmerSweep 0.85s ease;
 }
 
-/* ================= Responsive Layout ================= */
+/* ================= Fully Responsive Layout ================= */
 
-/* Tablet Screen (<= 992px): Title 36px, Weight 400 */
-@media (max-width: 992px) {
+/* Tablet Screen (<= 1024px) */
+@media (max-width: 1024px) {
   .services-cta-section {
-    padding: 70px 35px;
+    min-height: auto;
+    padding: 70px 4% 70px 4%;
   }
 
   .services-cta-container {
@@ -302,18 +307,20 @@
   }
 
   .services-cta-img-box {
-    height: 190px;
-    mask-image: none;
-    -webkit-mask-image: none;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    height: 250px;
+    border-radius: 16px;
+  }
+
+  .services-cta-img {
+    border-radius: 16px;
   }
 }
 
-/* Mobile Screen (<= 600px): Title 30px, Weight 400 */
+/* Mobile Screen (<= 600px) */
 @media (max-width: 600px) {
   .services-cta-section {
-    padding: 55px 20px;
+    min-height: auto;
+    padding: 55px 20px 55px 20px;
   }
 
   .services-cta-container {
@@ -343,7 +350,11 @@
   }
 
   .services-cta-img-box {
-    height: 155px;
-    border-radius: 10px;
+    height: 190px;
+    border-radius: 14px;
+  }
+
+  .services-cta-img {
+    border-radius: 14px;
   }
 }
