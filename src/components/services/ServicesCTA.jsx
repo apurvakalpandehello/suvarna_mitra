@@ -1,8 +1,8 @@
 import React from 'react';
 import './ServicesCTA.css';
 
-// उजव्या बाजूच्या पेन आणि डॉक्युमेंट व्हिज्युअलसाठी ऑनलाइन इमेज
-const ctaPenImg = "https://images.unsplash.com/photo-1583521214690-73421a1829a9?q=80&w=1000&auto=format&fit=crop";
+// assets/images/ फोल्डरमधून इमेज इंपोर्ट केली
+import ctaPenImg from '../../assets/images/lets-get-started.png';
 
 function ServicesCTA() {
   return (

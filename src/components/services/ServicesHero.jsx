@@ -1,8 +1,8 @@
 import React from 'react';
 import './ServicesHero.css';
 
-// इमेजचा पाथ
-const heroImg = "https://images.unsplash.com/photo-1618042164219-62c820f10723?q=80&w=1200&auto=format&fit=crop";
+// assets/images/ फोल्डरमधून इमेज इंपोर्ट केली
+import heroImg from '../../assets/images/our-services-brighter-tomorrow.png';
 
 function ServicesHero() {
   return (
@@ -55,7 +55,7 @@ function ServicesHero() {
           <div className="services-hero-img-box">
             <img 
               src={heroImg} 
-              alt="Gold coins stacked on table with notebook and pen" 
+              alt="Financial Solutions for a Brighter Tomorrow" 
               className="services-hero-img" 
             />
             {/* Shimmer Light Reflection Effect */}

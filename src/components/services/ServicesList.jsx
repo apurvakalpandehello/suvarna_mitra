@@ -1,12 +1,18 @@
 import React from 'react';
 import './ServicesList.css';
 
+// assets/images/ फोल्डरमधून ४ इमेजेस इंपोर्ट केल्या
+import serviceConsultancyImg from '../../assets/images/our-services-finanacial-needs1.png';
+import serviceLoanTakeoverImg from '../../assets/images/our-services-finanacial-needs2.png';
+import serviceGoldSipImg from '../../assets/images/our-servives-financial-need3.png';
+import serviceAuctionGoldImg from '../../assets/images/our-services-finanacial-needs4.png';
+
 function ServicesList() {
   const services = [
     {
       title: "Financial Consultancy & Assistance",
       desc: "Get expert advice and personalised guidance to plan your finances, optimise your assets and achieve your goals with confidence.",
-      img: "https://images.unsplash.com/photo-1450133064473-71024230f91b?q=80&w=800&auto=format&fit=crop",
+      img: serviceConsultancyImg,
       link: "#financial-consultancy",
       icon: (
         /* Advisory Consultation */
@@ -26,7 +32,7 @@ function ServicesList() {
     {
       title: "Loan Takeover Assistance",
       desc: "We help you transfer and manage your existing loans to better terms, lower interest rates and reduce your financial burden.",
-      img: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop",
+      img: serviceLoanTakeoverImg,
       link: "#loan-takeover",
       icon: (
         /* Loan Transfer Structure */
@@ -43,7 +49,7 @@ function ServicesList() {
     {
       title: "Gold SIP",
       desc: "Build wealth gradually with gold. A simple, secure and disciplined way to invest in your future.",
-      img: "https://images.unsplash.com/photo-1618042164219-62c820f10723?q=80&w=800&auto=format&fit=crop",
+      img: serviceGoldSipImg,
       link: "#gold-sip",
       icon: (
         /* Systematic Investment Coins Stack */
@@ -60,7 +66,7 @@ function ServicesList() {
     {
       title: "Auctioned Gold",
       desc: "Get the best value for your auctioned gold with a transparent, secure and hassle-free process.",
-      img: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=800&auto=format&fit=crop",
+      img: serviceAuctionGoldImg,
       link: "#auctioned-gold",
       icon: (
         /* Auction Gavel */
@@ -106,9 +112,16 @@ function ServicesList() {
               key={index} 
               style={{ '--grid-idx': index }}
             >
-              {/* Left Image Box with Shimmer */}
+              {/* Left Image Box with Perfect Fitting & Shimmer */}
               <div className="service-item-img-box">
-                <img src={item.img} alt={item.title} className="service-item-img" />
+                <div className="service-item-img-inner">
+                  <img 
+                    src={item.img} 
+                    alt={item.title} 
+                    className="service-item-img" 
+                    loading="lazy"
+                  />
+                </div>
                 <div className="service-img-shimmer"></div>
               </div>
 

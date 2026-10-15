@@ -47,15 +47,19 @@
 .services-list-section {
   width: 100%;
   background-color: #faf7f2;
-  padding: 95px 60px 105px;
+  /* Alignment Settings (Desktop):
+     Top: 35px, Right: 6.25% (110px), Bottom: 70px, Left: 6.25% (110px) */
+  padding: 35px 6.25% 70px 6.25%;
   box-sizing: border-box;
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow: hidden;
   position: relative;
 }
 
+/* Content Width: 87.5% */
 .services-list-container {
-  max-width: 1260px;
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
@@ -63,8 +67,9 @@
 
 /* ================= Top Header ================= */
 .services-list-header {
+  /* Heading Alignment: Center, Description Alignment: Center */
   text-align: center;
-  margin-bottom: 75px;
+  margin-bottom: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -105,7 +110,7 @@
   letter-spacing: 2.8px;
 }
 
-/* Heading: Desktop (46px, Weight 400, Cormorant Garamond) */
+/* Heading: Desktop (46px, Weight 400, Cormorant Garamond, Center Aligned) */
 .services-list-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 46px;
@@ -131,6 +136,7 @@
   transform: translateX(4px);
 }
 
+/* Description Alignment: Center */
 .services-list-subtitle {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 14.5px;
@@ -138,24 +144,26 @@
   color: #736f69;
   font-weight: 400;
   margin: 0;
-  max-width: 720px;
+  max-width: 760px;
   text-align: center;
 }
 
 /* ================= 2x2 Services Grid Layout ================= */
 .services-cards-grid {
   display: grid;
+  /* Services layout: 2 columns */
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 65px;
-  row-gap: 55px;
+  /* Column gap: 70px */
+  column-gap: 70px;
+  row-gap: 50px;
 }
 
 .service-item-row {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 30px;
   padding: 16px;
-  border-radius: 12px;
+  border-radius: 16px;
   background-color: transparent;
   opacity: 0;
   animation: srvListFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -171,29 +179,47 @@
   box-shadow: 0 14px 35px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(179, 128, 72, 0.06);
 }
 
-/* Left Image Box with Rounded Corners */
+/* ================= Image Container (Size: 280 × 306px, Radius: 16px) ================= */
 .service-item-img-box {
-  flex: 0 0 190px;
-  height: 220px;
+  flex: 0 0 280px;
+  width: 280px;
+  height: 306px;
   overflow: hidden;
-  border-radius: 10px; /* Modern Smooth Rounded Corners */
-  background-color: #ede7de;
+  /* Image border radius: 16px */
+  border-radius: 16px;
+  background: linear-gradient(145deg, #f0eae1, #e6ded3);
   position: relative;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(179, 128, 72, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.service-item-img-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+/* Image Fit & Border Radius */
 .service-item-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   display: block;
-  border-radius: 10px;
+  /* Image border radius: 16px */
+  border-radius: 16px;
   transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .service-item-row:hover .service-item-img {
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
 /* Image Shimmer Light */
@@ -203,16 +229,17 @@
   left: 0;
   width: 60%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.32), transparent);
   transform: translateX(-150%) skewX(-20deg);
   pointer-events: none;
+  z-index: 2;
 }
 
 .service-item-row:hover .service-img-shimmer {
   animation: srvShimmerSweep 0.85s ease;
 }
 
-/* Right Content Box */
+/* ================= Right Content Box ================= */
 .service-item-info {
   flex: 1;
   display: flex;
@@ -291,7 +318,7 @@
   color: #4a4642;
 }
 
-/* Know More Link with Animated Underline & Arrow */
+/* Know More Link */
 .service-know-more {
   display: inline-flex;
   align-items: center;
@@ -339,12 +366,25 @@
 
 /* ================= Fully Responsive Layout ================= */
 
-/* Tablet Screen (<= 992px): Title 36px, Weight 400 */
-@media (max-width: 992px) {
+/* Tablet Screen (<= 1100px) */
+@media (max-width: 1100px) {
   .services-list-section {
-    padding: 75px 30px;
+    padding: 35px 4% 60px 4%;
   }
 
+  .services-cards-grid {
+    column-gap: 40px;
+  }
+
+  .service-item-img-box {
+    flex: 0 0 220px;
+    width: 220px;
+    height: 240px;
+  }
+}
+
+/* Tablet Screen (<= 900px) */
+@media (max-width: 900px) {
   .services-list-title {
     font-size: 36px;
     font-weight: 400;
@@ -361,19 +401,20 @@
   }
 
   .service-item-img-box {
-    flex: 0 0 180px;
-    height: 200px;
+    flex: 0 0 240px;
+    width: 240px;
+    height: 260px;
   }
 }
 
-/* Mobile Screen (<= 600px): Title 30px, Weight 400 */
+/* Mobile Screen (<= 600px) */
 @media (max-width: 600px) {
   .services-list-section {
-    padding: 55px 20px;
+    padding: 30px 20px 50px 20px;
   }
 
   .services-list-header {
-    margin-bottom: 45px;
+    margin-bottom: 40px;
   }
 
   .srv-sub-break {
@@ -394,13 +435,13 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 18px;
-    padding: 14px;
+    padding: 16px;
   }
 
   .service-item-img-box {
     width: 100%;
     flex: auto;
-    height: 210px;
+    height: 240px;
   }
 
   .service-item-title {
