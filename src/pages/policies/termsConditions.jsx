@@ -162,13 +162,13 @@ function TermsConditions() {
     <main className="terms-page">
       <div className="terms-container">
         
-        {/* Simple Document Header */}
+        {/* Simple Plain Text Header */}
         <header className="terms-header">
           <span className="terms-badge">LEGAL AGREEMENT & TERMS</span>
           <h1 className="terms-main-title">Terms & Conditions</h1>
           <p className="terms-last-updated">Last Updated: October 12, 2026</p>
 
-          <div className="terms-intro-box">
+          <div className="terms-intro-content">
             <p className="terms-intro">
               Welcome to the website of <strong>Swarna Mitra Financial Services</strong> ("Swarna Mitra", "Company", "we", "us" or "our").
             </p>
@@ -203,16 +203,14 @@ function TermsConditions() {
               )}
 
               {item.isContact && (
-                <div className="clause-contact-wrapper">
+                <div className="terms-contact-list">
                   <p className="clause-desc">{item.description}</p>
-                  <div className="terms-contact-card">
-                    {item.contactList.map((c, cIdx) => (
-                      <div key={cIdx} className="contact-info-row">
-                        <span className="contact-label">{c.label}:</span>
-                        <span className="contact-val">{c.value}</span>
-                      </div>
-                    ))}
-                  </div>
+                  {item.contactList.map((c, cIdx) => (
+                    <div key={cIdx} className="contact-info-row">
+                      <span className="contact-label">{c.label}:</span>
+                      <span className="contact-val">{c.value}</span>
+                    </div>
+                  ))}
                 </div>
               )}
             </article>

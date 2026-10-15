@@ -109,13 +109,13 @@ function PrivacyPolicy() {
     <main className="privacy-page">
       <div className="privacy-container">
         
-        {/* Simple Document Header */}
+        {/* Simple Plain Text Header */}
         <header className="privacy-header">
           <span className="privacy-badge">DATA PROTECTION & PRIVACY</span>
           <h1 className="privacy-main-title">Privacy Policy</h1>
           <p className="privacy-last-updated">Last Updated: October 12, 2026</p>
 
-          <div className="privacy-intro-box">
+          <div className="privacy-intro-content">
             <p className="privacy-intro">
               <strong>Swarna Mitra</strong> respects your privacy and is committed
               to protecting the personal information shared with us through our
@@ -129,7 +129,7 @@ function PrivacyPolicy() {
           </div>
         </header>
 
-        {/* Clean Document Sections */}
+        {/* Clean Article / Clause List */}
         <section className="privacy-content-list">
           {policySections.map((item) => (
             <article key={item.id} className="privacy-clause-item">
@@ -159,7 +159,8 @@ function PrivacyPolicy() {
               {item.content && <p className="clause-text">{item.content}</p>}
 
               {item.isContact && (
-                <div className="privacy-contact-card">
+                <div className="privacy-contact-list">
+                  <p className="clause-desc">{item.content}</p>
                   {item.contactDetails.map((contact, cIdx) => (
                     <div key={cIdx} className="contact-info-row">
                       <span className="contact-label">{contact.label}:</span>

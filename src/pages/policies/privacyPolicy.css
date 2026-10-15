@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
-/* ================= Standard Minimal Legal Page ================= */
+/* ================= Plain White Minimal Document Page ================= */
 .privacy-page {
   width: 100%;
   min-height: 100vh;
-  background-color: #faf7f2; /* Site चा सुसंगत हलका वॉर्म बॅकग्राउंड */
+  background-color: #ffffff; /* Pure Plain White Background */
   font-family: 'Plus Jakarta Sans', sans-serif;
   color: #2b2b2b;
   padding: 80px 24px 100px;
@@ -12,20 +12,19 @@
 }
 
 .privacy-container {
-  max-width: 900px; /* वाचायला सोयीस्कर डॉक्युमेंट विड्थ */
+  max-width: 860px;
   margin: 0 auto;
-  background-color: #ffffff;
-  padding: 60px 70px;
-  border-radius: 8px;
-  border: 1px solid #ede7de;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  background: transparent;
+  padding: 0;
+  border: none;
+  box-shadow: none;
 }
 
 /* ================= Header ================= */
 .privacy-header {
-  border-bottom: 1px solid #ede5da;
-  padding-bottom: 35px;
-  margin-bottom: 40px;
+  border: none;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .privacy-badge {
@@ -40,7 +39,7 @@
 
 .privacy-main-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 42px;
+  font-size: 44px;
   font-weight: 600;
   color: #141414;
   margin: 0 0 8px;
@@ -50,21 +49,20 @@
 .privacy-last-updated {
   font-size: 13px;
   color: #8c8780;
-  margin: 0 0 24px;
+  margin: 0 0 28px;
 }
 
-.privacy-intro-box {
-  background-color: #fcfbf9;
-  border-left: 3px solid #b38048;
-  padding: 16px 20px;
-  border-radius: 0 4px 4px 0;
+.privacy-intro-content {
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 .privacy-intro {
-  font-size: 14.5px;
-  line-height: 1.7;
+  font-size: 15px;
+  line-height: 1.75;
   color: #4a4742;
-  margin: 0 0 10px;
+  margin: 0 0 12px;
 }
 
 .privacy-intro strong {
@@ -73,8 +71,8 @@
 }
 
 .privacy-sub-intro {
-  font-size: 14px;
-  line-height: 1.65;
+  font-size: 14.5px;
+  line-height: 1.7;
   color: #5c5852;
   margin: 0;
 }
@@ -83,12 +81,16 @@
 .privacy-content-list {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 26px;
+  margin-top: 15px;
 }
 
 .privacy-clause-item {
   display: flex;
   flex-direction: column;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 .clause-title {
@@ -96,7 +98,7 @@
   font-size: 17px;
   font-weight: 600;
   color: #141414;
-  margin: 0 0 12px;
+  margin: 0 0 8px;
   display: flex;
   align-items: baseline;
   gap: 8px;
@@ -110,28 +112,26 @@
 }
 
 .clause-desc {
-  font-size: 14px;
+  font-size: 14.5px;
   color: #3b3935;
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   font-weight: 500;
 }
 
 .clause-text {
-  font-size: 14px;
-  line-height: 1.75;
-  color: #57544f;
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: #55514b;
   margin: 0;
   font-weight: 400;
-  text-align: justify;
+  text-align: left;
 }
 
 .clause-footnote {
-  font-size: 13px;
+  font-size: 13.5px;
   line-height: 1.65;
   color: #6e6a63;
-  margin: 14px 0 0;
-  padding-left: 12px;
-  border-left: 2px solid #b38048;
+  margin: 12px 0 0;
   font-style: italic;
 }
 
@@ -139,18 +139,18 @@
 .privacy-bullet-list {
   list-style: none;
   padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px 24px;
+  margin: 4px 0 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .privacy-bullet-list li {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  font-size: 13.5px;
-  color: #57544f;
+  font-size: 14px;
+  color: #55514b;
   line-height: 1.6;
 }
 
@@ -160,22 +160,19 @@
   line-height: 1;
 }
 
-/* Contact Details Box */
-.privacy-contact-card {
-  margin-top: 14px;
-  background-color: #fcfbf9;
-  border: 1px solid #ede7de;
-  border-radius: 6px;
-  padding: 16px 20px;
+/* Contact Details Info (Plain, No Cards/Borders) */
+.privacy-contact-list {
+  margin-top: 6px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .contact-info-row {
   display: flex;
   gap: 10px;
-  font-size: 13.5px;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .contact-label {
@@ -185,30 +182,21 @@
 }
 
 .contact-val {
-  color: #57544f;
+  color: #55514b;
 }
 
 /* ================= Responsive Layout ================= */
 @media (max-width: 768px) {
   .privacy-page {
-    padding: 50px 16px 70px;
-  }
-
-  .privacy-container {
-    padding: 35px 24px;
-    border-radius: 6px;
+    padding: 50px 20px 70px;
   }
 
   .privacy-main-title {
-    font-size: 32px;
+    font-size: 34px;
   }
 
   .privacy-intro {
     font-size: 14px;
-  }
-
-  .privacy-bullet-list {
-    grid-template-columns: 1fr;
   }
 
   .clause-title {
@@ -217,7 +205,6 @@
 
   .clause-text {
     font-size: 13.5px;
-    text-align: left;
   }
 
   .contact-info-row {

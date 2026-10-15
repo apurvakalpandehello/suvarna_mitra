@@ -79,13 +79,13 @@ function Disclaimer() {
     <main className="disclaimer-page">
       <div className="disclaimer-container">
         
-        {/* Simple Document Header */}
+        {/* Simple Plain Text Header */}
         <header className="disclaimer-header">
           <span className="disclaimer-badge">LEGAL & REGULATORY</span>
           <h1 className="disclaimer-main-title">Disclaimer</h1>
           <p className="disclaimer-last-updated">Last Updated: October 12, 2026</p>
           
-          <div className="disclaimer-intro-box">
+          <div className="disclaimer-intro-content">
             <p className="disclaimer-intro">
               The information provided on this website is intended for general informational and awareness purposes only. It does not constitute financial, investment, legal, tax or other professional advice.
             </p>
