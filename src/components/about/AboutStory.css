@@ -45,41 +45,53 @@
 
 /* ================= Main Story Section ================= */
 .about-story-section {
-  width: 100%;
-  background-color: #faf7f2;
-  padding: 85px 60px;
+  width: 100%; /* Section width: 100% */
+  background-color: #faf7f2; /* Background: #FAF7F2 */
+  /* Alignment Settings Desktop:
+     Top: 93px, Right: 4%, Bottom: 63px, Left: 4% */
+  padding: 93px 4% 63px 4%;
   box-sizing: border-box;
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow: hidden;
   position: relative;
+  display: flex;
+  align-items: center; /* Vertical alignment: Center */
+  justify-content: center;
 }
 
+/* Layout: 2 Columns, Column gap: 5.7%, Vertical alignment: Center */
 .about-story-container {
-  max-width: 1260px;
+  width: 100%;
+  max-width: 1600px;
   margin: 0 auto;
   display: flex;
-  align-items: center;
+  align-items: center; /* Vertical alignment: Center */
   justify-content: space-between;
-  gap: 70px;
+  gap: 5.7%; /* Column gap: 5.7% */
+  position: relative;
+  z-index: 2;
 }
 
-/* ================= Left Image Box (Height Reduced + Rounded + Animated) ================= */
+/* ================= Left Column: Image (45% Ratio) ================= */
 .about-story-image-wrap {
-  flex: 1.05;
-  width: 100%;
-  height: 380px; /* आधी 420px होती, डिझाइननुसार उंची कमी केली */
+  flex: 0 0 45%; /* Column ratio: 45% */
+  width: 45%;
+  height: 440px;
   overflow: hidden;
-  border-radius: 12px; /* प्रिमियम स्मूथ बॉर्डर रेडियस */
-  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
   background-color: #ede7de;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Image alignment: Left */
   animation: storyFadeInLeft 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .about-story-image-wrap:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.12);
 }
 
 /* Image Shimmer Reflection Overlay */
@@ -90,7 +102,7 @@
   left: 0;
   width: 60%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
   transform: translateX(-150%) skewX(-20deg);
   pointer-events: none;
 }
@@ -103,8 +115,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
-  border-radius: 12px;
+  border-radius: 16px;
   transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -112,19 +125,20 @@
   transform: scale(1.05);
 }
 
-/* ================= Right Content ================= */
+/* ================= Right Column: Content (55% Ratio) ================= */
 .about-story-content {
-  flex: 1.15;
+  flex: 0 0 calc(55% - 5.7%); /* Column ratio: 55% */
+  width: calc(55% - 5.7%);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  text-align: left;
+  text-align: left; /* Text alignment: Left */
   animation: storyFadeInRight 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Badge Wrapper (Lines on Both Sides) */
 .story-badge-wrap {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 22px;
@@ -140,7 +154,7 @@
 }
 
 .about-story-content:hover .story-badge-line {
-  width: 45px;
+  width: 48px;
 }
 
 .story-badge {
@@ -158,7 +172,7 @@
   letter-spacing: 3px;
 }
 
-/* Main Heading (Cormorant Garamond 46px, Weight 400) */
+/* Main Heading (Cormorant Garamond 46px, Weight 400, Left) */
 .story-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 46px;
@@ -167,7 +181,7 @@
   color: #121212;
   margin: 0 0 24px 0;
   letter-spacing: -0.3px;
-  transition: color 0.3s ease;
+  text-align: left; /* Text alignment: Left */
 }
 
 /* Trust word: Italic & #b38048 */
@@ -183,7 +197,7 @@
   transform: translateX(4px);
 }
 
-/* Story Paragraph */
+/* Story Description (Text alignment: Left) */
 .story-description {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 15px;
@@ -191,15 +205,16 @@
   color: #6a6661;
   font-weight: 400;
   margin: 0;
-  max-width: 580px;
+  text-align: left; /* Text alignment: Left */
+  max-width: 620px;
 }
 
 /* ================= Fully Responsive Layout ================= */
 
-/* Tablet Screen (<= 992px): Title 36px, Weight 400 */
-@media (max-width: 992px) {
+/* Tablet Screen (<= 1024px) */
+@media (max-width: 1024px) {
   .about-story-section {
-    padding: 65px 35px;
+    padding: 70px 4% 50px 4%;
   }
 
   .about-story-container {
@@ -209,16 +224,18 @@
   }
 
   .about-story-image-wrap {
+    flex: auto;
     width: 100%;
-    height: 310px; /* टॅबलेटवर अधिक कॉम्पॅक्ट उंची */
-    border-radius: 10px;
+    height: 360px;
+    border-radius: 14px;
   }
 
   .about-story-img {
-    border-radius: 10px;
+    border-radius: 14px;
   }
 
   .about-story-content {
+    flex: auto;
     width: 100%;
   }
 
@@ -228,34 +245,34 @@
   }
 }
 
-/* Mobile Screen (<= 600px): Title 30px, Weight 400 */
+/* Mobile Screen (<= 600px) */
 @media (max-width: 600px) {
   .about-story-section {
-    padding: 50px 20px;
+    padding: 50px 20px 40px 20px;
   }
 
   .about-story-container {
-    gap: 32px;
+    gap: 30px;
   }
 
   .about-story-image-wrap {
-    height: 230px; /* मोबाईलवर व्यवस्थित दिसण्यासाठी अनुकूल उंची */
-    border-radius: 8px;
+    height: 240px;
+    border-radius: 12px;
   }
 
   .about-story-img {
-    border-radius: 8px;
+    border-radius: 12px;
   }
 
   .story-title {
     font-size: 30px;
     font-weight: 400;
-    line-height: 1.22;
+    line-height: 1.25;
   }
 
   .story-description {
     font-size: 14px;
-    line-height: 1.65;
+    line-height: 1.68;
   }
 
   .story-badge-line {

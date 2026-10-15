@@ -12,17 +12,6 @@
   }
 }
 
-@keyframes standLineGrow {
-  0% {
-    width: 0;
-    opacity: 0;
-  }
-  100% {
-    width: 38px;
-    opacity: 1;
-  }
-}
-
 @keyframes iconGoldPulse {
   0%, 100% {
     transform: scale(1);
@@ -36,32 +25,47 @@
 
 /* ================= Dark Olive/Moss Background Section ================= */
 .stand-for-section {
-  width: 100%;
+  width: 100%; /* Section width: 100% */
+  height: 708px; /* Section height: अंदाजे 708px */
+  min-height: 650px; /* Min-height: 650px */
+  /* सध्याचाच मूळ हिरवा रंग (Radial & Linear Gradient) */
   background: 
     radial-gradient(ellipse at 50% 0%, rgba(68, 76, 56, 0.45), transparent 70%),
     linear-gradient(180deg, #3d4332 0%, #34392a 100%);
   background-color: #3d4332;
-  padding: 95px 60px 105px;
+  /* Section Alignment — Desktop:
+     Top: 100px, Right: 5%, Bottom: 40px, Left: 5% */
+  padding: 100px 5% 40px 5%;
   box-sizing: border-box;
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow: hidden;
   position: relative;
+  display: flex;
+  align-items: center; /* Vertical alignment: Center */
+  justify-content: center;
 }
 
 .stand-for-container {
-  max-width: 1240px;
+  width: 100%;
+  max-width: 1550px;
+  height: 100%;
   margin: 0 auto;
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertical alignment: Center */
+  align-items: center;
 }
 
 /* ================= Top Header ================= */
 .stand-for-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* Heading alignment: Center */
   justify-content: center;
-  margin-bottom: 65px;
+  margin-bottom: 50px;
+  text-align: center; /* Heading alignment: Center */
   animation: standFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -74,7 +78,7 @@
   letter-spacing: -0.2px;
   margin: 0;
   line-height: 1.2;
-  text-align: center;
+  text-align: center; /* Heading alignment: Center */
   transition: transform 0.3s ease;
 }
 
@@ -91,21 +95,23 @@
   transform: translateX(4px);
 }
 
-/* ================= 3 Columns Grid ================= */
+/* ================= 3 Columns Grid (Layout: 3 Columns, Column gap: 0px) ================= */
 .stand-for-grid {
   display: flex;
-  align-items: stretch;
-  justify-content: space-between;
+  align-items: stretch; /* Equal height cards */
+  justify-content: center;
   width: 100%;
+  gap: 0px; /* Column gap: 0px */
 }
 
 .stand-for-card {
-  flex: 1;
+  flex: 1 1 33.333%;
+  width: 33.333%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 30px 32px;
+  padding: 35px 32px;
   box-sizing: border-box;
   border-radius: 8px;
   position: relative;
@@ -187,7 +193,7 @@
   line-height: 1.7;
   color: #d1ccc2;
   font-weight: 400;
-  margin: 0;
+  margin: 0 auto;
   max-width: 290px;
   transition: color 0.3s ease;
 }
@@ -213,7 +219,7 @@
   width: 44px;
 }
 
-/* Vertical Divider Lines */
+/* Vertical Divider Lines between Columns */
 .stand-vertical-divider {
   width: 1px;
   background-color: #555b49;
@@ -223,10 +229,12 @@
 
 /* ================= Fully Responsive Layout ================= */
 
-/* Tablet Screen (<= 992px): Title 36px, Weight 400 */
-@media (max-width: 992px) {
+/* Tablet Screen (<= 1024px) */
+@media (max-width: 1024px) {
   .stand-for-section {
-    padding: 75px 35px;
+    height: auto;
+    min-height: auto;
+    padding: 70px 4% 50px 4%;
   }
 
   .stand-for-title {
@@ -239,27 +247,30 @@
     gap: 28px;
   }
 
+  .stand-for-card {
+    width: 100%;
+    padding: 24px 20px;
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+
   .stand-vertical-divider {
     width: 60%;
     height: 1px;
     margin: 0 auto;
     opacity: 0.4;
   }
-
-  .stand-for-card {
-    padding: 24px 20px;
-    background-color: rgba(255, 255, 255, 0.02);
-  }
 }
 
-/* Mobile Screen (<= 600px): Title 30px, Weight 400 */
+/* Mobile Screen (<= 600px) */
 @media (max-width: 600px) {
   .stand-for-section {
-    padding: 55px 20px;
+    height: auto;
+    min-height: auto;
+    padding: 50px 20px 40px 20px;
   }
 
   .stand-for-header {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
 
   .stand-for-title {

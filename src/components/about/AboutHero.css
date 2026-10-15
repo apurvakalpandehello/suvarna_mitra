@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
-/* ================= ॲनिमेशन्स (Keyframes) ================= */
+/* ================= Keyframe Animations ================= */
 @keyframes heroFadeUp {
   0% {
     opacity: 0;
@@ -33,32 +33,33 @@
 /* ================= Main Hero Section ================= */
 .about-hero-section {
   width: 100%;
-  /* स्क्रीनवर व्यवस्थित फिट राहण्यासाठी आणि पुढचा सेक्शन वर डोकावू नये म्हणून */
-  min-height: 88vh;
-  display: flex;
-  align-items: center;
+  min-height: 615px; /* सेक्शनची उंची अंदाजे ६१५px */
   background-color: #faf7f2;
-  /* बॉटम स्पेस वाढवण्यासाठी पॅडिंग 45px 50px 75px केली आहे */
-  padding: 45px 50px 75px;
+  /* डाव्या (Left) आणि उजव्या (Right) दोन्ही बाजूंना समान 6% (113px) पॅडिंग */
+  padding: 125px 6% 125px 6%;
   box-sizing: border-box;
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow: hidden;
   position: relative;
+  display: flex;
+  align-items: center; /* Vertical alignment: Center */
 }
 
 .about-hero-container {
   width: 100%;
-  max-width: 1320px;
+  max-width: 1380px;
   margin: 0 auto;
   display: flex;
-  align-items: center;
+  align-items: center; /* Vertical alignment: Center */
   justify-content: space-between;
-  gap: 50px;
+  gap: 55px;
+  position: relative;
+  z-index: 2;
 }
 
 /* ================= Left Side Typography ================= */
 .about-hero-left {
-  flex: 1.05;
+  flex: 1.15;
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -73,7 +74,7 @@
   font-weight: 700;
   letter-spacing: 2.4px;
   color: #b38048;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   display: inline-block;
   text-transform: uppercase;
   transition: letter-spacing 0.3s ease;
@@ -90,7 +91,7 @@
   font-weight: 400;
   line-height: 1.18;
   color: #141414;
-  margin: 0 0 14px 0;
+  margin: 0 0 16px 0;
   letter-spacing: -0.3px;
   animation: heroFadeUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -111,11 +112,12 @@
 /* Sub-text paragraph */
 .about-hero-description {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 15px;
-  line-height: 1.65;
+  font-size: 14.5px;
+  line-height: 1.68;
   color: #797672;
   font-weight: 400;
-  margin: 0 0 24px 0;
+  margin: 0 0 28px 0;
+  max-width: 600px;
   animation: heroFadeUp 1.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -131,7 +133,7 @@
 .btn-about-primary {
   background-color: #b38048;
   color: #ffffff;
-  padding: 12px 28px;
+  padding: 13px 30px;
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
@@ -171,7 +173,7 @@
   background-color: #fbf9f5;
   color: #b38048;
   border: 1px solid #b38048;
-  padding: 11px 26px;
+  padding: 12px 28px;
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
@@ -198,41 +200,40 @@
   animation: heroFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Image Container with Border Radius & Premium Shadow */
+/* पॅडिंग समान असल्यामुळे चारही कोपऱ्यांना २०px चे एकसमान बॉर्डर रेडियस */
 .about-hero-img-box {
   width: 100%;
   height: 350px;
   overflow: hidden;
   background-color: #ede7de;
-  border-radius: 12px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.08);
   position: relative;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .about-hero-img-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12);
 }
 
-/* Image with Smooth Zoom on Hover */
 .about-hero-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 12px;
+  border-radius: 20px;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .about-hero-img-box:hover .about-hero-img {
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
 /* TRUST TRANSPARENCY GUIDANCE Bar */
 .about-hero-trust-bar {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -240,19 +241,18 @@
   animation: heroFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Divider Line (#b38048) */
 .trust-divider-line {
   flex: 1;
   height: 1px;
   background-color: #b38048;
-  max-width: 130px;
+  max-width: 120px;
   opacity: 0.6;
   transition: max-width 0.3s ease, opacity 0.3s ease;
 }
 
 .about-hero-trust-bar:hover .trust-divider-line {
   opacity: 1;
-  max-width: 145px;
+  max-width: 140px;
 }
 
 .trust-label-text {
@@ -271,26 +271,26 @@
 
 /* ================= Fully Responsive Layout ================= */
 
-/* Tablet Screen (<= 992px) */
-@media (max-width: 992px) {
+/* Tablet Screen (<= 1024px) */
+@media (max-width: 1024px) {
   .about-hero-section {
     min-height: auto;
-    padding: 40px 30px 60px; /* बॉटम स्पेस वाढवली */
+    padding: 70px 4% 70px 4%;
   }
 
   .about-hero-container {
     flex-direction: column;
-    gap: 35px;
+    gap: 40px;
     align-items: stretch;
   }
 
   .about-hero-left {
-    margin-top: 0;
     width: 100%;
   }
 
   .about-hero-right {
     width: 100%;
+    align-items: center;
   }
 
   .about-hero-title {
@@ -300,11 +300,11 @@
 
   .about-hero-img-box {
     height: 320px;
-    border-radius: 10px;
+    border-radius: 16px;
   }
 
   .about-hero-img {
-    border-radius: 10px;
+    border-radius: 16px;
   }
 }
 
@@ -312,7 +312,7 @@
 @media (max-width: 600px) {
   .about-hero-section {
     min-height: auto;
-    padding: 30px 18px 50px; /* बॉटम स्पेस वाढवली */
+    padding: 55px 20px 55px 20px;
   }
 
   .about-hero-title {
@@ -322,15 +322,15 @@
   }
 
   .about-hero-description {
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 20px;
+    font-size: 13.5px;
+    line-height: 1.62;
+    margin-bottom: 22px;
   }
 
   .about-hero-buttons {
     flex-direction: column;
     width: 100%;
-    gap: 10px;
+    gap: 12px;
   }
 
   .btn-about-primary,
@@ -343,11 +343,11 @@
 
   .about-hero-img-box {
     height: 240px;
-    border-radius: 8px;
+    border-radius: 14px;
   }
 
   .about-hero-img {
-    border-radius: 8px;
+    border-radius: 14px;
   }
 
   .trust-label-text {
@@ -356,6 +356,6 @@
   }
 
   .trust-divider-line {
-    max-width: 50px;
+    max-width: 45px;
   }
 }

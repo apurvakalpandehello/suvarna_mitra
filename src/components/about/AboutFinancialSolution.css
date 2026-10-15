@@ -4,22 +4,11 @@
 @keyframes solFadeUp {
   0% {
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(24px);
   }
   100% {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes solLineWidth {
-  0% {
-    width: 0;
-    opacity: 0;
-  }
-  100% {
-    width: 44px;
-    opacity: 1;
   }
 }
 
@@ -36,34 +25,44 @@
 
 /* ================= Financial Solutions Section ================= */
 .about-solutions-section {
-  width: 100%;
-  background-color: #faf7f2;
-  padding: 95px 50px 105px;
+  width: 100%; /* Section width: 100% */
+  height: 600px; /* Section height: 600px */
+  min-height: 600px; /* Min-height: 600px */
+  background-color: #FAF7F2; /* Background: #FAF7F2 */
+  /* Section Alignment — Desktop:
+     Top: 40px, Right: 5%, Bottom: 60px, Left: 5% */
+  padding: 40px 5% 60px 5%;
   box-sizing: border-box;
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow: hidden;
   position: relative;
+  display: flex;
+  align-items: center; /* Vertical alignment: Center */
+  justify-content: center;
 }
 
 .about-solutions-container {
-  max-width: 1320px;
+  width: 100%;
+  max-width: 1650px;
+  height: 100%;
   margin: 0 auto;
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertical alignment: Center */
+  align-items: center;
 }
 
 /* ================= Header ================= */
 .about-solutions-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* Heading alignment: Center */
   justify-content: center;
-  margin-bottom: 65px;
+  margin-bottom: 45px;
+  text-align: center; /* Heading alignment: Center */
   animation: solFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.about-solutions-header:hover .solutions-accent-line {
-  width: 60px;
 }
 
 /* Heading: Cormorant Garamond, 46px, Weight 400 */
@@ -75,7 +74,7 @@
   color: #1a1a1a;
   letter-spacing: -0.3px;
   margin: 0;
-  text-align: center;
+  text-align: center; /* Heading alignment: Center */
   transition: color 0.3s ease;
 }
 
@@ -92,19 +91,23 @@
   transform: translateX(3px);
 }
 
-/* ================= 4 Columns Grid ================= */
+/* ================= 4 Columns Grid (Layout: 4 Columns, Column gap: 0px) ================= */
 .about-solutions-grid {
   display: flex;
-  align-items: stretch;
-  justify-content: space-between;
+  align-items: stretch; /* Card height: Equal height */
+  justify-content: center;
   width: 100%;
+  gap: 0px; /* Column gap: 0px */
 }
 
+/* Equal Height Cards */
 .solution-card {
-  flex: 1;
+  flex: 1 1 25%;
+  width: 25%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   text-align: center;
   padding: 30px 24px;
   box-sizing: border-box;
@@ -132,7 +135,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 22px;
+  margin: 0 auto 20px auto;
   position: relative;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -172,8 +175,9 @@
   font-size: 26px;
   font-weight: 500;
   color: #1a1a1a;
-  margin: 0 0 14px 0;
+  margin: 0 0 12px 0;
   line-height: 1.25;
+  text-align: center;
   transition: color 0.3s ease;
 }
 
@@ -188,8 +192,9 @@
   line-height: 1.7;
   color: #6a6661;
   font-weight: 400;
-  margin: 0;
+  margin: 0 auto;
   max-width: 230px;
+  text-align: center;
   transition: color 0.3s ease;
 }
 
@@ -214,21 +219,22 @@
   width: 40px;
 }
 
-/* Vertical Dividing Lines between Cards */
+/* Divider: 1px solid #E8DFD3 */
 .solution-card-divider {
   width: 1px;
-  background-color: #e5ded3;
-  align-self: stretch;
-  opacity: 0.85;
-  transition: opacity 0.3s ease;
+  background-color: #E8DFD3;
+  align-self: stretch; /* Extends to equal card height */
+  opacity: 1;
 }
 
 /* ================= Fully Responsive Layout ================= */
 
-/* Tablet Screen (<= 992px): Title 36px, Weight 400 */
-@media (max-width: 992px) {
+/* Tablet Screen (<= 1024px) */
+@media (max-width: 1024px) {
   .about-solutions-section {
-    padding: 75px 35px;
+    height: auto;
+    min-height: auto;
+    padding: 60px 4% 60px 4%;
   }
 
   .about-solutions-title {
@@ -243,6 +249,7 @@
   }
 
   .solution-card {
+    width: 100%;
     padding: 24px 18px;
     background-color: #ffffff;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
@@ -253,14 +260,16 @@
   }
 }
 
-/* Mobile Screen (<= 600px): Title 30px, Weight 400 */
+/* Mobile Screen (<= 600px) */
 @media (max-width: 600px) {
   .about-solutions-section {
-    padding: 55px 20px;
+    height: auto;
+    min-height: auto;
+    padding: 50px 20px 50px 20px;
   }
 
   .about-solutions-header {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
 
   .about-solutions-title {
