@@ -9,6 +9,8 @@ function ContactUs() {
     requirement: ''
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -17,16 +19,37 @@ function ContactUs() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form Submitted:', formData);
-    alert('Thank you! Your enquiry has been received.');
-    setFormData({
-      fullName: '',
-      email: '',
-      phone: '',
-      requirement: ''
-    });
+    setLoading(true);
+
+    try {
+      const response = await fetch('https://formspree.io/f/xbgdwjqe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        alert('Thank you! Your enquiry has been received.');
+        setFormData({
+          fullName: '',
+          email: '',
+          phone: '',
+          requirement: ''
+        });
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error('Submission Error:', error);
+      alert('Network error. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -39,7 +62,6 @@ function ContactUs() {
             <span className="contact-badge">CONTACT US</span>
             <span className="contact-tag-line"></span>
           </div>
-
           <h2 className="contact-title">
             Get in <span className="contact-highlight-word">Touch</span> with Us
           </h2>
@@ -87,7 +109,6 @@ function ContactUs() {
         {/* Right Side: Gold Framed Form Card */}
         <div className="contact-form-card">
           <h3 className="form-card-title">Enquiry / Apply Now</h3>
-
           <form onSubmit={handleSubmit} className="enquiry-form">
             <div className="form-group">
               <label htmlFor="fullName">Full Name</label>
@@ -138,8 +159,8 @@ function ContactUs() {
               />
             </div>
 
-            <button type="submit" className="btn-submit-enquiry">
-              SUBMIT ENQUIRY
+            <button type="submit" className="btn-submit-enquiry" disabled={loading}>
+              {loading ? 'SENDING...' : 'SUBMIT ENQUIRY'}
             </button>
           </form>
         </div>
