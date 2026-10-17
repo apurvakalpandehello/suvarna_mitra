@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Navbar from "../../components/Navbar";
 import "./termsConditions.css";
 
 function TermsConditions() {
@@ -159,66 +160,69 @@ function TermsConditions() {
   ];
 
   return (
-    <main className="terms-page">
-      <div className="terms-container">
-        
-        {/* Simple Plain Text Header */}
-        <header className="terms-header">
-          <span className="terms-badge">LEGAL AGREEMENT & TERMS</span>
-          <h1 className="terms-main-title">Terms & Conditions</h1>
-          <p className="terms-last-updated">Last Updated: October 12, 2026</p>
+    <div className="terms-root">
+      <Navbar />
+      <main className="terms-page">
+        <div className="terms-container">
+          
+          {/* Simple Plain Text Header */}
+          <header className="terms-header">
+            <span className="terms-badge">LEGAL AGREEMENT & TERMS</span>
+            <h1 className="terms-main-title">Terms & Conditions</h1>
+            <p className="terms-last-updated">Last Updated: October 12, 2026</p>
 
-          <div className="terms-intro-content">
-            <p className="terms-intro">
-              Welcome to the website of <strong>Swarna Mitra Financial Services</strong> ("Swarna Mitra", "Company", "we", "us" or "our").
-            </p>
-            <p className="terms-sub-intro">
-              By accessing or using this website, you agree to comply with and be bound by these Terms & Conditions. If you do not agree with any part of these terms, please discontinue use of the website.
-            </p>
-          </div>
-        </header>
+            <div className="terms-intro-content">
+              <p className="terms-intro">
+                Welcome to the website of <strong>Swarna Mitra Financial Services</strong> ("Swarna Mitra", "Company", "we", "us" or "our").
+              </p>
+              <p className="terms-sub-intro">
+                By accessing or using this website, you agree to comply with and be bound by these Terms & Conditions. If you do not agree with any part of these terms, please discontinue use of the website.
+              </p>
+            </div>
+          </header>
 
-        {/* Clean Article / Clause List */}
-        <section className="terms-content-list">
-          {termsList.map((item) => (
-            <article key={item.id} className="terms-clause-item">
-              <h2 className="clause-title">
-                <span className="clause-number">{item.id}.</span> {item.title}
-              </h2>
+          {/* Clean Article / Clause List */}
+          <section className="terms-content-list">
+            {termsList.map((item) => (
+              <article key={item.id} className="terms-clause-item">
+                <h2 className="clause-title">
+                  <span className="clause-number">{item.id}.</span> {item.title}
+                </h2>
 
-              {item.content && <p className="clause-text">{item.content}</p>}
+                {item.content && <p className="clause-text">{item.content}</p>}
 
-              {item.isList && (
-                <div className="clause-list-wrapper">
-                  <p className="clause-desc">{item.description}</p>
-                  <ul className="terms-bullet-list">
-                    {item.items.map((line, lIdx) => (
-                      <li key={lIdx}>
-                        <span className="bullet-bullet">&bull;</span>
-                        <span>{line}</span>
-                      </li>
+                {item.isList && (
+                  <div className="clause-list-wrapper">
+                    <p className="clause-desc">{item.description}</p>
+                    <ul className="terms-bullet-list">
+                      {item.items.map((line, lIdx) => (
+                        <li key={lIdx}>
+                          <span className="bullet-bullet">&bull;</span>
+                          <span>{line}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {item.isContact && (
+                  <div className="terms-contact-list">
+                    <p className="clause-desc">{item.description}</p>
+                    {item.contactList.map((c, cIdx) => (
+                      <div key={cIdx} className="contact-info-row">
+                        <span className="contact-label">{c.label}:</span>
+                        <span className="contact-val">{c.value}</span>
+                      </div>
                     ))}
-                  </ul>
-                </div>
-              )}
+                  </div>
+                )}
+              </article>
+            ))}
+          </section>
 
-              {item.isContact && (
-                <div className="terms-contact-list">
-                  <p className="clause-desc">{item.description}</p>
-                  {item.contactList.map((c, cIdx) => (
-                    <div key={cIdx} className="contact-info-row">
-                      <span className="contact-label">{c.label}:</span>
-                      <span className="contact-val">{c.value}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </article>
-          ))}
-        </section>
-
-      </div>
-    </main>
+        </div>
+      </main>
+    </div>
   );
 }
 

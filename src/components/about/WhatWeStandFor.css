@@ -23,25 +23,22 @@
   }
 }
 
-/* ================= Dark Olive/Moss Background Section ================= */
+/* ================= Dark Charcoal Background Section (#17181a) ================= */
 .stand-for-section {
-  width: 100%; /* Section width: 100% */
-  height: 708px; /* Section height: अंदाजे 708px */
-  min-height: 650px; /* Min-height: 650px */
-  /* सध्याचाच मूळ हिरवा रंग (Radial & Linear Gradient) */
+  width: 100%;
+  height: 708px;
+  min-height: 650px;
   background: 
-    radial-gradient(ellipse at 50% 0%, rgba(68, 76, 56, 0.45), transparent 70%),
-    linear-gradient(180deg, #3d4332 0%, #34392a 100%);
-  background-color: #3d4332;
-  /* Section Alignment — Desktop:
-     Top: 100px, Right: 5%, Bottom: 40px, Left: 5% */
+    radial-gradient(ellipse at 50% 0%, rgba(45, 47, 52, 0.45), transparent 70%),
+    linear-gradient(180deg, #17181a 0%, #111214 100%);
+  background-color: #17181a;
   padding: 100px 5% 40px 5%;
   box-sizing: border-box;
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow: hidden;
   position: relative;
   display: flex;
-  align-items: center; /* Vertical alignment: Center */
+  align-items: center;
   justify-content: center;
 }
 
@@ -54,7 +51,7 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Vertical alignment: Center */
+  justify-content: center;
   align-items: center;
 }
 
@@ -62,10 +59,10 @@
 .stand-for-header {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Heading alignment: Center */
+  align-items: center;
   justify-content: center;
   margin-bottom: 50px;
-  text-align: center; /* Heading alignment: Center */
+  text-align: center;
   animation: standFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -78,7 +75,7 @@
   letter-spacing: -0.2px;
   margin: 0;
   line-height: 1.2;
-  text-align: center; /* Heading alignment: Center */
+  text-align: center;
   transition: transform 0.3s ease;
 }
 
@@ -98,10 +95,10 @@
 /* ================= 3 Columns Grid (Layout: 3 Columns, Column gap: 0px) ================= */
 .stand-for-grid {
   display: flex;
-  align-items: stretch; /* Equal height cards */
+  align-items: stretch;
   justify-content: center;
   width: 100%;
-  gap: 0px; /* Column gap: 0px */
+  gap: 0px;
 }
 
 .stand-for-card {
@@ -127,7 +124,7 @@
 .stand-for-card:hover {
   transform: translateY(-8px);
   background-color: rgba(255, 255, 255, 0.04);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
 }
 
 /* Icon Wrap with Aura */
@@ -160,7 +157,7 @@
 .stand-svg-icon {
   width: 44px;
   height: 44px;
-  color: #b38048; /* Exact gold outline color */
+  color: #b38048;
   position: relative;
   z-index: 2;
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
@@ -222,9 +219,9 @@
 /* Vertical Divider Lines between Columns */
 .stand-vertical-divider {
   width: 1px;
-  background-color: #555b49;
+  background-color: #2b2e34;
   align-self: stretch;
-  opacity: 0.75;
+  opacity: 0.85;
 }
 
 /* ================= Fully Responsive Layout ================= */

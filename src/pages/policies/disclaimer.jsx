@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Navbar from "../../components/Navbar";
 import "./disclaimer.css";
 
 function Disclaimer() {
@@ -76,39 +77,42 @@ function Disclaimer() {
   ];
 
   return (
-    <main className="disclaimer-page">
-      <div className="disclaimer-container">
-        
-        {/* Simple Plain Text Header */}
-        <header className="disclaimer-header">
-          <span className="disclaimer-badge">LEGAL & REGULATORY</span>
-          <h1 className="disclaimer-main-title">Disclaimer</h1>
-          <p className="disclaimer-last-updated">Last Updated: October 12, 2026</p>
+    <div className="disclaimer-root">
+      <Navbar />
+      <main className="disclaimer-page">
+        <div className="disclaimer-container">
           
-          <div className="disclaimer-intro-content">
-            <p className="disclaimer-intro">
-              The information provided on this website is intended for general informational and awareness purposes only. It does not constitute financial, investment, legal, tax or other professional advice.
-            </p>
-            <p className="disclaimer-sub-intro">
-              <strong>Swarna Mitra</strong> provides financial assistance and services subject to applicable laws, regulations, eligibility criteria, internal policies, documentation requirements and approval processes.
-            </p>
-          </div>
-        </header>
+          {/* Simple Plain Text Header */}
+          <header className="disclaimer-header">
+            <span className="disclaimer-badge">LEGAL & REGULATORY</span>
+            <h1 className="disclaimer-main-title">Disclaimer</h1>
+            <p className="disclaimer-last-updated">Last Updated: October 12, 2026</p>
+            
+            <div className="disclaimer-intro-content">
+              <p className="disclaimer-intro">
+                The information provided on this website is intended for general informational and awareness purposes only. It does not constitute financial, investment, legal, tax or other professional advice.
+              </p>
+              <p className="disclaimer-sub-intro">
+                <strong>Swarna Mitra</strong> provides financial assistance and services subject to applicable laws, regulations, eligibility criteria, internal policies, documentation requirements and approval processes.
+              </p>
+            </div>
+          </header>
 
-        {/* Clean Article / Clause List */}
-        <section className="disclaimer-content-list">
-          {disclaimerPoints.map((item) => (
-            <article key={item.id} className="disclaimer-clause-item">
-              <h2 className="clause-title">
-                <span className="clause-number">{item.id}.</span> {item.title}
-              </h2>
-              <p className="clause-text">{item.content}</p>
-            </article>
-          ))}
-        </section>
+          {/* Clean Article / Clause List */}
+          <section className="disclaimer-content-list">
+            {disclaimerPoints.map((item) => (
+              <article key={item.id} className="disclaimer-clause-item">
+                <h2 className="clause-title">
+                  <span className="clause-number">{item.id}.</span> {item.title}
+                </h2>
+                <p className="clause-text">{item.content}</p>
+              </article>
+            ))}
+          </section>
 
-      </div>
-    </main>
+        </div>
+      </main>
+    </div>
   );
 }
 

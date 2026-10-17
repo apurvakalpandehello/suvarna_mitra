@@ -33,7 +33,7 @@ function AboutCTA() {
         {/* Action Button */}
         <Link 
           to="/contact" 
-          className="about-cta-btn"
+          className="about-cta-btn" 
           onClick={handleScrollToTop}
         >
           <span className="cta-btn-text">GET IN TOUCH</span>

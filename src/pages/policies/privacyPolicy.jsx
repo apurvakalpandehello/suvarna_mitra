@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Navbar from "../../components/Navbar";
 import "./privacyPolicy.css";
 
 function PrivacyPolicy() {
@@ -106,81 +107,79 @@ function PrivacyPolicy() {
   ];
 
   return (
-  
-    
-    <main className="privacy-page">
-      
-      <div className="privacy-container">
-        
-        {/* Simple Plain Text Header */}
-        <header className="privacy-header">
-          <span className="privacy-badge">DATA PROTECTION & PRIVACY</span>
-          <h1 className="privacy-main-title">Privacy Policy</h1>
-          <p className="privacy-last-updated">Last Updated: October 12, 2026</p>
+    <div className="privacy-root">
+      <Navbar />
+      <main className="privacy-page">
+        <div className="privacy-container">
+          
+          {/* Simple Plain Text Header */}
+          <header className="privacy-header">
+            <span className="privacy-badge">DATA PROTECTION & PRIVACY</span>
+            <h1 className="privacy-main-title">Privacy Policy</h1>
+            <p className="privacy-last-updated">Last Updated: October 12, 2026</p>
 
-          <div className="privacy-intro-content">
-            <p className="privacy-intro">
-              <strong>Swarna Mitra</strong> respects your privacy and is committed
-              to protecting the personal information shared with us through our
-              website, enquiry forms, applications and other communication
-              channels.
-            </p>
-            <p className="privacy-sub-intro">
-              This Privacy Policy explains how we collect, use, store and protect
-              information provided by visitors and customers.
-            </p>
-          </div>
-        </header>
+            <div className="privacy-intro-content">
+              <p className="privacy-intro">
+                <strong>Swarna Mitra</strong> respects your privacy and is committed
+                to protecting the personal information shared with us through our
+                website, enquiry forms, applications and other communication
+                channels.
+              </p>
+              <p className="privacy-sub-intro">
+                This Privacy Policy explains how we collect, use, store and protect
+                information provided by visitors and customers.
+              </p>
+            </div>
+          </header>
 
-        {/* Clean Article / Clause List */}
-        <section className="privacy-content-list">
-          {policySections.map((item) => (
-            <article key={item.id} className="privacy-clause-item">
-              <h2 className="clause-title">
-                <span className="clause-number">{item.id}.</span> {item.title}
-              </h2>
+          {/* Clean Article / Clause List */}
+          <section className="privacy-content-list">
+            {policySections.map((item) => (
+              <article key={item.id} className="privacy-clause-item">
+                <h2 className="clause-title">
+                  <span className="clause-number">{item.id}.</span> {item.title}
+                </h2>
 
-              {item.description && (
-                <p className="clause-desc">{item.description}</p>
-              )}
+                {item.description && (
+                  <p className="clause-desc">{item.description}</p>
+                )}
 
-              {item.list && (
-                <ul className="privacy-bullet-list">
-                  {item.list.map((liText, liIdx) => (
-                    <li key={liIdx}>
-                      <span className="bullet-bullet">&bull;</span>
-                      <span>{liText}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+                {item.list && (
+                  <ul className="privacy-bullet-list">
+                    {item.list.map((liText, liIdx) => (
+                      <li key={liIdx}>
+                        <span className="bullet-bullet">&bull;</span>
+                        <span>{liText}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
-              {item.footnote && (
-                <p className="clause-footnote">{item.footnote}</p>
-              )}
+                {item.footnote && (
+                  <p className="clause-footnote">{item.footnote}</p>
+                )}
 
-              {item.content && <p className="clause-text">{item.content}</p>}
+                {item.content && <p className="clause-text">{item.content}</p>}
 
-              {item.isContact && (
-                <div className="privacy-contact-list">
-                  <p className="clause-desc">{item.content}</p>
-                  {item.contactDetails.map((contact, cIdx) => (
-                    <div key={cIdx} className="contact-info-row">
-                      <span className="contact-label">{contact.label}:</span>
-                      <span className="contact-val">{contact.value}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </article>
-          ))}
-        </section>
+                {item.isContact && (
+                  <div className="privacy-contact-list">
+                    <p className="clause-desc">{item.content}</p>
+                    {item.contactDetails.map((contact, cIdx) => (
+                      <div key={cIdx} className="contact-info-row">
+                        <span className="contact-label">{contact.label}:</span>
+                        <span className="contact-val">{contact.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </article>
+            ))}
+          </section>
 
-      </div>
-    </main>
-    
+        </div>
+      </main>
+    </div>
   );
 }
-
 
 export default PrivacyPolicy;

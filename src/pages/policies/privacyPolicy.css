@@ -1,13 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
+/* ================= Wrapper ensure Navbar stays white ================= */
+.privacy-root {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
 /* ================= Plain White Minimal Document Page ================= */
 .privacy-page {
   width: 100%;
-  min-height: 100vh;
   background-color: #ffffff; /* Pure Plain White Background */
   font-family: 'Plus Jakarta Sans', sans-serif;
   color: #2b2b2b;
-  padding: 80px 24px 100px;
+  padding: 40px 24px 100px;
   box-sizing: border-box;
 }
 
@@ -188,7 +194,7 @@
 /* ================= Responsive Layout ================= */
 @media (max-width: 768px) {
   .privacy-page {
-    padding: 50px 20px 70px;
+    padding: 30px 20px 70px;
   }
 
   .privacy-main-title {
