@@ -56,13 +56,14 @@
   max-width: 100%;
   padding-top: 80px;
   padding-bottom: 80px;
-  padding-left: 4.2%;
-  padding-right: 4.2%;
+  /* Left आणि Right Padding वाढवून एकसमान (8%) केली आहे */
+  padding-left: 8%;
+  padding-right: 8%;
   background-color: #faf7f2; /* Cream Theme */
   overflow: hidden;
   box-sizing: border-box;
   display: flex;
-  align-items: center; /* Vertical alignment: Center */
+  align-items: center;
   position: relative;
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
@@ -73,9 +74,9 @@
   max-width: 100%;
   margin: 0 auto;
   display: flex;
-  align-items: center; /* Vertical alignment: Center */
-  justify-content: space-between; /* Content alignment: Space between */
-  gap: 48px; /* Column gap: 48px */
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
   box-sizing: border-box;
 }
 
@@ -338,7 +339,8 @@
   .contact-location-section {
     height: auto;
     min-height: auto;
-    padding: 75px 4.2%;
+    /* Left आणि Right Padding वाढवून एकसमान (6%) केली आहे */
+    padding: 75px 6%;
   }
 
   .contact-location-container {
@@ -373,7 +375,8 @@
   .contact-location-section {
     height: auto;
     min-height: auto;
-    padding: 55px 20px 60px;
+    /* Left आणि Right Padding वाढवून एकसमान (28px) केली आहे */
+    padding: 55px 28px 60px 28px;
   }
 
   .location-title {
