@@ -2,7 +2,7 @@ import React from 'react';
 import './ContactHero.css';
 
 // updated high-quality image file 
-import contactHeroImg from '../../assets/images/contactHeroImg.png';
+import contactHeroImg from '../../assets/images/contactHeroImg.webp';
 
 function ContactHero() {
   return (

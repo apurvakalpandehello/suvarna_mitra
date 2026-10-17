@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './AboutClearerPath.css';
 
 // ॲसेट्स फोल्डरमधील इमेज इंपोर्ट करा (तुमच्या फाईलच्या नावानुसार नाव बदला)
-import clearerPathImg from '../../assets/images/clearer-path.png';
+import clearerPathImg from '../../assets/images/clearer-path.webp';
 
 function AboutClearerPath() {
   // पेज टॉपला स्क्रोल करण्यासाठी हँडलर (पहिल्या सेक्शनपासून पेज दिसावे म्हणून)

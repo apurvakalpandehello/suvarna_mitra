@@ -1,6 +1,6 @@
 import React from 'react';
 import './ServicesTimeline.css';
-import showcaseImg from '../assets/images/Raw Images/workaholics-businesspeople-brainstorming-financial-company-ideas.jpg';
+import showcaseImg from '../assets/images/Raw Images/workaholics-businesspeople-brainstorming-financial-company-ideas.webp';
 
 function ServicesTimeline() {
   const serviceCards = [

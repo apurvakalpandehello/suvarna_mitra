@@ -4,9 +4,9 @@ import Navbar from './Navbar.jsx';
 
 // Background Images
 // import bg1 from '../assets/images/smartfinanacial.png';
-import bg2 from '../assets/images/gold-jewellary-loan-still-life.png'; 
-import bg3 from '../assets/images/3.png'; 
-import bg4 from '../assets/images/4.png'; 
+import bg2 from '../assets/images/gold-jewellary-loan-still-life.webp'; 
+import bg3 from '../assets/images/3.webp'; 
+import bg4 from '../assets/images/4.webp'; 
 import bg5 from '../assets/images/heroimagesslider.png'; 
 
 function Hero() {
