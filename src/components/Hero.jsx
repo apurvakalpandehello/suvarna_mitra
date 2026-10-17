@@ -3,7 +3,7 @@ import './Hero.css';
 import Navbar from './Navbar.jsx';
 
 // Background Images
-import bg1 from '../assets/images/smartfinanacial.png';
+// import bg1 from '../assets/images/smartfinanacial.png';
 import bg2 from '../assets/images/gold-jewellary-loan-still-life.png'; 
 import bg3 from '../assets/images/3.png'; 
 import bg4 from '../assets/images/4.png'; 
@@ -11,11 +11,11 @@ import bg5 from '../assets/images/heroimagesslider.png';
 
 function Hero() {
   const slides = [
-    {
-      image: bg1,
-      category: null, 
-      title: null,
-    },
+    // {
+    //   image: bg1,
+    //   category: null, 
+    //   title: null,
+    // },
     {
       // Image 2: Rings sathi barobar tag
       image: bg2,
