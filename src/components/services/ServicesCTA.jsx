@@ -1,10 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './ServicesCTA.css';
 
 // assets/images/ फोल्डरमधून इमेज इंपोर्ट केली
 import ctaPenImg from '../../assets/images/lets-get-started.png';
 
 function ServicesCTA() {
+  // पेज टॉपला स्क्रोल करण्यासाठी हँडलर (पहिल्या सेक्शनपासून पेज दिसावे म्हणून)
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant'
+    });
+  };
+
   return (
     <section className="services-cta-section">
       {/* बॅकग्राउंड लक्झरी ॲम्बियंट ग्लो */}
@@ -28,13 +38,17 @@ function ServicesCTA() {
             Explore our services and take the first step<br />
             towards a more secure and prosperous future.
           </p>
-          <a href="#contact" className="services-cta-btn">
+          <Link 
+            to="/contact" 
+            className="services-cta-btn"
+            onClick={handleScrollToTop}
+          >
             <span className="cta-btn-text">ENQUIRE NOW</span>
             <svg viewBox="0 0 24 24" className="cta-btn-arrow" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
-          </a>
+          </Link>
         </div>
 
         {/* Right Side: Visual Graphic (Fountain Pen / Document) */}
