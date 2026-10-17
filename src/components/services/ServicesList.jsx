@@ -95,7 +95,7 @@ function ServicesList() {
           </div>
 
           <h2 className="services-list-title">
-            Tailored Solutions for Your <span className="srv-highlight-needs">Financial Needs</span>
+            Custom Solutions for Your <span className="srv-highlight-needs">Financial Needs</span>
           </h2>
 
           <p className="services-list-subtitle">

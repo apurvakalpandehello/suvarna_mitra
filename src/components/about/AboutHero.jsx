@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './AboutHero.css';
 
 // इमेजचा अचूक पाथ (assets फोल्डरमधील इमेज इंपोर्ट करा)
@@ -27,12 +28,12 @@ function AboutHero() {
           </p>
 
           <div className="about-hero-buttons">
-            <a href="#services" className="btn-about-primary">
+            <Link to="/services" className="btn-about-primary">
               Explore Our Services
-            </a>
-            <a href="#contact" className="btn-about-secondary">
+            </Link>
+            <Link to="/contact" className="btn-about-secondary">
               Speak to Our Team
-            </a>
+            </Link>
           </div>
         </div>
 

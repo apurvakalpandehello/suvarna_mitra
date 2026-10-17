@@ -59,7 +59,7 @@ function ContactFormSection() {
               </div>
               <div className="detail-info-text">
                 <span className="detail-label">Call Us</span>
-                <a href="tel:+910000000000" className="detail-value">+91 00000 00000</a>
+                <a href="tel:+919096288868" className="detail-value">+91 90962 88868</a>
               </div>
             </div>
 

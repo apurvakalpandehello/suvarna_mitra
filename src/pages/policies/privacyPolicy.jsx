@@ -106,7 +106,10 @@ function PrivacyPolicy() {
   ];
 
   return (
+  
+    
     <main className="privacy-page">
+      
       <div className="privacy-container">
         
         {/* Simple Plain Text Header */}
@@ -175,7 +178,9 @@ function PrivacyPolicy() {
 
       </div>
     </main>
+    
   );
 }
+
 
 export default PrivacyPolicy;

@@ -3,6 +3,15 @@ import "./Footer.css";
 import { Link } from "react-router-dom";
 
 function Footer() {
+  // पेज टॉपला स्क्रोल करण्यासाठी हँडलर
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  };
+
   return (
     <footer className="footer-section">
       <div className="footer-container">
@@ -66,16 +75,24 @@ function Footer() {
             </div>
             <ul className="footer-links-list">
               <li>
-                <a href="#home">Home</a>
+                <Link to="/" onClick={handleScrollToTop}>
+                  Home
+                </Link>
               </li>
               <li>
-                <a href="#about">About</a>
+                <Link to="/about-us" onClick={handleScrollToTop}>
+                  About
+                </Link>
               </li>
               <li>
-                <a href="#services">Services</a>
+                <Link to="/services" onClick={handleScrollToTop}>
+                  Services
+                </Link>
               </li>
               <li>
-                <a href="#contact">Contact</a>
+                <Link to="/contact" onClick={handleScrollToTop}>
+                  Contact
+                </Link>
               </li>
             </ul>
           </div>
@@ -90,16 +107,24 @@ function Footer() {
             </div>
             <ul className="footer-links-list">
               <li>
-                <a href="#services">Financial Consultancy</a>
+                <Link to="/services" onClick={handleScrollToTop}>
+                  Financial Consultancy
+                </Link>
               </li>
               <li>
-                <a href="#services">Loan Takeover</a>
+                <Link to="/services" onClick={handleScrollToTop}>
+                  Loan Takeover
+                </Link>
               </li>
               <li>
-                <a href="#services">Gold SIP</a>
+                <Link to="/services" onClick={handleScrollToTop}>
+                  Gold SIP
+                </Link>
               </li>
               <li>
-                <a href="#services">Auctioned Gold</a>
+                <Link to="/services" onClick={handleScrollToTop}>
+                  Auctioned Gold
+                </Link>
               </li>
             </ul>
           </div>
@@ -113,7 +138,10 @@ function Footer() {
               <div className="gold-dash"></div>
             </div>
             <p className="footer-about-text">
-              At Swarna Mitra, we offer trusted financial guidance for Gold Loans, Loan Takeover Assistance, Gold SIP and Auctioned Gold opportunities. Our focus is on transparency, convenience and helping you make informed financial decisions with confidence.
+              At Swarna Mitra, we offer trusted financial guidance for Gold Loans,
+              Loan Takeover Assistance, Gold SIP and Auctioned Gold
+              opportunities. Our focus is on transparency, convenience and
+              helping you make informed financial decisions with confidence.
             </p>
           </div>
         </div>
@@ -121,7 +149,6 @@ function Footer() {
         {/* Gold Horizontal Full Divider */}
         <div className="footer-gold-divider"></div>
 
-        {/* Bottom Bar: Left (Copyright) | Center (Developed by) | Right (Legal Links) */}
         {/* Bottom Bar: Left (Copyright) | Center (Developed by) | Right (Legal Links) */}
         <div className="footer-bottom-bar">
           <div className="footer-bottom-left">
@@ -144,13 +171,26 @@ function Footer() {
           </div>
 
           <div className="footer-bottom-right">
-            <Link to="/pages/policies/termsConditions">
+            <Link
+              to="/pages/policies/termsConditions"
+              onClick={handleScrollToTop}
+            >
               Terms &amp; Conditions
             </Link>
             <span className="social-sep">|</span>
-            <Link to="/pages/policies/privacyPolicy">Privacy Policy</Link>
+            <Link
+              to="/pages/policies/privacyPolicy"
+              onClick={handleScrollToTop}
+            >
+              Privacy Policy
+            </Link>
             <span className="social-sep">|</span>
-            <Link to="/pages/policies/disclaimer">Disclaimer</Link>
+            <Link
+              to="/pages/policies/disclaimer"
+              onClick={handleScrollToTop}
+            >
+              Disclaimer
+            </Link>
           </div>
         </div>
       </div>
