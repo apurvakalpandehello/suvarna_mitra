@@ -1,0 +1,261 @@
+/* Modal Overlay / Backdrop */
+.auth-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 15px;
+  box-sizing: border-box;
+  backdrop-filter: blur(4px);
+}
+
+/* Modal Card */
+.auth-modal {
+  background: #ffffff;
+  width: 100%;
+  max-width: 860px;
+  max-height: 90vh;
+  border-radius: 14px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Close Button */
+.auth-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 26px;
+  color: #777;
+  cursor: pointer;
+  z-index: 10;
+  line-height: 1;
+}
+
+/* डावीकडील बॅनर */
+.auth-banner {
+  flex: 0.9;
+  background: linear-gradient(135deg, #0e2a47 0%, #001f3f 100%);
+  color: #ffffff;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.auth-brand .brand-icon {
+  font-size: 28px;
+}
+
+.auth-brand h3 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.auth-brand p {
+  margin: 0;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.banner-content h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.banner-content p {
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+.banner-features {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+  font-size: 11px;
+}
+
+.banner-features-list p {
+  margin: 6px 0;
+  font-size: 13px;
+}
+
+/* उजवीकडील फॉर्म */
+.auth-form-wrapper {
+  flex: 1.1;
+  padding: 35px 35px;
+  overflow-y: auto;
+}
+
+/* Customer / Agent Switcher Buttons */
+.role-switcher {
+  display: flex;
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 4px;
+  margin-bottom: 20px;
+  max-width: 220px;
+}
+
+.role-tab {
+  flex: 1;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.role-tab.active {
+  background: #0e2a47;
+  color: #ffffff;
+}
+
+.auth-header h3 {
+  font-size: 20px;
+  color: #1e293b;
+  margin: 0 0 6px 0;
+}
+
+.auth-header p {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+/* Inputs & Form layout */
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  padding: 9px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #0e2a47;
+}
+
+.form-actions-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 18px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #475569;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.terms-label {
+  margin-bottom: 16px;
+}
+
+.forgot-link {
+  color: #0e2a47;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-submit-btn {
+  width: 100%;
+  padding: 10px;
+  background: #003366;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.auth-submit-btn:hover {
+  background: #002244;
+}
+
+.auth-toggle-msg {
+  text-align: center;
+  font-size: 13px;
+  margin-top: 15px;
+  color: #64748b;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: #003366;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .auth-banner {
+    display: none; /* मोबाईल स्क्रीनवर फक्त फॉर्म दिसेल */
+  }
+
+  .auth-modal {
+    max-width: 420px;
+  }
+
+  .auth-form-wrapper {
+    padding: 30px 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}
