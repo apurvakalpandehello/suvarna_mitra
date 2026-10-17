@@ -1,246 +1,128 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
-/* ================= ॲनिमेशन्स (Keyframes) ================= */
-@keyframes srvListFadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(28px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes srvBadgeLineWidth {
-  0% {
-    width: 0;
-    opacity: 0;
-  }
-  100% {
-    width: 32px;
-    opacity: 1;
-  }
-}
-
-@keyframes srvShimmerSweep {
-  0% {
-    transform: translateX(-150%) skewX(-20deg);
-  }
-  100% {
-    transform: translateX(250%) skewX(-20deg);
-  }
-}
-
-@keyframes srvIconAuraPulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.3;
-  }
-  50% {
-    transform: scale(1.18);
-    opacity: 0.6;
-  }
-}
-
-/* ================= Section Base ================= */
-.services-list-section {
+/* Main Wrapper */
+.services-section-wrapper {
   width: 100%;
-  background-color: #faf7f2;
-  /* Alignment Settings (Desktop):
-     Top: 35px, Right: 6.25% (110px), Bottom: 70px, Left: 6.25% (110px) */
-  padding: 35px 6.25% 70px 6.25%;
+  background-color: #fbf7ee;
+  padding: 60px 4% 90px 4%;
   box-sizing: border-box;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  overflow: hidden;
-  position: relative;
 }
 
-/* Content Width: 87.5% */
-.services-list-container {
-  width: 100%;
-  max-width: 1400px;
+.services-main-container {
+  max-width: 1320px;
   margin: 0 auto;
-  position: relative;
-  z-index: 2;
+  display: flex;
+  flex-direction: column;
 }
 
-/* ================= Top Header ================= */
-.services-list-header {
-  /* Heading Alignment: Center, Description Alignment: Center */
+/* ================= Section Main Header (Center Aligned) ================= */
+.services-main-header {
   text-align: center;
-  margin-bottom: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: srvListFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  margin-bottom: 50px;
 }
 
-.srv-header-badge-wrap {
+.srv-badge-wrapper {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
-.srv-header-line {
+.srv-badge-line {
+  width: 32px;
   height: 1.5px;
   background-color: #b38048;
   display: inline-block;
-  border-radius: 1px;
-  animation: srvBadgeLineWidth 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: width 0.3s ease;
+  border-radius: 2px;
 }
 
-.services-list-header:hover .srv-header-line {
-  width: 44px;
-}
-
-.srv-header-badge {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 11px;
+.srv-badge-text {
+  font-size: 11.5px;
   font-weight: 700;
-  letter-spacing: 2.2px;
+  letter-spacing: 2px;
   color: #b38048;
   text-transform: uppercase;
-  transition: letter-spacing 0.3s ease;
 }
 
-.services-list-header:hover .srv-header-badge {
-  letter-spacing: 2.8px;
-}
-
-/* Heading: Desktop (46px, Weight 400, Cormorant Garamond, Center Aligned) */
-.services-list-title {
+.srv-main-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 46px;
   font-weight: 400;
   color: #1a1a1a;
-  margin: 0 0 16px 0;
-  line-height: 1.22;
-  letter-spacing: -0.3px;
+  margin: 0 0 14px 0;
+  line-height: 1.2;
   text-align: center;
-  transition: color 0.3s ease;
 }
 
-/* Financial Needs: Italic आणि #b38048 */
-.srv-highlight-needs {
+.srv-title-highlight {
+  font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: italic;
   color: #b38048;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  display: inline-block;
-  transition: transform 0.3s ease;
 }
 
-.services-list-header:hover .srv-highlight-needs {
-  transform: translateX(4px);
-}
-
-/* Description Alignment: Center */
-.services-list-subtitle {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 14.5px;
-  line-height: 1.7;
-  color: #736f69;
-  font-weight: 400;
+.srv-main-subtitle {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #6e6963;
+  max-width: 720px;
   margin: 0;
-  max-width: 760px;
   text-align: center;
 }
 
-/* ================= 2x2 Services Grid Layout ================= */
-.services-cards-grid {
-  display: grid;
-  /* Services layout: 2 columns */
-  grid-template-columns: repeat(2, 1fr);
-  /* Column gap: 70px */
-  column-gap: 70px;
-  row-gap: 50px;
-}
-
-.service-item-row {
+/* ================= Service Card (Image + Details) ================= */
+.services-rows-list {
   display: flex;
-  align-items: center;
-  gap: 30px;
-  padding: 16px;
-  border-radius: 16px;
-  background-color: transparent;
-  opacity: 0;
-  animation: srvListFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: calc(var(--grid-idx, 0) * 0.14s + 0.2s);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-              background-color 0.4s ease, 
-              box-shadow 0.4s ease;
+  flex-direction: column;
+  gap: 80px;
 }
 
-.service-item-row:hover {
-  transform: translateY(-6px);
-  background-color: #ffffff;
-  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(179, 128, 72, 0.06);
+.service-featured-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 50px;
 }
 
-/* ================= Image Container (Size: 280 × 306px, Radius: 16px) ================= */
-.service-item-img-box {
-  flex: 0 0 280px;
-  width: 280px;
-  height: 306px;
+.service-featured-card.reverse-card {
+  flex-direction: row-reverse;
+}
+
+/* ================= Image Container (Sticky & Fit) ================= */
+.service-card-image-box {
+  flex: 0 0 46%;
+  width: 46%;
+  height: 520px;
+  border-radius: 20px;
   overflow: hidden;
-  /* Image border radius: 16px */
-  border-radius: 16px;
-  background: linear-gradient(145deg, #f0eae1, #e6ded3);
-  position: relative;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(179, 128, 72, 0.15);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(179, 128, 72, 0.18);
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: sticky;
+  top: 30px;
 }
 
-.service-item-img-inner {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border-radius: 16px;
-}
-
-/* Image Fit & Border Radius */
-.service-item-img {
+.service-card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center center;
   display: block;
-  /* Image border radius: 16px */
-  border-radius: 16px;
-  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 20px;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.service-item-row:hover .service-item-img {
-  transform: scale(1.06);
+.service-featured-card:hover .service-card-image {
+  transform: scale(1.03);
 }
 
-/* Image Shimmer Light */
-.service-img-shimmer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.32), transparent);
-  transform: translateX(-150%) skewX(-20deg);
-  pointer-events: none;
-  z-index: 2;
-}
-
-.service-item-row:hover .service-img-shimmer {
-  animation: srvShimmerSweep 0.85s ease;
-}
-
-/* ================= Right Content Box ================= */
-.service-item-info {
+.service-card-content {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -248,208 +130,433 @@
   text-align: left;
 }
 
-/* Icon Box & Glow Aura */
-.service-icon-box {
-  width: 52px;
-  height: 52px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 14px;
-  position: relative;
-}
-
-.service-icon-aura {
-  position: absolute;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(179, 128, 72, 0.25) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.service-item-row:hover .service-icon-aura {
-  opacity: 1;
-  animation: srvIconAuraPulse 2s infinite ease-in-out;
-}
-
-.srv-card-icon {
-  width: 42px;
-  height: 42px;
+.service-content-tag {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
   color: #b38048;
-  position: relative;
-  z-index: 2;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+  margin-bottom: 6px;
 }
 
-.service-item-row:hover .srv-card-icon {
-  transform: translateY(-3px) scale(1.06);
-  color: #9c6e3d;
-}
-
-/* Card Heading */
-.service-item-title {
+.service-card-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 26px;
+  font-size: 38px;
   font-weight: 500;
-  line-height: 1.25;
   color: #1a1a1a;
-  margin: 0 0 12px 0;
-  transition: color 0.3s ease;
+  margin: 0 0 14px 0;
+  line-height: 1.15;
+  text-align: left;
 }
 
-.service-item-row:hover .service-item-title {
-  color: #b38048;
+.service-paragraphs-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
-/* Card Description */
-.service-item-desc {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+.service-card-desc {
   font-size: 13.5px;
   line-height: 1.65;
-  color: #6e6963;
-  margin: 0 0 16px 0;
-  font-weight: 400;
-  transition: color 0.3s ease;
+  color: #55524e;
+  margin: 0;
+  text-align: left;
 }
 
-.service-item-row:hover .service-item-desc {
-  color: #4a4642;
+/* ================= Checklist Boxes ================= */
+.service-checklist-box {
+  width: 100%;
+  background: rgba(179, 128, 72, 0.05);
+  border-left: 3px solid #b38048;
+  border-radius: 0 10px 10px 0;
+  padding: 14px 18px;
+  margin-bottom: 14px;
+  box-sizing: border-box;
 }
 
-/* Know More Link */
-.service-know-more {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  color: #b38048;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 13px;
+.service-checklist-box.secondary-box {
+  background: rgba(179, 128, 72, 0.075);
+}
+
+.service-checklist-heading {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 19px;
   font-weight: 600;
-  text-decoration: none;
-  position: relative;
-  transition: gap 0.25s ease, color 0.25s ease;
+  color: #1a1a1a;
+  margin: 0 0 8px 0;
 }
 
-.know-more-text {
-  position: relative;
+.service-checklist-sub-intro {
+  font-size: 13px;
+  color: #635d57;
+  margin: 0 0 10px 0;
+  font-style: italic;
 }
 
-.know-more-text::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1.5px;
-  background-color: #b38048;
-  transition: width 0.3s ease;
+.service-checklist-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
 }
 
-.service-know-more:hover .know-more-text::after {
+.service-checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #4a4540;
+}
+
+.checklist-bullet-icon {
+  width: 14px;
+  height: 14px;
+  color: #b38048;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.checklist-bullet-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ================= Disclaimer Box (Gold SIP) ================= */
+.service-disclaimer-box {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background-color: rgba(179, 128, 72, 0.08);
+  border: 1px dashed rgba(179, 128, 72, 0.35);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  box-sizing: border-box;
+}
+
+.disclaimer-icon {
+  width: 20px;
+  height: 20px;
+  color: #b38048;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.service-disclaimer-box p {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #635d56;
+  margin: 0;
+  font-style: italic;
+}
+
+.service-footer-note {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 16.5px;
+  font-style: italic;
+  font-weight: 600;
+  color: #b38048;
+  margin: 6px 0 20px 0;
+  line-height: 1.45;
+}
+
+/* 3 Pillars */
+.service-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 16px;
   width: 100%;
 }
 
-.know-more-arrow {
-  transition: transform 0.25s ease;
+.service-pillar-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  text-align: left;
 }
 
-.service-know-more:hover {
-  color: #966733;
+.pillar-icon {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  color: #b38048;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.pillar-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.pillar-text {
+  text-align: left;
+}
+
+.pillar-text h4 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #242220;
+  margin: 0 0 4px 0;
+  text-align: left;
+}
+
+.pillar-text p {
+  font-size: 12px;
+  line-height: 1.45;
+  color: #6b6660;
+  margin: 0;
+  text-align: left;
+}
+
+/* Know More */
+.service-know-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #b38048;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: gap 0.25s ease;
+  align-self: flex-start;
+}
+
+.service-know-more-btn:hover {
   gap: 10px;
 }
 
-.service-know-more:hover .know-more-arrow {
-  transform: translateX(4px);
+/* ================= Service Addons (Stats & Black Banner) ================= */
+.first-service-addon-group {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-top: -30px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 3;
 }
 
-/* ================= Fully Responsive Layout ================= */
-
-/* Tablet Screen (<= 1100px) */
-@media (max-width: 1100px) {
-  .services-list-section {
-    padding: 35px 4% 60px 4%;
-  }
-
-  .services-cards-grid {
-    column-gap: 40px;
-  }
-
-  .service-item-img-box {
-    flex: 0 0 220px;
-    width: 220px;
-    height: 240px;
-  }
+/* Stats Strip */
+.services-stats-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px 30px;
+  background-color: #fbf7ee;
+  border-radius: 12px;
+  border: 1px solid #ebd9c2;
+  box-shadow: 0 8px 22px rgba(179, 128, 72, 0.08);
 }
 
-/* Tablet Screen (<= 900px) */
-@media (max-width: 900px) {
-  .services-list-title {
+.stat-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stat-icon {
+  width: 34px;
+  height: 34px;
+  color: #b38048;
+  flex-shrink: 0;
+}
+
+.stat-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.stat-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-details h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+
+.stat-details p {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #55504a;
+  margin: 5px 0 0 0;
+  line-height: 1.2;
+}
+
+.stat-separator {
+  width: 1px;
+  height: 42px;
+  background-color: #dfcdb4;
+}
+
+/* Why Choose Us Black Banner */
+.why-choose-banner {
+  background-color: #000000;
+  border: 1px solid rgba(179, 128, 72, 0.25);
+  border-radius: 16px;
+  padding: 38px 30px;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+}
+
+.why-choose-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.why-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #b38048;
+  background: rgba(179, 128, 72, 0.12);
+  border: 1px solid rgba(179, 128, 72, 0.3);
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.why-choose-header h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 34px;
+  font-weight: 500;
+  color: #b38048;
+  margin: 0;
+}
+
+.why-features-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.why-feature-item {
+  flex: 1;
+  text-align: center;
+  padding: 0 12px;
+}
+
+.why-icon {
+  width: 36px;
+  height: 36px;
+  color: #b38048;
+  margin: 0 auto 12px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.why-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: #b38048;
+}
+
+.why-feature-item h4 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+}
+
+.why-feature-item p {
+  font-size: 12px;
+  color: #b0aba5;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.why-feature-divider {
+  width: 1px;
+  height: 50px;
+  background-color: rgba(179, 128, 72, 0.22);
+}
+
+/* ================= Responsive Layout ================= */
+@media (max-width: 992px) {
+  .first-service-addon-group {
+    margin-top: 0;
+  }
+
+  .srv-main-title {
     font-size: 36px;
-    font-weight: 400;
   }
 
-  .services-cards-grid {
-    grid-template-columns: 1fr;
-    row-gap: 35px;
+  .service-featured-card,
+  .service-featured-card.reverse-card {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .service-item-row {
-    background-color: #ffffff;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  .service-card-image-box {
+    height: 320px;
+    width: 100%;
+    position: static;
   }
 
-  .service-item-img-box {
-    flex: 0 0 240px;
-    width: 240px;
-    height: 260px;
-  }
-}
-
-/* Mobile Screen (<= 600px) */
-@media (max-width: 600px) {
-  .services-list-section {
-    padding: 30px 20px 50px 20px;
+  .why-features-grid {
+    flex-wrap: wrap;
+    gap: 24px;
   }
 
-  .services-list-header {
-    margin-bottom: 40px;
-  }
-
-  .srv-sub-break {
+  .why-feature-divider {
     display: none;
   }
 
-  .services-list-title {
+  .why-feature-item {
+    flex: 0 0 45%;
+  }
+}
+
+@media (max-width: 650px) {
+  .srv-main-title {
     font-size: 30px;
-    font-weight: 400;
-    line-height: 1.25;
   }
 
-  .services-list-subtitle {
-    font-size: 13.5px;
-  }
-
-  .service-item-row {
-    flex-direction: column;
-    align-items: flex-start;
+  .service-pillars-grid {
+    grid-template-columns: 1fr;
     gap: 18px;
-    padding: 16px;
   }
 
-  .service-item-img-box {
-    width: 100%;
-    flex: auto;
-    height: 240px;
+  .pillar-icon {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
   }
 
-  .service-item-title {
-    font-size: 23px;
+  .services-stats-strip {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 20px;
   }
 
-  .srv-card-icon {
-    width: 38px;
-    height: 38px;
+  .stat-separator {
+    display: none;
+  }
+
+  .why-feature-item {
+    flex: 0 0 100%;
   }
 }
