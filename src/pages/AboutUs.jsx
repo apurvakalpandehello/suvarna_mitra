@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar.jsx';
 import AboutHero from '../components/about/AboutHero.jsx';
 import AboutStory from '../components/about/AboutStory.jsx';
 import AboutFinancialSolution from '../components/about/AboutFinancialSolution.jsx';
+import AboutWhyChoose from '../components/about/AboutWhyChoose.jsx';
 import WhatWeStandFor from '../components/about/WhatWeStandFor.jsx';
 import AboutClearerPath from '../components/about/AboutClearerPath.jsx';
 import AboutCTA from '../components/about/AboutCTA.jsx';
@@ -15,6 +16,7 @@ function AboutUs() {
       <AboutHero />
       <AboutStory />
       <AboutFinancialSolution />
+      <AboutWhyChoose />
       <WhatWeStandFor />
       <AboutClearerPath />
       <AboutCTA />

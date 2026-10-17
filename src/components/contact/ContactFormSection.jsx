@@ -75,7 +75,7 @@ function ContactFormSection() {
               </div>
               <div className="detail-info-text">
                 <span className="detail-label">Email Us</span>
-                <a href="mailto:hello@yourbrand.com" className="detail-value">hello@yourbrand.com</a>
+                <a href="mailto:hello@yourbrand.com" className="detail-value">Info@swarnamitra.co.in</a>
               </div>
             </div>
 
@@ -91,7 +91,7 @@ function ContactFormSection() {
               </div>
               <div className="detail-info-text">
                 <span className="detail-label">Visit Us</span>
-                <span className="detail-value text-only">Pune, Maharashtra, India</span>
+                <span className="detail-value text-only">Andheri West, Mumbai</span>
               </div>
             </div>
 
