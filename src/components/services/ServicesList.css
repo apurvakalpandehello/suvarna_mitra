@@ -225,7 +225,7 @@
   height: 100%;
 }
 
-/* ================= Disclaimer Box (Gold SIP) ================= */
+/* ================= Disclaimer Box (Gold SIP & Auctioned Gold) ================= */
 .service-disclaimer-box {
   width: 100%;
   display: flex;
@@ -334,7 +334,7 @@
   gap: 10px;
 }
 
-/* ================= Service Addons (Stats & Black Banner) ================= */
+/* ================= Service Addons (Stats & Banner Container) ================= */
 .first-service-addon-group {
   display: flex;
   flex-direction: column;
@@ -406,16 +406,16 @@
   background-color: #dfcdb4;
 }
 
-/* Why Choose Us Black Banner */
+/* ================= Why Choose Us Banner (#17181a Background) ================= */
 .why-choose-banner {
-  background-color: #000000;
+  background-color: #17181a;
   border: 1px solid rgba(179, 128, 72, 0.25);
   border-radius: 16px;
   padding: 38px 30px;
   color: #ffffff;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 16px 36px rgba(23, 24, 26, 0.45);
 }
 
 .why-choose-header {

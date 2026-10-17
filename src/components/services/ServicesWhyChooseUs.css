@@ -48,12 +48,11 @@
 /* ================= Why Choose Us Section ================= */
 .services-why-section {
   width: 100%;
+  background-color: #17181a;
   background: 
-    radial-gradient(ellipse at 50% 0%, rgba(70, 78, 58, 0.45), transparent 70%),
-    linear-gradient(180deg, #3d4332 0%, #323729 100%);
-  background-color: #3d4332;
-  /* Section Alignment — Desktop:
-     Top: 130px, Right: 120px, Bottom: 145px, Left: 120px */
+    radial-gradient(ellipse at 50% 0%, rgba(179, 128, 72, 0.08), transparent 70%),
+    linear-gradient(180deg, #17181a 0%, #121315 100%);
+  /* Section Alignment — Desktop: Top: 130px, Right: 120px, Bottom: 145px, Left: 120px */
   padding: 130px 120px 150px 120px;
   box-sizing: border-box;
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -84,7 +83,7 @@
   right: 10%;
   width: 360px;
   height: 360px;
-  background: rgba(95, 107, 80, 0.35);
+  background: rgba(179, 128, 72, 0.08);
   animation-delay: 3s;
 }
 
@@ -101,7 +100,6 @@
 .services-why-header {
   display: flex;
   flex-direction: column;
-  /* Heading alignment: Center */
   align-items: center;
   justify-content: center;
   margin-bottom: 70px;
@@ -175,7 +173,6 @@
   align-items: stretch;
   justify-content: space-between;
   width: 100%;
-  /* Column gap: 0px */
   gap: 0px;
 }
 
@@ -185,7 +182,6 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  /* कॉलम गैप 0px होने के कारण कार्ड के भीतर संतुलित पैडिंग */
   padding: 30px 24px;
   box-sizing: border-box;
   border-radius: 8px;
@@ -202,7 +198,7 @@
 .why-card:hover {
   transform: translateY(-8px);
   background-color: rgba(255, 255, 255, 0.04);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
 }
 
 /* Icon Box & Glow Aura */
@@ -298,7 +294,7 @@
 /* Column Divider: 1px solid transparent/light border */
 .why-card-divider {
   width: 1px;
-  background-color: rgba(255, 255, 255, 0.12); /* Light / Transparent Border */
+  background-color: rgba(255, 255, 255, 0.08);
   align-self: stretch;
   opacity: 0.85;
 }
