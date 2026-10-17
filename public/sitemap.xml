@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://swarnamitra.co.in/</loc>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://swarnamitra.co.in/about-us</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://swarnamitra.co.in/services</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://swarnamitra.co.in/contact</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://swarnamitra.co.in/pages/policies/privacyPolicy</loc>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://swarnamitra.co.in/pages/policies/termsConditions</loc>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://swarnamitra.co.in/pages/policies/disclaimer</loc>
+    <priority>0.50</priority>
+  </url>
+</urlset>
