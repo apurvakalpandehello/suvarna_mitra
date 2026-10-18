@@ -64,7 +64,7 @@ function ContactFormSection() {
       setStatus({
         submitting: false,
         success: false,
-        error: 'काहीतरी तांत्रिक अडचण आली. कृपया थोड्या वेळाने प्रयत्न करा किंवा थेट कॉल करा.'
+        error: 'Something went wrong. Please try again later or contact us directly via phone.'
       });
     }
   };
@@ -167,10 +167,10 @@ function ContactFormSection() {
             <h3 className="form-card-title">Send Us a Message</h3>
             <p className="form-card-subtitle">Fill out the form below and we’ll get back to you shortly.</p>
 
-            {/* Status Messages */}
+            {/* Status Messages in English */}
             {status.success && (
               <div className="form-alert-box alert-success">
-                धन्यवाद! तुमचा संदेश आम्हाला मिळाला आहे. आमची टीम लवकरच संपर्क करेल.
+                Thank you! Your message has been sent successfully. Our team will get back to you shortly.
               </div>
             )}
 
@@ -194,6 +194,7 @@ function ContactFormSection() {
                   onChange={handleChange}
                   placeholder="Your full name"
                   className="form-custom-input"
+                  autoComplete="off"
                   required
                 />
               </div>
@@ -210,6 +211,7 @@ function ContactFormSection() {
                   onChange={handleChange}
                   placeholder="you@example.com"
                   className="form-custom-input"
+                  autoComplete="off"
                   required
                 />
               </div>
@@ -226,6 +228,7 @@ function ContactFormSection() {
                   onChange={handleChange}
                   placeholder="+91 00000 00000"
                   className="form-custom-input"
+                  autoComplete="off"
                   required
                 />
               </div>
