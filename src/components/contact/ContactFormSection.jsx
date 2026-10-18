@@ -11,6 +11,12 @@ function ContactFormSection() {
     agreePolicy: false
   });
 
+  const [status, setStatus] = useState({
+    submitting: false,
+    success: false,
+    error: null
+  });
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -19,9 +25,48 @@ function ContactFormSection() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form Submitted:', formData);
+    setStatus({ submitting: true, success: false, error: null });
+
+    try {
+      const response = await fetch('https://formspree.io/f/xeaedjly', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          'Full Name': formData.fullName,
+          'Email': formData.email,
+          'Phone': formData.phone,
+          'Service Needed': formData.helpOption,
+          'Message': formData.message,
+          'Policy Agreed': formData.agreePolicy ? 'Yes' : 'No'
+        })
+      });
+
+      if (response.ok) {
+        setStatus({ submitting: false, success: true, error: null });
+        setFormData({
+          fullName: '',
+          email: '',
+          phone: '',
+          helpOption: '',
+          message: '',
+          agreePolicy: false
+        });
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData?.errors?.[0]?.message || 'Submission failed');
+      }
+    } catch (err) {
+      setStatus({
+        submitting: false,
+        success: false,
+        error: 'काहीतरी तांत्रिक अडचण आली. कृपया थोड्या वेळाने प्रयत्न करा किंवा थेट कॉल करा.'
+      });
+    }
   };
 
   return (
@@ -37,7 +82,7 @@ function ContactFormSection() {
             <span className="contact-badge-line"></span>
           </div>
 
-          {/* Title - "Here" la italic & #b38048 color dila ahe */}
+          {/* Title */}
           <h2 className="contact-info-title">
             We’re <span className="contact-title-accent">Here</span> to Help.
           </h2>
@@ -75,7 +120,7 @@ function ContactFormSection() {
               </div>
               <div className="detail-info-text">
                 <span className="detail-label">Email Us</span>
-                <a href="mailto:hello@yourbrand.com" className="detail-value">Info@swarnamitra.co.in</a>
+                <a href="mailto:Info@swarnamitra.co.in" className="detail-value">Info@swarnamitra.co.in</a>
               </div>
             </div>
 
@@ -121,6 +166,19 @@ function ContactFormSection() {
             
             <h3 className="form-card-title">Send Us a Message</h3>
             <p className="form-card-subtitle">Fill out the form below and we’ll get back to you shortly.</p>
+
+            {/* Status Messages */}
+            {status.success && (
+              <div className="form-alert-box alert-success">
+                धन्यवाद! तुमचा संदेश आम्हाला मिळाला आहे. आमची टीम लवकरच संपर्क करेल.
+              </div>
+            )}
+
+            {status.error && (
+              <div className="form-alert-box alert-error">
+                {status.error}
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="contact-main-form">
               
@@ -186,9 +244,12 @@ function ContactFormSection() {
                     required
                   >
                     <option value="" disabled>Select an option</option>
-                    <option value="gold-loan">Gold Loan Consultation</option>
-                    <option value="financial-advisory">Financial Advisory</option>
-                    <option value="general-query">General Query</option>
+                    <option value="Gold Loan Consultation">Gold Loan Consultation</option>
+                    <option value="Loan Takeover Assistance">Loan Takeover Assistance</option>
+                    <option value="Gold SIP Consultation">Gold SIP</option>
+                    <option value="Auctioned Gold Information">Auctioned Gold</option>
+                    <option value="Financial Advisory">Financial Advisory</option>
+                    <option value="General Query">General Query</option>
                   </select>
                 </div>
               </div>
@@ -227,9 +288,13 @@ function ContactFormSection() {
               </div>
 
               {/* Submit Button */}
-              <button type="submit" className="form-submit-btn">
-                <span>SEND MESSAGE</span>
-                <span className="submit-arrow">&rarr;</span>
+              <button 
+                type="submit" 
+                className="form-submit-btn" 
+                disabled={status.submitting}
+              >
+                <span>{status.submitting ? 'SENDING...' : 'SEND MESSAGE'}</span>
+                {!status.submitting && <span className="submit-arrow">&rarr;</span>}
               </button>
 
             </form>
