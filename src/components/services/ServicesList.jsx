@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './ServicesList.css';
 
 import serviceConsultancyImg from '../../assets/images/our-services-finanacial-needs1.png';
@@ -7,8 +8,24 @@ import serviceGoldSipImg from '../../assets/images/our-servives-financial-need3.
 import serviceAuctionGoldImg from '../../assets/images/our-services-finanacial-needs4.png';
 
 function ServicesList() {
+  const location = useLocation();
+
+  // URL मध्ये #hash असेल तर त्या कार्डवर स्क्रोल करणे
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  }, [location]);
+
   const services = [
     {
+      id: "financial-consultancy",
       badgeSubtitle: "Professional Financial Guidance for Your Needs",
       title: "Financial Consultancy & Assistance",
       paragraphs: [
@@ -30,6 +47,7 @@ function ServicesList() {
       link: null
     },
     {
+      id: "loan-takeover",
       badgeSubtitle: "Explore Better Options for Your Existing Loan",
       title: "Loan Takeover Assistance",
       paragraphs: [
@@ -60,6 +78,7 @@ function ServicesList() {
       link: null
     },
     {
+      id: "gold-sip",
       badgeSubtitle: "Build a Disciplined Gold Investment Approach",
       title: "Gold SIP",
       paragraphs: [
@@ -80,6 +99,7 @@ function ServicesList() {
       link: null
     },
     {
+      id: "auctioned-gold",
       badgeSubtitle: "Explore Gold Available Through Authorized Auctions",
       title: "Auctioned Gold",
       paragraphs: [
@@ -128,7 +148,11 @@ function ServicesList() {
         <div className="services-rows-list">
           {services.map((item, index) => (
             <React.Fragment key={index}>
-              <div className={`service-featured-card ${index % 2 === 1 ? 'reverse-card' : ''}`}>
+              <div 
+                id={item.id}
+                className={`service-featured-card ${index % 2 === 1 ? 'reverse-card' : ''}`}
+                style={{ scrollMarginTop: '30px' }}
+              >
                 {/* Left Image Side */}
                 <div className="service-card-image-box">
                   <img 
@@ -575,7 +599,6 @@ function ServicesList() {
                   <div className="services-stats-strip">
                     <div className="stat-box">
                       <div className="stat-icon">
-                        {/* Authorized Shield / Gavel Icon */}
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                           <polyline points="9 12 11 14 15 10"></polyline>
@@ -591,7 +614,6 @@ function ServicesList() {
 
                     <div className="stat-box">
                       <div className="stat-icon">
-                        {/* Price Advantage / Trend Icon */}
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                           <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
                           <polyline points="17 6 23 6 23 12"></polyline>
@@ -607,7 +629,6 @@ function ServicesList() {
 
                     <div className="stat-box">
                       <div className="stat-icon">
-                        {/* Purity Check Icon */}
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                           <circle cx="12" cy="12" r="10"></circle>
                           <path d="m9 12 2 2 4-4"></path>

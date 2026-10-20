@@ -1,14 +1,112 @@
 import React, { useState, useEffect } from 'react';
 import './AuthModal.css';
 
-function AuthModal({ isOpen, onClose, initialMode = 'login' }) {
+function AuthModal({ isOpen, onClose, initialMode = 'login', onAuthSuccess }) {
   const [isLogin, setIsLogin] = useState(initialMode === 'login');
   const [userRole, setUserRole] = useState('customer'); // 'customer' किंवा 'agent'
 
-  // जेव्हा initialMode prop बदलेल तेव्हा सिंक करण्यासाठी
+  // फॉर्म डेटा मॅनेज करण्यासाठी स्टेट
+  const [formData, setFormData] = useState({
+    name: '',
+    identifier: '', // Login साठी (Mobile किंवा Email)
+    mobile: '',     // Registration साठी मोबाईल
+    email: '',      // Registration साठी ईमेल
+    password: '',
+    confirmPassword: '',
+    agentCode: '',
+    state: '',
+    city: ''
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+  const [successMsg, setSuccessMsg] = useState('');
+
+  // Mode सिंक करणे
   useEffect(() => {
     setIsLogin(initialMode === 'login');
+    setErrorMsg('');
+    setSuccessMsg('');
   }, [initialMode]);
+
+  // Input Change Handler
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+    setErrorMsg('');
+  };
+
+  // Login / Register Submit Handler
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrorMsg('');
+    setSuccessMsg('');
+
+    // पासवर्ड मॅच व्हॅलिडेशन (फक्त Register साठी)
+    if (!isLogin && formData.password !== formData.confirmPassword) {
+      setErrorMsg('Passwords do not match!');
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const endpoint = isLogin
+        ? 'http://localhost:5000/api/auth/login'
+        : 'http://localhost:5000/api/auth/register';
+
+      // Backend ला पाठवायचा डेटा
+      const payload = isLogin
+        ? {
+            identifier: formData.identifier,
+            password: formData.password,
+            role: userRole
+          }
+        : {
+            name: formData.name,
+            mobile: formData.mobile,
+            email: formData.email,
+            password: formData.password,
+            role: userRole,
+            agentCode: formData.agentCode,
+            state: formData.state,
+            city: formData.city
+          };
+
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong!');
+      }
+
+      // यशस्वी रिस्पॉन्स
+      if (isLogin) {
+        // JWT Token आणि User Data लोकल स्टोरेजमध्ये सेव्ह करा
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        
+        if (onAuthSuccess) onAuthSuccess(data.user);
+        onClose();
+      } else {
+        setSuccessMsg('Registration successful! Please login.');
+        setIsLogin(true); // आपोआप लॉगिन टॅबवर स्विच करा
+      }
+    } catch (err) {
+      setErrorMsg(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -89,25 +187,50 @@ function AuthModal({ isOpen, onClose, initialMode = 'login' }) {
             </p>
           </div>
 
-          <form onSubmit={(e) => e.preventDefault()} className="auth-form">
+          {/* Error / Success Notifications */}
+          {errorMsg && <div style={{ color: '#e53e3e', fontSize: '13px', marginBottom: '10px' }}>{errorMsg}</div>}
+          {successMsg && <div style={{ color: '#38a169', fontSize: '13px', marginBottom: '10px' }}>{successMsg}</div>}
+
+          <form onSubmit={handleSubmit} className="auth-form">
             {/* Registration Fields */}
             {!isLogin && (
               <div className="form-group">
                 <label>Full Name *</label>
-                <input type="text" placeholder="Enter your full name" required />
+                <input 
+                  type="text" 
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Enter your full name" 
+                  required 
+                />
               </div>
             )}
 
             <div className={!isLogin ? 'form-row' : ''}>
               <div className="form-group">
-                <label>Mobile Number / Email ID *</label>
-                <input type="text" placeholder="Enter mobile or email" required />
+                <label>{isLogin ? 'Mobile Number / Email ID *' : 'Mobile Number *'}</label>
+                <input 
+                  type="text" 
+                  name={isLogin ? 'identifier' : 'mobile'}
+                  value={isLogin ? formData.identifier : formData.mobile}
+                  onChange={handleChange}
+                  placeholder={isLogin ? "Enter mobile or email" : "Enter mobile number"} 
+                  required 
+                />
               </div>
 
               {!isLogin && (
                 <div className="form-group">
                   <label>Email ID</label>
-                  <input type="email" placeholder="Enter email address" />
+                  <input 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Enter email address" 
+                    required
+                  />
                 </div>
               )}
             </div>
@@ -115,13 +238,27 @@ function AuthModal({ isOpen, onClose, initialMode = 'login' }) {
             <div className={!isLogin ? 'form-row' : ''}>
               <div className="form-group">
                 <label>Password *</label>
-                <input type="password" placeholder="Create password" required />
+                <input 
+                  type="password" 
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  placeholder={isLogin ? "Enter password" : "Create password"} 
+                  required 
+                />
               </div>
 
               {!isLogin && (
                 <div className="form-group">
                   <label>Confirm Password *</label>
-                  <input type="password" placeholder="Confirm password" required />
+                  <input 
+                    type="password" 
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    placeholder="Confirm password" 
+                    required 
+                  />
                 </div>
               )}
             </div>
@@ -130,7 +267,13 @@ function AuthModal({ isOpen, onClose, initialMode = 'login' }) {
             {!isLogin && userRole === 'customer' && (
               <div className="form-group">
                 <label>Referral / Agent Code (Optional)</label>
-                <input type="text" placeholder="Enter agent code (if any)" />
+                <input 
+                  type="text" 
+                  name="agentCode"
+                  value={formData.agentCode}
+                  onChange={handleChange}
+                  placeholder="Enter agent code (if any)" 
+                />
               </div>
             )}
 
@@ -138,11 +281,25 @@ function AuthModal({ isOpen, onClose, initialMode = 'login' }) {
               <div className="form-row">
                 <div className="form-group">
                   <label>State *</label>
-                  <input type="text" placeholder="Enter State" required />
+                  <input 
+                    type="text" 
+                    name="state"
+                    value={formData.state}
+                    onChange={handleChange}
+                    placeholder="Enter State" 
+                    required 
+                  />
                 </div>
                 <div className="form-group">
                   <label>City *</label>
-                  <input type="text" placeholder="Enter City" required />
+                  <input 
+                    type="text" 
+                    name="city"
+                    value={formData.city}
+                    onChange={handleChange}
+                    placeholder="Enter City" 
+                    required 
+                  />
                 </div>
               </div>
             )}
@@ -161,8 +318,8 @@ function AuthModal({ isOpen, onClose, initialMode = 'login' }) {
               </label>
             )}
 
-            <button type="submit" className="auth-submit-btn">
-              {isLogin ? 'Login' : 'Register'}
+            <button type="submit" className="auth-submit-btn" disabled={loading}>
+              {loading ? 'Please wait...' : (isLogin ? 'Login' : 'Register')}
             </button>
 
             {/* Toggle Between Login & Register */}

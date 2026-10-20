@@ -1,8 +1,11 @@
 import React from "react";
 import "./Footer.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 function Footer() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   // पेज टॉपला स्क्रोल करण्यासाठी हँडलर
   const handleScrollToTop = () => {
     window.scrollTo({
@@ -10,6 +13,28 @@ function Footer() {
       left: 0,
       behavior: "instant",
     });
+  };
+
+  // विशिष्ट सर्व्हिस सेक्शनवर स्क्रोल करण्यासाठी हँडलर
+  const handleServiceClick = (e, sectionId) => {
+    e.preventDefault();
+
+    if (location.pathname === "/services") {
+      // आधीच Services पेजवर असल्यास थेट त्या कार्डवर स्क्रोल करा
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else {
+      // दुसऱ्या पेजवर असल्यास Services पेजवर नेऊन नंतर स्क्रोल करा
+      navigate(`/services#${sectionId}`);
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 150);
+    }
   };
 
   return (
@@ -99,7 +124,7 @@ function Footer() {
 
           <div className="col-divider"></div>
 
-          {/* Column 3: Services */}
+          {/* Column 3: Services Connected Directly to Sections */}
           <div className="footer-col">
             <div className="footer-heading-wrap">
               <h4 className="footer-heading">OUR SERVICES</h4>
@@ -107,24 +132,36 @@ function Footer() {
             </div>
             <ul className="footer-links-list">
               <li>
-                <Link to="/services" onClick={handleScrollToTop}>
+                <a
+                  href="#financial-consultancy"
+                  onClick={(e) => handleServiceClick(e, "financial-consultancy")}
+                >
                   Financial Consultancy
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/services" onClick={handleScrollToTop}>
+                <a
+                  href="#loan-takeover"
+                  onClick={(e) => handleServiceClick(e, "loan-takeover")}
+                >
                   Loan Takeover
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/services" onClick={handleScrollToTop}>
+                <a
+                  href="#gold-sip"
+                  onClick={(e) => handleServiceClick(e, "gold-sip")}
+                >
                   Gold SIP
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/services" onClick={handleScrollToTop}>
+                <a
+                  href="#auctioned-gold"
+                  onClick={(e) => handleServiceClick(e, "auctioned-gold")}
+                >
                   Auctioned Gold
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
