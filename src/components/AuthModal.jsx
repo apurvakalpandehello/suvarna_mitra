@@ -5,110 +5,72 @@ function AuthModal({ isOpen, onClose, initialMode = 'login', onAuthSuccess }) {
   const [isLogin, setIsLogin] = useState(initialMode === 'login');
   const [userRole, setUserRole] = useState('customer'); // 'customer' किंवा 'agent'
 
-  // फॉर्म डेटा मॅनेज करण्यासाठी स्टेट
-  const [formData, setFormData] = useState({
-    name: '',
-    identifier: '', // Login साठी (Mobile किंवा Email)
-    mobile: '',     // Registration साठी मोबाईल
-    email: '',      // Registration साठी ईमेल
-    password: '',
-    confirmPassword: '',
-    agentCode: '',
-    state: '',
-    city: ''
-  });
-
-  const [loading, setLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
-  const [successMsg, setSuccessMsg] = useState('');
-
-  // Mode सिंक करणे
+  // जेव्हा initialMode prop बदलेल तेव्हा सिंक करण्यासाठी
   useEffect(() => {
     setIsLogin(initialMode === 'login');
-    setErrorMsg('');
-    setSuccessMsg('');
   }, [initialMode]);
 
-  // Input Change Handler
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-    setErrorMsg('');
-  };
+  if (!isOpen) return null;
 
-  // Login / Register Submit Handler
+  // Form Submit Handler
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMsg('');
-    setSuccessMsg('');
+    setErrorMessage('');
+    setSuccessMessage('');
 
-    // पासवर्ड मॅच व्हॅलिडेशन (फक्त Register साठी)
-    if (!isLogin && formData.password !== formData.confirmPassword) {
-      setErrorMsg('Passwords do not match!');
+    // १. लॉगिन लॉजिक (सध्या अलर्ट)
+    if (isLogin) {
+      alert(`Login attempt for ${userRole}: ${mobile}`);
+      return;
+    }
+
+    // २. पासवर्ड मॅच चेकिंग
+    if (password !== confirmPassword) {
+      setErrorMessage('पासवर्ड आणि कन्फर्म पासवर्ड जुळत नाहीत!');
       return;
     }
 
     setLoading(true);
 
+    // ३. बॅकएंडसाठी पेलोड तयार करणे
+    const payload = {
+      role: userRole,
+      fullName: fullName.trim(),
+      mobile: mobile.trim(),
+      email: email.trim() || null,
+      password: password,
+      referralCode: userRole === 'customer' ? referralCode.trim() : null,
+      state: userRole === 'agent' ? stateName.trim() : null,
+      city: userRole === 'agent' ? cityName.trim() : null,
+    };
+
     try {
-      const endpoint = isLogin
-        ? 'http://localhost:5000/api/auth/login'
-        : 'http://localhost:5000/api/auth/register';
-
-      // Backend ला पाठवायचा डेटा
-      const payload = isLogin
-        ? {
-            identifier: formData.identifier,
-            password: formData.password,
-            role: userRole
-          }
-        : {
-            name: formData.name,
-            mobile: formData.mobile,
-            email: formData.email,
-            password: formData.password,
-            role: userRole,
-            agentCode: formData.agentCode,
-            state: formData.state,
-            city: formData.city
-          };
-
-      const response = await fetch(endpoint, {
+      const response = await fetch('http://localhost:5000/api/register', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
       });
 
       const data = await response.json();
 
-      if (!response.ok) {
-        throw new Error(data.message || 'Something went wrong!');
-      }
-
-      // यशस्वी रिस्पॉन्स
-      if (isLogin) {
-        // JWT Token आणि User Data लोकल स्टोरेजमध्ये सेव्ह करा
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('user', JSON.stringify(data.user));
-        
-        if (onAuthSuccess) onAuthSuccess(data.user);
-        onClose();
+      if (response.ok && data.success) {
+        setSuccessMessage(data.message);
+        setTimeout(() => {
+          resetForm();
+          setIsLogin(true); // यशस्वी रजिस्ट्रेशननंतर लॉगिन टॅबवर पाठवणे
+        }, 1800);
       } else {
-        setSuccessMsg('Registration successful! Please login.');
-        setIsLogin(true); // आपोआप लॉगिन टॅबवर स्विच करा
+        setErrorMessage(data.message || 'नोंदणी अयशस्वी झाली.');
       }
-    } catch (err) {
-      setErrorMsg(err.message);
+    } catch (error) {
+      console.error('API Error:', error);
+      setErrorMessage('सर्व्हरशी संपर्क होऊ शकला नाही. बॅकएंड चालू असल्याची खात्री करा.');
     } finally {
       setLoading(false);
     }
   };
-
-  if (!isOpen) return null;
 
   return (
     <div className="auth-overlay" onClick={onClose}>
@@ -165,14 +127,16 @@ function AuthModal({ isOpen, onClose, initialMode = 'login', onAuthSuccess }) {
           {/* Customer / Agent Switcher */}
           <div className="role-switcher">
             <button
+              type="button"
               className={`role-tab ${userRole === 'customer' ? 'active' : ''}`}
-              onClick={() => setUserRole('customer')}
+              onClick={() => { setUserRole('customer'); resetForm(); }}
             >
               Customer
             </button>
             <button
+              type="button"
               className={`role-tab ${userRole === 'agent' ? 'active' : ''}`}
-              onClick={() => setUserRole('agent')}
+              onClick={() => { setUserRole('agent'); resetForm(); }}
             >
               Agent
             </button>
@@ -187,50 +151,25 @@ function AuthModal({ isOpen, onClose, initialMode = 'login', onAuthSuccess }) {
             </p>
           </div>
 
-          {/* Error / Success Notifications */}
-          {errorMsg && <div style={{ color: '#e53e3e', fontSize: '13px', marginBottom: '10px' }}>{errorMsg}</div>}
-          {successMsg && <div style={{ color: '#38a169', fontSize: '13px', marginBottom: '10px' }}>{successMsg}</div>}
-
-          <form onSubmit={handleSubmit} className="auth-form">
+          <form onSubmit={(e) => e.preventDefault()} className="auth-form">
             {/* Registration Fields */}
             {!isLogin && (
               <div className="form-group">
                 <label>Full Name *</label>
-                <input 
-                  type="text" 
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Enter your full name" 
-                  required 
-                />
+                <input type="text" placeholder="Enter your full name" required />
               </div>
             )}
 
             <div className={!isLogin ? 'form-row' : ''}>
               <div className="form-group">
-                <label>{isLogin ? 'Mobile Number / Email ID *' : 'Mobile Number *'}</label>
-                <input 
-                  type="text" 
-                  name={isLogin ? 'identifier' : 'mobile'}
-                  value={isLogin ? formData.identifier : formData.mobile}
-                  onChange={handleChange}
-                  placeholder={isLogin ? "Enter mobile or email" : "Enter mobile number"} 
-                  required 
-                />
+                <label>Mobile Number / Email ID *</label>
+                <input type="text" placeholder="Enter mobile or email" required />
               </div>
 
               {!isLogin && (
                 <div className="form-group">
                   <label>Email ID</label>
-                  <input 
-                    type="email" 
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Enter email address" 
-                    required
-                  />
+                  <input type="email" placeholder="Enter email address" />
                 </div>
               )}
             </div>
@@ -238,73 +177,40 @@ function AuthModal({ isOpen, onClose, initialMode = 'login', onAuthSuccess }) {
             <div className={!isLogin ? 'form-row' : ''}>
               <div className="form-group">
                 <label>Password *</label>
-                <input 
-                  type="password" 
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  placeholder={isLogin ? "Enter password" : "Create password"} 
-                  required 
-                />
+                <input type="password" placeholder="Create password" required />
               </div>
 
               {!isLogin && (
                 <div className="form-group">
                   <label>Confirm Password *</label>
-                  <input 
-                    type="password" 
-                    name="confirmPassword"
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
-                    placeholder="Confirm password" 
-                    required 
-                  />
+                  <input type="password" placeholder="Confirm password" required />
                 </div>
               )}
             </div>
 
-            {/* Registration Extra Fields (Agent / Referral) */}
+            {/* Customer Referral Code */}
             {!isLogin && userRole === 'customer' && (
               <div className="form-group">
                 <label>Referral / Agent Code (Optional)</label>
-                <input 
-                  type="text" 
-                  name="agentCode"
-                  value={formData.agentCode}
-                  onChange={handleChange}
-                  placeholder="Enter agent code (if any)" 
-                />
+                <input type="text" placeholder="Enter agent code (if any)" />
               </div>
             )}
 
+            {/* Agent State & City */}
             {!isLogin && userRole === 'agent' && (
               <div className="form-row">
                 <div className="form-group">
                   <label>State *</label>
-                  <input 
-                    type="text" 
-                    name="state"
-                    value={formData.state}
-                    onChange={handleChange}
-                    placeholder="Enter State" 
-                    required 
-                  />
+                  <input type="text" placeholder="Enter State" required />
                 </div>
                 <div className="form-group">
                   <label>City *</label>
-                  <input 
-                    type="text" 
-                    name="city"
-                    value={formData.city}
-                    onChange={handleChange}
-                    placeholder="Enter City" 
-                    required 
-                  />
+                  <input type="text" placeholder="Enter City" required />
                 </div>
               </div>
             )}
 
-            {/* Login Remember & Forgot */}
+            {/* Login / Terms Checkbox */}
             {isLogin ? (
               <div className="form-actions-row">
                 <label className="checkbox-label">
@@ -318,8 +224,8 @@ function AuthModal({ isOpen, onClose, initialMode = 'login', onAuthSuccess }) {
               </label>
             )}
 
-            <button type="submit" className="auth-submit-btn" disabled={loading}>
-              {loading ? 'Please wait...' : (isLogin ? 'Login' : 'Register')}
+            <button type="submit" className="auth-submit-btn">
+              {isLogin ? 'Login' : 'Register'}
             </button>
 
             {/* Toggle Between Login & Register */}
@@ -327,14 +233,14 @@ function AuthModal({ isOpen, onClose, initialMode = 'login', onAuthSuccess }) {
               {isLogin ? (
                 <>
                   <span>Don't have an account? </span>
-                  <button type="button" className="link-button" onClick={() => setIsLogin(false)}>
+                  <button type="button" className="link-button" onClick={() => { setIsLogin(false); resetForm(); }}>
                     Register Here
                   </button>
                 </>
               ) : (
                 <>
                   <span>Already have an account? </span>
-                  <button type="button" className="link-button" onClick={() => setIsLogin(true)}>
+                  <button type="button" className="link-button" onClick={() => { setIsLogin(true); resetForm(); }}>
                     Login
                   </button>
                 </>
