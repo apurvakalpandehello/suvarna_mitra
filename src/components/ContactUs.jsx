@@ -10,6 +10,7 @@ function ContactUs() {
   });
 
   const [loading, setLoading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState({ type: '', text: '' });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,9 +23,20 @@ function ContactUs() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setStatusMessage({ type: '', text: '' });
 
     try {
-      const response = await fetch('https://formspree.io/f/xbgdwjqe', {
+      // 1. MySQL Database sathi Node.js Backend API Call
+      const dbPromise = fetch('http://localhost:5000/api/enquiries', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      // 2. Email notification sathi Formspree API Call
+      const emailPromise = fetch('https://formspree.io/f/xbgdwjqe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,8 +45,17 @@ function ContactUs() {
         body: JSON.stringify(formData)
       });
 
-      if (response.ok) {
-        alert('Thank you! Your enquiry has been received.');
+      // Donhi requests sobat patavne
+      const [dbResponse, emailResponse] = await Promise.allSettled([
+        dbPromise,
+        emailPromise
+      ]);
+
+      const isDbOk = dbResponse.status === 'fulfilled' && dbResponse.value.ok;
+      const isEmailOk = emailResponse.status === 'fulfilled' && emailResponse.value.ok;
+
+      if (isDbOk || isEmailOk) {
+        alert('Thank you! Your enquiry has been received and saved.');
         setFormData({
           fullName: '',
           email: '',
@@ -42,7 +63,7 @@ function ContactUs() {
           requirement: ''
         });
       } else {
-        alert('Something went wrong. Please try again.');
+        alert('Something went wrong. Please check your backend server and connection.');
       }
     } catch (error) {
       console.error('Submission Error:', error);

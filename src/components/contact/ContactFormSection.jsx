@@ -29,24 +29,57 @@ function ContactFormSection() {
     e.preventDefault();
     setStatus({ submitting: true, success: false, error: null });
 
+    // Enquiries टेबलच्या Requirement कॉलमसाठी Service आणि Message एकत्र फॉरमॅट करणे
+    const combinedRequirement = formData.helpOption
+      ? `[${formData.helpOption}] ${formData.message}`
+      : formData.message;
+
+    // 1. MySQL Database (swarna_mitra_backend) कडे पाठवण्यासाठी पेलोड
+    const dbPayload = {
+      fullName: formData.fullName,
+      email: formData.email,
+      phone: formData.phone,
+      requirement: combinedRequirement
+    };
+
+    // 2. Formspree Email साठी पेलोड
+    const emailPayload = {
+      'Full Name': formData.fullName,
+      'Email': formData.email,
+      'Phone': formData.phone,
+      'Service Needed': formData.helpOption,
+      'Message': formData.message,
+      'Policy Agreed': formData.agreePolicy ? 'Yes' : 'No'
+    };
+
     try {
-      const response = await fetch('https://formspree.io/f/xeaedjly', {
+      // एकाच वेळी MySQL Database आणि Formspree ईमेलला रिक्वेस्ट पाठवणे
+      const dbPromise = fetch('http://localhost:5000/api/enquiries', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dbPayload)
+      });
+
+      const emailPromise = fetch('https://formspree.io/f/xeaedjly', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify({
-          'Full Name': formData.fullName,
-          'Email': formData.email,
-          'Phone': formData.phone,
-          'Service Needed': formData.helpOption,
-          'Message': formData.message,
-          'Policy Agreed': formData.agreePolicy ? 'Yes' : 'No'
-        })
+        body: JSON.stringify(emailPayload)
       });
 
-      if (response.ok) {
+      const [dbResponse, emailResponse] = await Promise.allSettled([
+        dbPromise,
+        emailPromise
+      ]);
+
+      const isDbOk = dbResponse.status === 'fulfilled' && dbResponse.value.ok;
+      const isEmailOk = emailResponse.status === 'fulfilled' && emailResponse.value.ok;
+
+      if (isDbOk || isEmailOk) {
         setStatus({ submitting: false, success: true, error: null });
         setFormData({
           fullName: '',
@@ -57,14 +90,14 @@ function ContactFormSection() {
           agreePolicy: false
         });
       } else {
-        const errorData = await response.json();
-        throw new Error(errorData?.errors?.[0]?.message || 'Submission failed');
+        throw new Error('Form submission failed on server.');
       }
     } catch (err) {
+      console.error('Contact Form Submission Error:', err);
       setStatus({
         submitting: false,
         success: false,
-        error: 'Something went wrong. Please try again later or contact us directly via phone.'
+        error: 'Something went wrong. Please make sure backend server is running or contact us directly.'
       });
     }
   };
@@ -167,7 +200,6 @@ function ContactFormSection() {
             <h3 className="form-card-title">Send Us a Message</h3>
             <p className="form-card-subtitle">Fill out the form below and we’ll get back to you shortly.</p>
 
-            {/* Status Messages in English */}
             {status.success && (
               <div className="form-alert-box alert-success">
                 Thank you! Your message has been sent successfully. Our team will get back to you shortly.

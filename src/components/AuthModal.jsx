@@ -3,12 +3,42 @@ import './AuthModal.css';
 
 function AuthModal({ isOpen, onClose, initialMode = 'login', onAuthSuccess }) {
   const [isLogin, setIsLogin] = useState(initialMode === 'login');
-  const [userRole, setUserRole] = useState('customer'); // 'customer' किंवा 'agent'
+  const [userRole, setUserRole] = useState('customer'); // 'customer' kiva 'agent'
 
-  // जेव्हा initialMode prop बदलेल तेव्हा सिंक करण्यासाठी
+  // Form Field States
+  const [fullName, setFullName] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [referralCode, setReferralCode] = useState('');
+  const [stateName, setStateName] = useState('');
+  const [cityName, setCityName] = useState('');
+  const [termsAccepted, setTermsAccepted] = useState(false);
+
+  // Status & Loader States
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const resetForm = () => {
+    setFullName('');
+    setMobile('');
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
+    setReferralCode('');
+    setStateName('');
+    setCityName('');
+    setTermsAccepted(false);
+    setErrorMessage('');
+    setSuccessMessage('');
+  };
+
   useEffect(() => {
     setIsLogin(initialMode === 'login');
-  }, [initialMode]);
+    resetForm();
+  }, [initialMode, isOpen]);
 
   if (!isOpen) return null;
 
@@ -18,21 +48,31 @@ function AuthModal({ isOpen, onClose, initialMode = 'login', onAuthSuccess }) {
     setErrorMessage('');
     setSuccessMessage('');
 
-    // १. लॉगिन लॉजिक (सध्या अलर्ट)
+    // 1. Login Mode
     if (isLogin) {
+      if (!mobile || !password) {
+        setErrorMessage('Mobile number ani Password takane garjeche ahe.');
+        return;
+      }
       alert(`Login attempt for ${userRole}: ${mobile}`);
+      if (onAuthSuccess) onAuthSuccess({ role: userRole, mobile });
       return;
     }
 
-    // २. पासवर्ड मॅच चेकिंग
+    // 2. Terms & Conditions Validation
+    if (!termsAccepted) {
+      setErrorMessage('Krupaya Terms & Conditions accept kara.');
+      return;
+    }
+
+    // 3. Password Match Validation
     if (password !== confirmPassword) {
-      setErrorMessage('पासवर्ड आणि कन्फर्म पासवर्ड जुळत नाहीत!');
+      setErrorMessage('Password ani Confirm Password match hot nahit!');
       return;
     }
 
     setLoading(true);
 
-    // ३. बॅकएंडसाठी पेलोड तयार करणे
     const payload = {
       role: userRole,
       fullName: fullName.trim(),
@@ -59,14 +99,14 @@ function AuthModal({ isOpen, onClose, initialMode = 'login', onAuthSuccess }) {
         setSuccessMessage(data.message);
         setTimeout(() => {
           resetForm();
-          setIsLogin(true); // यशस्वी रजिस्ट्रेशननंतर लॉगिन टॅबवर पाठवणे
-        }, 1800);
+          setIsLogin(true);
+        }, 1500);
       } else {
-        setErrorMessage(data.message || 'नोंदणी अयशस्वी झाली.');
+        setErrorMessage(data.message || 'Registration fail jhale.');
       }
     } catch (error) {
       console.error('API Error:', error);
-      setErrorMessage('सर्व्हरशी संपर्क होऊ शकला नाही. बॅकएंड चालू असल्याची खात्री करा.');
+      setErrorMessage('Backend server sobat connect hot nahiye! http://localhost:5000 chaloo ahe ka check kara.');
     } finally {
       setLoading(false);
     }
@@ -75,10 +115,9 @@ function AuthModal({ isOpen, onClose, initialMode = 'login', onAuthSuccess }) {
   return (
     <div className="auth-overlay" onClick={onClose}>
       <div className="auth-modal" onClick={(e) => e.stopPropagation()}>
-        {/* Close Button */}
         <button className="auth-close-btn" onClick={onClose}>&times;</button>
 
-        {/* डावीकडील ब्रँडिंग & बॅनर सेक्शन */}
+        {/* Branding & Banner Section */}
         <div className="auth-banner">
           <div className="auth-brand">
             <span className="brand-icon">✨</span>
@@ -122,9 +161,8 @@ function AuthModal({ isOpen, onClose, initialMode = 'login', onAuthSuccess }) {
           </div>
         </div>
 
-        {/* उजवीकडील फॉर्म सेक्शन */}
+        {/* Form Section */}
         <div className="auth-form-wrapper">
-          {/* Customer / Agent Switcher */}
           <div className="role-switcher">
             <button
               type="button"
@@ -151,25 +189,54 @@ function AuthModal({ isOpen, onClose, initialMode = 'login', onAuthSuccess }) {
             </p>
           </div>
 
-          <form onSubmit={(e) => e.preventDefault()} className="auth-form">
-            {/* Registration Fields */}
+          {errorMessage && (
+            <div style={{ color: '#ff4d4f', background: 'rgba(255, 77, 79, 0.1)', padding: '8px 12px', borderRadius: '6px', fontSize: '13px', marginBottom: '12px' }}>
+              {errorMessage}
+            </div>
+          )}
+
+          {successMessage && (
+            <div style={{ color: '#52c41a', background: 'rgba(82, 196, 26, 0.1)', padding: '8px 12px', borderRadius: '6px', fontSize: '13px', marginBottom: '12px' }}>
+              {successMessage}
+            </div>
+          )}
+
+          {/* Form with working onSubmit */}
+          <form onSubmit={handleSubmit} className="auth-form">
             {!isLogin && (
               <div className="form-group">
                 <label>Full Name *</label>
-                <input type="text" placeholder="Enter your full name" required />
+                <input
+                  type="text"
+                  placeholder="Enter your full name"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  required
+                />
               </div>
             )}
 
             <div className={!isLogin ? 'form-row' : ''}>
               <div className="form-group">
-                <label>Mobile Number / Email ID *</label>
-                <input type="text" placeholder="Enter mobile or email" required />
+                <label>{isLogin ? 'Mobile Number / Email ID *' : 'Mobile Number *'}</label>
+                <input
+                  type="text"
+                  placeholder={isLogin ? 'Enter mobile or email' : 'Enter 10-digit mobile'}
+                  value={mobile}
+                  onChange={(e) => setMobile(e.target.value)}
+                  required
+                />
               </div>
 
               {!isLogin && (
                 <div className="form-group">
                   <label>Email ID</label>
-                  <input type="email" placeholder="Enter email address" />
+                  <input
+                    type="email"
+                    placeholder="Enter email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                 </div>
               )}
             </div>
@@ -177,40 +244,66 @@ function AuthModal({ isOpen, onClose, initialMode = 'login', onAuthSuccess }) {
             <div className={!isLogin ? 'form-row' : ''}>
               <div className="form-group">
                 <label>Password *</label>
-                <input type="password" placeholder="Create password" required />
+                <input
+                  type="password"
+                  placeholder={isLogin ? 'Enter password' : 'Create password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
               </div>
 
               {!isLogin && (
                 <div className="form-group">
                   <label>Confirm Password *</label>
-                  <input type="password" placeholder="Confirm password" required />
+                  <input
+                    type="password"
+                    placeholder="Confirm password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                  />
                 </div>
               )}
             </div>
 
-            {/* Customer Referral Code */}
             {!isLogin && userRole === 'customer' && (
               <div className="form-group">
                 <label>Referral / Agent Code (Optional)</label>
-                <input type="text" placeholder="Enter agent code (if any)" />
+                <input
+                  type="text"
+                  placeholder="Enter agent code (if any)"
+                  value={referralCode}
+                  onChange={(e) => setReferralCode(e.target.value)}
+                />
               </div>
             )}
 
-            {/* Agent State & City */}
             {!isLogin && userRole === 'agent' && (
               <div className="form-row">
                 <div className="form-group">
                   <label>State *</label>
-                  <input type="text" placeholder="Enter State" required />
+                  <input
+                    type="text"
+                    placeholder="Enter State"
+                    value={stateName}
+                    onChange={(e) => setStateName(e.target.value)}
+                    required
+                  />
                 </div>
                 <div className="form-group">
                   <label>City *</label>
-                  <input type="text" placeholder="Enter City" required />
+                  <input
+                    type="text"
+                    placeholder="Enter City"
+                    value={cityName}
+                    onChange={(e) => setCityName(e.target.value)}
+                    required
+                  />
                 </div>
               </div>
             )}
 
-            {/* Login / Terms Checkbox */}
             {isLogin ? (
               <div className="form-actions-row">
                 <label className="checkbox-label">
@@ -220,15 +313,18 @@ function AuthModal({ isOpen, onClose, initialMode = 'login', onAuthSuccess }) {
               </div>
             ) : (
               <label className="checkbox-label terms-label">
-                <input type="checkbox" required /> I agree to the <a href="#terms">Terms & Conditions</a>
+                <input
+                  type="checkbox"
+                  checked={termsAccepted}
+                  onChange={(e) => setTermsAccepted(e.target.checked)}
+                /> I agree to the <a href="#terms">Terms & Conditions</a>
               </label>
             )}
 
-            <button type="submit" className="auth-submit-btn">
-              {isLogin ? 'Login' : 'Register'}
+            <button type="submit" className="auth-submit-btn" disabled={loading}>
+              {loading ? 'Processing...' : isLogin ? 'Login' : 'Register'}
             </button>
 
-            {/* Toggle Between Login & Register */}
             <div className="auth-toggle-msg">
               {isLogin ? (
                 <>

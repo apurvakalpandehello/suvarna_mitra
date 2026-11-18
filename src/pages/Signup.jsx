@@ -1,0 +1,254 @@
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import './AuthPages.css';
+
+function Signup() {
+  const navigate = useNavigate();
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const [agreeTerms, setAgreeTerms] = useState(false);
+  const [whatsappUpdates, setWhatsappUpdates] = useState(false);
+  const [error, setError] = useState('');
+
+  // Password validation checks
+  const hasMinLength = password.length >= 8;
+  const hasLetter = /[a-zA-Z]/.test(password);
+  const hasNumber = /[0-9]/.test(password);
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+    setError('');
+
+    if (!fullName || !email || !mobile || !password || !confirmPassword) {
+      setError('Please fill in all required fields.');
+      return;
+    }
+
+    if (!hasMinLength || !hasLetter || !hasNumber) {
+      setError('Password must be at least 8 characters and contain both a letter and a number.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError('Passwords do not match.');
+      return;
+    }
+
+    if (!agreeTerms) {
+      setError('Please agree to the Terms of Service and Privacy Policy.');
+      return;
+    }
+
+    const newUser = {
+      name: fullName,
+      email: email,
+      mobile: mobile,
+      whatsappUpdates: whatsappUpdates,
+    };
+    localStorage.setItem('user', JSON.stringify(newUser));
+
+    navigate('/');
+    window.location.reload();
+  };
+
+  return (
+    <div className="auth-page-wrapper">
+      {/* Left Side Branding Panel (Without Logo) */}
+      <div className="auth-left-panel">
+        <div className="auth-left-content">
+          <h1 className="auth-left-heading">
+            Free your gold from <span className="auth-gold-highlight">costly loans.</span>
+          </h1>
+
+          <ul className="auth-features-list">
+            <li>
+              <span className="check-circle">✓</span>
+              Close your existing gold loan, from any lender
+            </li>
+            <li>
+              <span className="check-circle">✓</span>
+              Switch to a lower interest rate
+            </li>
+            <li>
+              <span className="check-circle">✓</span>
+              Get your gold released, hassle-free
+            </li>
+          </ul>
+        </div>
+
+        <div className="auth-left-footer">
+          © 2026 Swarna Mitra
+        </div>
+      </div>
+
+      {/* Right Side Form Panel */}
+      <div className="auth-right-panel">
+        <div className="auth-form-card">
+          <h2 className="auth-card-title">Create your account</h2>
+          <p className="auth-card-subtitle">
+            Close your existing gold loan with Swarna Mitra. It takes a minute to get started.
+          </p>
+
+          {error && <div className="auth-error-msg">{error}</div>}
+
+          <form onSubmit={handleSignup}>
+            {/* Full name */}
+            <div className="auth-form-group">
+              <label className="auth-label">Full name</label>
+              <div className="auth-input-wrapper">
+                <input
+                  type="text"
+                  className="auth-input"
+                  placeholder="As on your PAN / Aadhaar"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Email address */}
+            <div className="auth-form-group">
+              <label className="auth-label">Email address</label>
+              <div className="auth-input-wrapper">
+                <input
+                  type="email"
+                  className="auth-input"
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Mobile number */}
+            <div className="auth-form-group">
+              <label className="auth-label">Mobile number</label>
+              <div className="auth-input-wrapper">
+                <input
+                  type="tel"
+                  className="auth-input"
+                  placeholder="98765 43210"
+                  value={mobile}
+                  onChange={(e) => setMobile(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Password */}
+            <div className="auth-form-group">
+              <label className="auth-label">Password</label>
+              <div className="auth-input-wrapper">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  className="auth-input"
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  className="auth-show-btn"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? 'Hide' : 'Show'}
+                </button>
+              </div>
+
+              {/* Password Rules */}
+              <div className="password-rules-row">
+                <span className={`password-rule-item ${hasMinLength ? 'valid' : ''}`}>
+                  {hasMinLength ? '✓' : '◦'} At least 8 characters
+                </span>
+                <span className={`password-rule-item ${hasLetter ? 'valid' : ''}`}>
+                  {hasLetter ? '✓' : '◦'} Contains a letter
+                </span>
+                <span className={`password-rule-item ${hasNumber ? 'valid' : ''}`}>
+                  {hasNumber ? '✓' : '◦'} Contains a number
+                </span>
+              </div>
+            </div>
+
+            {/* Confirm password */}
+            <div className="auth-form-group">
+              <label className="auth-label">Confirm password</label>
+              <div className="auth-input-wrapper">
+                <input
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  className="auth-input"
+                  placeholder="Re-enter your password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  className="auth-show-btn"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                >
+                  {showConfirmPassword ? 'Hide' : 'Show'}
+                </button>
+              </div>
+            </div>
+
+            {/* Checkboxes */}
+            <div className="auth-checkbox-group">
+              <label className="auth-checkbox-label">
+                <input
+                  type="checkbox"
+                  className="auth-checkbox-input"
+                  checked={agreeTerms}
+                  onChange={(e) => setAgreeTerms(e.target.checked)}
+                />
+                <span>
+                  I agree to the{' '}
+                  <Link to="/pages/policies/termsConditions" className="auth-gold-link">
+                    Terms of Service
+                  </Link>{' '}
+                  and{' '}
+                  <Link to="/pages/policies/privacyPolicy" className="auth-gold-link">
+                    Privacy Policy
+                  </Link>
+                  .
+                </span>
+              </label>
+
+              <label className="auth-checkbox-label">
+                <input
+                  type="checkbox"
+                  className="auth-checkbox-input"
+                  checked={whatsappUpdates}
+                  onChange={(e) => setWhatsappUpdates(e.target.checked)}
+                />
+                <span>Send me updates and offers on WhatsApp / SMS.</span>
+              </label>
+            </div>
+
+            <button type="submit" className="auth-submit-btn">
+              Create account
+            </button>
+          </form>
+        </div>
+
+        <p className="auth-bottom-text">
+          Already have an account?{' '}
+          <Link to="/login" className="auth-gold-link">
+            Log in
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
+}
+
+export default Signup;

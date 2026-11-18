@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // useNavigate ॲड केले आहे
 import logoImg from '../assets/images/logo.png';
 import AuthModal from './AuthModal';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate(); // नवीन पेजवर जाण्यासाठी
 
-  // Modal उघडण्यासाठी state
+  // Modal उघडण्यासाठी state (तुमचा जुना कोड तसाच ठेवला आहे)
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [authMode, setAuthMode] = useState('login'); // 'login' किंवा 'register'
 
@@ -34,18 +35,16 @@ function Navbar() {
     setIsOpen(false);
   };
 
-  // Login क्लिक केल्यावर
+  // Login क्लिक केल्यावर नवीन पेज उघडेल
   const openLogin = () => {
-    setAuthMode('login');
-    setIsAuthOpen(true);
     closeMenu();
+    navigate('/login');
   };
 
-  // Register क्लिक केल्यावर
-  const openRegister = () => {
-    setAuthMode('register');
-    setIsAuthOpen(true);
+  // Signup क्लिक केल्यावर नवीन पेज उघडेल
+  const openSignup = () => {
     closeMenu();
+    navigate('/signup');
   };
 
   // यशस्वी लॉगिननंतर चालणारे फंक्शन
@@ -118,8 +117,8 @@ function Navbar() {
                 <button className="nav-btn btn-login" onClick={openLogin}>
                   Login
                 </button>
-                <button className="nav-btn btn-register" onClick={openRegister}>
-                  Register
+                <button className="nav-btn btn-register" onClick={openSignup}>
+                  Signup
                 </button>
               </>
             )}

@@ -4,6 +4,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Components Imports
+import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
 import FinancialSolutions from "./components/FinancialSolutions.jsx";
 import WhyChooseUs from "./components/WhyChooseUs.jsx";
@@ -22,6 +23,8 @@ import WhatsAppButton from "./components/WhatsAppButton.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
 import Services from "./pages/services.jsx";
 import Contact from "./pages/contact.jsx";
+import Login from "./pages/Login.jsx";
+import Signup from "./pages/Signup.jsx";
 
 import PrivacyPolicy from "./pages/policies/privacyPolicy.jsx";
 import TermsConditions from "./pages/policies/termsConditions.jsx";
@@ -35,13 +38,9 @@ function SEO({ title, description, path }) {
   return (
     <Helmet>
       <title>{title}</title>
-
       <meta name="description" content={description} />
-
       <meta name="robots" content="index, follow" />
-
       <link rel="canonical" href={canonicalUrl} />
-
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="Swarna Mitra Financial Services" />
       <meta property="og:title" content={title} />
@@ -77,10 +76,42 @@ function HomePage() {
 function App() {
   return (
     <Router>
-      <div className="app-container">
+      <div className="app-container" style={{ backgroundColor: "#ffffff" }}>
         <Routes>
           {/* Home Page */}
           <Route path="/" element={<HomePage />} />
+
+          {/* Login Page */}
+          <Route
+            path="/login"
+            element={
+              <>
+                <SEO
+                  title="Login | Swarna Mitra Financial Services"
+                  description="Login to your Swarna Mitra Financial Services account."
+                  path="/login"
+                />
+                <Navbar />
+                <Login />
+              </>
+            }
+          />
+
+          {/* Signup Page */}
+          <Route
+            path="/signup"
+            element={
+              <>
+                <SEO
+                  title="Signup | Swarna Mitra Financial Services"
+                  description="Create a new account with Swarna Mitra Financial Services."
+                  path="/signup"
+                />
+                <Navbar />
+                <Signup />
+              </>
+            }
+          />
 
           {/* About Us */}
           <Route
