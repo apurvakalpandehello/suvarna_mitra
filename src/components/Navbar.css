@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 50px;
+  padding: 8px 50px; /* 16px वरून 8px केले */
   box-sizing: border-box;
   background: transparent;
   position: relative;
@@ -18,7 +18,7 @@
 }
 
 .logo-img {
-  height: 82px;
+  height: 58px; /* 82px वरून 58px केले */
   width: auto;
   object-fit: contain;
   display: block;
@@ -51,8 +51,8 @@
 .nav-menu li a {
   text-decoration: none;
   color: #7d5939;
-  font-size: 16.5px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: 500;
   letter-spacing: 0.2px;
   transition: color 0.3s ease;
   white-space: nowrap;
@@ -71,8 +71,8 @@
 
 /* Login aani Register buttons */
 .nav-btn {
-  font-size: 15px;
-  padding: 8px 22px;
+  font-size: 14.5px;
+  padding: 6px 20px; /* बटणची उंची थोडी स्लीम केली */
   border-radius: 6px;
   cursor: pointer;
   font-weight: 400;
@@ -132,14 +132,14 @@
   }
 
   .logo-img {
-    height: 70px;
+    height: 52px; /* 70px वरून 52px केले */
   }
 }
 
 /* ================= Mobile Responsive ================= */
 @media (max-width: 900px) {
   .navbar-container {
-    padding: 14px 20px;
+    padding: 8px 20px; /* 14px वरून 8px केले */
   }
 
   .nav-logo {
@@ -147,7 +147,7 @@
   }
 
   .logo-img {
-    height: 58px;
+    height: 46px; /* 58px वरून 46px केले */
   }
 
   .nav-toggle {
@@ -168,8 +168,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 20px 20px 8px 20px; /* Khali barobar 8px padding dili ahe */
-    gap: 20px;
+    padding: 16px 20px 8px 20px;
+    gap: 18px;
     box-sizing: border-box;
     z-index: 1000;
     transform: none;
@@ -190,7 +190,7 @@
   }
 
   .mobile-logo-img {
-    height: 60px;
+    height: 48px;
     width: auto;
     object-fit: contain;
     display: block;
@@ -199,13 +199,13 @@
   /* Tyakhali links ek-ek */
   .nav-menu {
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
     width: 100%;
     text-align: center;
   }
 
   .nav-menu li a {
-    font-size: 16.5px;
+    font-size: 16px;
     font-weight: 400;
     display: inline-block;
   }
@@ -215,7 +215,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    gap: 12px;
+    gap: 10px;
     margin-top: 5px;
     padding-bottom: 0;
   }
@@ -223,7 +223,7 @@
   .nav-actions .nav-btn {
     width: 80%;
     max-width: 240px;
-    padding: 10px 0;
+    padding: 9px 0;
     text-align: center;
   }
 }
