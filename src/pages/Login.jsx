@@ -5,6 +5,8 @@ import './AuthPages.css';
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -12,8 +14,8 @@ function Login() {
     e.preventDefault();
     setError('');
 
-    if (!email) {
-      setError('Please enter your email address.');
+    if (!email || !password) {
+      setError('Please enter both email and password.');
       return;
     }
 
@@ -26,6 +28,7 @@ function Login() {
         },
         body: JSON.stringify({
           email,
+          password,
         }),
       });
 
@@ -100,6 +103,33 @@ function Login() {
                   required
                 />
               </div>
+            </div>
+
+            <div className="auth-form-group" style={{ marginBottom: 0 }}>
+              <label className="auth-label">Password</label>
+              <div className="auth-input-wrapper">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  className="auth-input"
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  className="auth-show-btn"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? 'Hide' : 'Show'}
+                </button>
+              </div>
+            </div>
+
+            <div className="auth-forgot-row">
+              <Link to="/contact" className="auth-gold-link">
+                Forgot password?
+              </Link>
             </div>
 
             <button type="submit" className="auth-submit-btn" disabled={loading}>

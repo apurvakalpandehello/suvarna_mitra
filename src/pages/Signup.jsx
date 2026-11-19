@@ -7,18 +7,38 @@ function Signup() {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [mobile, setMobile] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [whatsappUpdates, setWhatsappUpdates] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // Password validation checks
+  const hasMinLength = password.length >= 8;
+  const hasLetter = /[a-zA-Z]/.test(password);
+  const hasNumber = /[0-9]/.test(password);
+
   const handleSignup = async (e) => {
     e.preventDefault();
     setError('');
 
-    if (!fullName || !email || !mobile) {
+    if (!fullName || !email || !mobile || !password || !confirmPassword) {
       setError('Please fill in all required fields.');
+      return;
+    }
+
+    if (!hasMinLength || !hasLetter || !hasNumber) {
+      setError('Password must be at least 8 characters and contain both a letter and a number.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError('Passwords do not match.');
       return;
     }
 
@@ -143,6 +163,63 @@ function Signup() {
                   onChange={(e) => setMobile(e.target.value)}
                   required
                 />
+              </div>
+            </div>
+
+            {/* Password */}
+            <div className="auth-form-group">
+              <label className="auth-label">Password</label>
+              <div className="auth-input-wrapper">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  className="auth-input"
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  className="auth-show-btn"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? 'Hide' : 'Show'}
+                </button>
+              </div>
+
+              {/* Password Rules */}
+              <div className="password-rules-row">
+                <span className={`password-rule-item ${hasMinLength ? 'valid' : ''}`}>
+                  {hasMinLength ? '✓' : '◦'} At least 8 characters
+                </span>
+                <span className={`password-rule-item ${hasLetter ? 'valid' : ''}`}>
+                  {hasLetter ? '✓' : '◦'} Contains a letter
+                </span>
+                <span className={`password-rule-item ${hasNumber ? 'valid' : ''}`}>
+                  {hasNumber ? '✓' : '◦'} Contains a number
+                </span>
+              </div>
+            </div>
+
+            {/* Confirm password */}
+            <div className="auth-form-group">
+              <label className="auth-label">Confirm password</label>
+              <div className="auth-input-wrapper">
+                <input
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  className="auth-input"
+                  placeholder="Re-enter your password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  className="auth-show-btn"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                >
+                  {showConfirmPassword ? 'Hide' : 'Show'}
+                </button>
               </div>
             </div>
 
