@@ -4,49 +4,21 @@ import './AuthPages.css';
 
 function Signup() {
   const navigate = useNavigate();
-  const [role, setRole] = useState('customer'); // 'customer' किंवा 'agent'
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [mobile, setMobile] = useState('');
-  const [stateName, setStateName] = useState('');
-  const [city, setCity] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [whatsappUpdates, setWhatsappUpdates] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Password validation checks
-  const hasMinLength = password.length >= 8;
-  const hasLetter = /[a-zA-Z]/.test(password);
-  const hasNumber = /[0-9]/.test(password);
-
   const handleSignup = async (e) => {
     e.preventDefault();
     setError('');
 
-    if (!fullName || !email || !mobile || !password || !confirmPassword) {
+    if (!fullName || !email || !mobile) {
       setError('Please fill in all required fields.');
-      return;
-    }
-
-    if (role === 'agent' && (!stateName || !city)) {
-      setError('Please enter both State and City for Agent registration.');
-      return;
-    }
-
-    if (!hasMinLength || !hasLetter || !hasNumber) {
-      setError('Password must be at least 8 characters and contain both a letter and a number.');
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      setError('Passwords do not match.');
       return;
     }
 
@@ -63,12 +35,10 @@ function Signup() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          role,
+          role: 'customer',
           fullName,
           email,
           mobile,
-          password,
-          ...(role === 'agent' && { state: stateName, city }),
         }),
       });
 
@@ -80,7 +50,6 @@ function Signup() {
         return;
       }
 
-      // यशस्वी रजिस्ट्रेशननंतर लॉगिन पेजवर पाठवा
       alert(data.message);
       navigate('/login');
     } catch (err) {
@@ -129,40 +98,6 @@ function Signup() {
             Close your existing gold loan with Swarna Mitra. It takes a minute to get started.
           </p>
 
-          {/* Role Switcher (Customer vs Agent) */}
-          <div style={{ display: 'flex', gap: '10px', marginBottom: '18px' }}>
-            <button
-              type="button"
-              onClick={() => setRole('customer')}
-              style={{
-                flex: 1,
-                padding: '10px',
-                borderRadius: '8px',
-                border: role === 'customer' ? '2px solid #D4AF37' : '1px solid #ddd',
-                backgroundColor: role === 'customer' ? '#FFFDF5' : '#fff',
-                fontWeight: role === 'customer' ? '600' : '400',
-                cursor: 'pointer',
-              }}
-            >
-              Customer
-            </button>
-            <button
-              type="button"
-              onClick={() => setRole('agent')}
-              style={{
-                flex: 1,
-                padding: '10px',
-                borderRadius: '8px',
-                border: role === 'agent' ? '2px solid #D4AF37' : '1px solid #ddd',
-                backgroundColor: role === 'agent' ? '#FFFDF5' : '#fff',
-                fontWeight: role === 'agent' ? '600' : '400',
-                cursor: 'pointer',
-              }}
-            >
-              Agent
-            </button>
-          </div>
-
           {error && <div className="auth-error-msg">{error}</div>}
 
           <form onSubmit={handleSignup}>
@@ -203,101 +138,11 @@ function Signup() {
                 <input
                   type="tel"
                   className="auth-input"
-                  placeholder="9876543210"
+                  placeholder="98765 43210"
                   value={mobile}
                   onChange={(e) => setMobile(e.target.value)}
                   required
                 />
-              </div>
-            </div>
-
-            {/* Agent साठी State आणि City */}
-            {role === 'agent' && (
-              <div style={{ display: 'flex', gap: '10px' }}>
-                <div className="auth-form-group" style={{ flex: 1 }}>
-                  <label className="auth-label">State</label>
-                  <div className="auth-input-wrapper">
-                    <input
-                      type="text"
-                      className="auth-input"
-                      placeholder="Maharashtra"
-                      value={stateName}
-                      onChange={(e) => setStateName(e.target.value)}
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="auth-form-group" style={{ flex: 1 }}>
-                  <label className="auth-label">City</label>
-                  <div className="auth-input-wrapper">
-                    <input
-                      type="text"
-                      className="auth-input"
-                      placeholder="Pune"
-                      value={city}
-                      onChange={(e) => setCity(e.target.value)}
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Password */}
-            <div className="auth-form-group">
-              <label className="auth-label">Password</label>
-              <div className="auth-input-wrapper">
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  className="auth-input"
-                  placeholder="Enter your password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-                <button
-                  type="button"
-                  className="auth-show-btn"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? 'Hide' : 'Show'}
-                </button>
-              </div>
-
-              {/* Password Rules */}
-              <div className="password-rules-row">
-                <span className={`password-rule-item ${hasMinLength ? 'valid' : ''}`}>
-                  {hasMinLength ? '✓' : '◦'} At least 8 characters
-                </span>
-                <span className={`password-rule-item ${hasLetter ? 'valid' : ''}`}>
-                  {hasLetter ? '✓' : '◦'} Contains a letter
-                </span>
-                <span className={`password-rule-item ${hasNumber ? 'valid' : ''}`}>
-                  {hasNumber ? '✓' : '◦'} Contains a number
-                </span>
-              </div>
-            </div>
-
-            {/* Confirm password */}
-            <div className="auth-form-group">
-              <label className="auth-label">Confirm password</label>
-              <div className="auth-input-wrapper">
-                <input
-                  type={showConfirmPassword ? 'text' : 'password'}
-                  className="auth-input"
-                  placeholder="Re-enter your password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  required
-                />
-                <button
-                  type="button"
-                  className="auth-show-btn"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                >
-                  {showConfirmPassword ? 'Hide' : 'Show'}
-                </button>
               </div>
             </div>
 
@@ -335,7 +180,7 @@ function Signup() {
             </div>
 
             <button type="submit" className="auth-submit-btn" disabled={loading}>
-              {loading ? 'Creating account...' : `Create ${role === 'agent' ? 'Agent' : 'Customer'} account`}
+              {loading ? 'Creating account...' : 'Create account'}
             </button>
           </form>
         </div>

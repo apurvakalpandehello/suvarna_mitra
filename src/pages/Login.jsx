@@ -4,10 +4,7 @@ import './AuthPages.css';
 
 function Login() {
   const navigate = useNavigate();
-  const [role, setRole] = useState('customer'); // 'customer' किंवा 'agent'
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -15,8 +12,8 @@ function Login() {
     e.preventDefault();
     setError('');
 
-    if (!email || !password) {
-      setError('Please enter both email and password.');
+    if (!email) {
+      setError('Please enter your email address.');
       return;
     }
 
@@ -28,21 +25,18 @@ function Login() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          role,
           email,
-          password,
         }),
       });
 
       const data = await response.json();
 
       if (!response.ok || !data.success) {
-        setError(data.message || 'Invalid credentials.');
+        setError(data.message || 'Login failed.');
         setLoading(false);
         return;
       }
 
-      // डेटाबेसमधून आलेला युजर डेटा localStorage मध्ये सेव्ह करा
       localStorage.setItem('user', JSON.stringify(data.user));
 
       navigate('/');
@@ -91,40 +85,6 @@ function Login() {
           <h2 className="auth-card-title">Welcome back</h2>
           <p className="auth-card-subtitle">Log in to your Swarna Mitra account.</p>
 
-          {/* Role Switcher */}
-          <div style={{ display: 'flex', gap: '10px', marginBottom: '18px' }}>
-            <button
-              type="button"
-              onClick={() => setRole('customer')}
-              style={{
-                flex: 1,
-                padding: '10px',
-                borderRadius: '8px',
-                border: role === 'customer' ? '2px solid #D4AF37' : '1px solid #ddd',
-                backgroundColor: role === 'customer' ? '#FFFDF5' : '#fff',
-                fontWeight: role === 'customer' ? '600' : '400',
-                cursor: 'pointer',
-              }}
-            >
-              Customer
-            </button>
-            <button
-              type="button"
-              onClick={() => setRole('agent')}
-              style={{
-                flex: 1,
-                padding: '10px',
-                borderRadius: '8px',
-                border: role === 'agent' ? '2px solid #D4AF37' : '1px solid #ddd',
-                backgroundColor: role === 'agent' ? '#FFFDF5' : '#fff',
-                fontWeight: role === 'agent' ? '600' : '400',
-                cursor: 'pointer',
-              }}
-            >
-              Agent
-            </button>
-          </div>
-
           {error && <div className="auth-error-msg">{error}</div>}
 
           <form onSubmit={handleLogin}>
@@ -142,35 +102,8 @@ function Login() {
               </div>
             </div>
 
-            <div className="auth-form-group" style={{ marginBottom: 0 }}>
-              <label className="auth-label">Password</label>
-              <div className="auth-input-wrapper">
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  className="auth-input"
-                  placeholder="Enter your password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-                <button
-                  type="button"
-                  className="auth-show-btn"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? 'Hide' : 'Show'}
-                </button>
-              </div>
-            </div>
-
-            <div className="auth-forgot-row">
-              <Link to="/contact" className="auth-gold-link">
-                Forgot password?
-              </Link>
-            </div>
-
             <button type="submit" className="auth-submit-btn" disabled={loading}>
-              {loading ? 'Logging in...' : `Log in as ${role === 'agent' ? 'Agent' : 'Customer'}`}
+              {loading ? 'Logging in...' : 'Log in'}
             </button>
           </form>
         </div>
