@@ -4,9 +4,12 @@ import './AuthPages.css';
 
 function Signup() {
   const navigate = useNavigate();
+  const [role, setRole] = useState('customer'); // 'customer' किंवा 'agent'
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [mobile, setMobile] = useState('');
+  const [stateName, setStateName] = useState('');
+  const [city, setCity] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -16,18 +19,24 @@ function Signup() {
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [whatsappUpdates, setWhatsappUpdates] = useState(false);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   // Password validation checks
   const hasMinLength = password.length >= 8;
   const hasLetter = /[a-zA-Z]/.test(password);
   const hasNumber = /[0-9]/.test(password);
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
     setError('');
 
     if (!fullName || !email || !mobile || !password || !confirmPassword) {
       setError('Please fill in all required fields.');
+      return;
+    }
+
+    if (role === 'agent' && (!stateName || !city)) {
+      setError('Please enter both State and City for Agent registration.');
       return;
     }
 
@@ -46,21 +55,45 @@ function Signup() {
       return;
     }
 
-    const newUser = {
-      name: fullName,
-      email: email,
-      mobile: mobile,
-      whatsappUpdates: whatsappUpdates,
-    };
-    localStorage.setItem('user', JSON.stringify(newUser));
+    setLoading(true);
+    try {
+      const response = await fetch('http://localhost:5000/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          role,
+          fullName,
+          email,
+          mobile,
+          password,
+          ...(role === 'agent' && { state: stateName, city }),
+        }),
+      });
 
-    navigate('/');
-    window.location.reload();
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        setError(data.message || 'Registration failed.');
+        setLoading(false);
+        return;
+      }
+
+      // यशस्वी रजिस्ट्रेशननंतर लॉगिन पेजवर पाठवा
+      alert(data.message);
+      navigate('/login');
+    } catch (err) {
+      console.error('Signup API Error:', err);
+      setError('Unable to connect to server. Please make sure backend is running.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="auth-page-wrapper">
-      {/* Left Side Branding Panel (Without Logo) */}
+      {/* Left Side Branding Panel */}
       <div className="auth-left-panel">
         <div className="auth-left-content">
           <h1 className="auth-left-heading">
@@ -95,6 +128,40 @@ function Signup() {
           <p className="auth-card-subtitle">
             Close your existing gold loan with Swarna Mitra. It takes a minute to get started.
           </p>
+
+          {/* Role Switcher (Customer vs Agent) */}
+          <div style={{ display: 'flex', gap: '10px', marginBottom: '18px' }}>
+            <button
+              type="button"
+              onClick={() => setRole('customer')}
+              style={{
+                flex: 1,
+                padding: '10px',
+                borderRadius: '8px',
+                border: role === 'customer' ? '2px solid #D4AF37' : '1px solid #ddd',
+                backgroundColor: role === 'customer' ? '#FFFDF5' : '#fff',
+                fontWeight: role === 'customer' ? '600' : '400',
+                cursor: 'pointer',
+              }}
+            >
+              Customer
+            </button>
+            <button
+              type="button"
+              onClick={() => setRole('agent')}
+              style={{
+                flex: 1,
+                padding: '10px',
+                borderRadius: '8px',
+                border: role === 'agent' ? '2px solid #D4AF37' : '1px solid #ddd',
+                backgroundColor: role === 'agent' ? '#FFFDF5' : '#fff',
+                fontWeight: role === 'agent' ? '600' : '400',
+                cursor: 'pointer',
+              }}
+            >
+              Agent
+            </button>
+          </div>
 
           {error && <div className="auth-error-msg">{error}</div>}
 
@@ -136,13 +203,46 @@ function Signup() {
                 <input
                   type="tel"
                   className="auth-input"
-                  placeholder="98765 43210"
+                  placeholder="9876543210"
                   value={mobile}
                   onChange={(e) => setMobile(e.target.value)}
                   required
                 />
               </div>
             </div>
+
+            {/* Agent साठी State आणि City */}
+            {role === 'agent' && (
+              <div style={{ display: 'flex', gap: '10px' }}>
+                <div className="auth-form-group" style={{ flex: 1 }}>
+                  <label className="auth-label">State</label>
+                  <div className="auth-input-wrapper">
+                    <input
+                      type="text"
+                      className="auth-input"
+                      placeholder="Maharashtra"
+                      value={stateName}
+                      onChange={(e) => setStateName(e.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="auth-form-group" style={{ flex: 1 }}>
+                  <label className="auth-label">City</label>
+                  <div className="auth-input-wrapper">
+                    <input
+                      type="text"
+                      className="auth-input"
+                      placeholder="Pune"
+                      value={city}
+                      onChange={(e) => setCity(e.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Password */}
             <div className="auth-form-group">
@@ -234,8 +334,8 @@ function Signup() {
               </label>
             </div>
 
-            <button type="submit" className="auth-submit-btn">
-              Create account
+            <button type="submit" className="auth-submit-btn" disabled={loading}>
+              {loading ? 'Creating account...' : `Create ${role === 'agent' ? 'Agent' : 'Customer'} account`}
             </button>
           </form>
         </div>
